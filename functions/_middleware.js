@@ -5,7 +5,8 @@
 
 const PUBLIC = [
   /^\/api\//,
-  /^\/login\.html$/,
+  // Cloudflare Pages 会把 /login.html 308 重定向到 /login，两种写法都要放行
+  /^\/login(\.html)?\/?$/,
   /^\/assets\//,      // 样式、脚本、图片等静态资源
   /^\/favicon\.ico$/,
 ];
@@ -23,6 +24,7 @@ function readCookie(request, name) {
 const BLOCKED = [
   /^\/functions\//,
   /^\/migrations\//,
+  /^\/scripts\//,
   /^\/\.github\//,
   /^\/_routes\.json$/,
   /^\/wrangler\.toml$/,
