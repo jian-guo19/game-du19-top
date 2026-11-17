@@ -273,12 +273,16 @@
       '<section class="section"><h2>截图</h2>' + shots + "</section>" +
       '<section class="section"><h2>过关体验与攻略</h2><p>' + esc(g.experience) + "</p></section>" +
       '<section class="section"><h2>下载与购买</h2>' + links + "</section>" +
+      '<section class="section" id="commentsSec"><h2>评论</h2>' +
+      '<div id="commentBox" class="comment-box">加载中…</div></section>' +
       (g.source ? '<p class="card-meta">资料来源：' + esc(g.source) + "</p>" : "") +
       "</div>";
 
     Array.prototype.forEach.call(detailView.querySelectorAll(".shot img"), function (im) {
       im.addEventListener("click", function () { openLightbox(im.src); });
     });
+
+    initComments(g.id);
   }
 
   function openLightbox(src) {
@@ -433,6 +437,127 @@
     });
   }
 
+  // ---------- 账号与评论 ----------
+  var currentUser = null;
+
+  function loginUrl() {
+    return "/login.html?next=" + encodeURIComponent(location.pathname + location.hash);
+  }
+
+  function api(path, opts) {
+    opts = opts || {};
+    return fetch(path, {
+      method: opts.method || "GET",
+      credentials: "same-origin",
+      headers: opts.body ? { "Content-Type": "application/json" } : undefined,
+      body: opts.body ? JSON.stringify(opts.body) : undefined
+    }).then(function (r) {
+      if (r.status === 401) {
+        location.href = loginUrl();
+        throw new Error("unauth");
+      }
+      return r.json().then(function (d) {
+        if (!r.ok) throw new Error(d.error || "请求失败");
+        return d;
+      });
+    });
+  }
+
+  function fmtTime(sec) {
+    try {
+      var d = new Date(sec * 1000);
+      var p = function (n) { return n < 10 ? "0" + n : "" + n; };
+      return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) +
+        " " + p(d.getHours()) + ":" + p(d.getMinutes());
+    } catch (e) { return ""; }
+  }
+
+  function renderUserBar() {
+    var bar = document.getElementById("userBar");
+    if (!bar) return;
+    api("/api/me").then(function (d) {
+      currentUser = d.user || null;
+      if (currentUser) {
+        bar.innerHTML = '<span class="ub-name">' + esc(currentUser.username) +
+          (currentUser.role === "admin" ? '<span class="ub-badge">管理员</span>' : "") +
+          '</span><button type="button" class="ub-out" id="ubOut">退出</button>';
+        var out = document.getElementById("ubOut");
+        if (out) out.addEventListener("click", function () {
+          api("/api/logout", { method: "POST" }).then(function () {
+            location.href = "/login.html";
+          }).catch(function () { location.href = "/login.html"; });
+        });
+      } else {
+        bar.innerHTML = '<a class="ub-in" href="' + loginUrl() + '">登录 / 注册</a>';
+      }
+    }).catch(function () {});
+  }
+
+  function initComments(gameId) {
+    var box = document.getElementById("commentBox");
+    if (!box) return;
+
+    function refresh() {
+      api("/api/comments?game=" + encodeURIComponent(gameId)).then(function (d) {
+        paintComments(box, gameId, d.comments || [], refresh);
+      }).catch(function (e) {
+        if (String(e.message) !== "unauth") {
+          box.innerHTML = '<div class="c-empty">评论加载失败：' + esc(e.message) + "</div>";
+        }
+      });
+    }
+    refresh();
+  }
+
+  function paintComments(box, gameId, list, refresh) {
+    var form = currentUser
+      ? '<div class="c-form">' +
+          '<textarea id="cInput" rows="3" maxlength="1000" placeholder="说说你的看法…（最多 1000 字）"></textarea>' +
+          '<div class="c-form-foot"><span class="c-as">以 ' + esc(currentUser.username) + " 的身份发表</span>" +
+          '<button type="button" class="btn btn-primary" id="cSend">发表</button></div></div>'
+      : '<div class="c-form c-guest">登录后才能评论 · <a href="' + loginUrl() + '">去登录</a></div>';
+
+    var items = list.length
+      ? list.map(function (c) {
+          var canDel = currentUser &&
+            (currentUser.id === c.user_id || currentUser.role === "admin");
+          return '<div class="c-item">' +
+            '<div class="c-head"><span class="c-user">' + esc(c.username) + "</span>" +
+            '<time class="c-time">' + esc(fmtTime(c.created_at)) + "</time>" +
+            (canDel ? '<button type="button" class="c-del" data-id="' + Number(c.id) + '">删除</button>' : "") +
+            "</div>" +
+            '<div class="c-body">' + esc(c.body) + "</div></div>";
+        }).join("")
+      : '<div class="c-empty">还没有评论，来做第一个。</div>';
+
+    box.innerHTML = form + '<div class="c-list">' + items + "</div>";
+
+    var send = document.getElementById("cSend");
+    if (send) {
+      send.addEventListener("click", function () {
+        var ta = document.getElementById("cInput");
+        var text = (ta && ta.value || "").trim();
+        if (!text) { ta && ta.focus(); return; }
+        send.disabled = true;
+        api("/api/comments", { method: "POST", body: { gameId: gameId, body: text } })
+          .then(function () { refresh(); })
+          .catch(function (e) {
+            send.disabled = false;
+            if (String(e.message) !== "unauth") alert("发表失败：" + e.message);
+          });
+      });
+    }
+
+    Array.prototype.forEach.call(box.querySelectorAll(".c-del"), function (btn) {
+      btn.addEventListener("click", function () {
+        if (!confirm("删除这条评论？")) return;
+        api("/api/comments/" + btn.getAttribute("data-id"), { method: "DELETE" })
+          .then(function () { refresh(); })
+          .catch(function (e) { if (String(e.message) !== "unauth") alert("删除失败：" + e.message); });
+      });
+    });
+  }
+
   // ---------- hash 路由 ----------
   function route() {
     var m = location.hash.match(/^#\/game\/(.+)$/);
@@ -519,5 +644,6 @@
   // ---------- 启动 ----------
   renderChrome();
   buildCatNav();
+  renderUserBar();
   route();
 })();

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/assets/images/*",
+    "/assets/logo.png",
+    "/assets/style.css",
+    "/assets/login.css"
+  ]
+}

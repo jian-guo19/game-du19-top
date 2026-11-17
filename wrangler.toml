@@ -1,3 +1,9 @@
 name = "game-du19-top"
 pages_build_output_dir = "."
 compatibility_date = "2026-11-17"
+
+# 账号与评论的数据库。database_id 由 GitHub Actions 在部署时自动填入。
+[[d1_databases]]
+binding = "DB"
+database_name = "game-du19-db"
+database_id = "00000000-0000-0000-0000-000000000000"

@@ -11,20 +11,72 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: 0f62d1e4af076d41a94f7489551ab364
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - name: Ensure Pages project exists
-        env:
-          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT: 0f62d1e4af076d41a94f7489551ab364
         run: |
           curl -sS -X POST \
-            "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects" \
-            -H "Authorization: Bearer $CF_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             -H "Content-Type: application/json" \
             --data '{"name":"game-du19-top","production_branch":"master"}' || true
+
+      # 建库（幂等）→ 把 database_id 写进 wrangler.toml → 建表
+      - name: Ensure D1 database and schema
+        id: d1
+        run: |
+          set -euo pipefail
+          find_id() {
+            python3 - <<'PY' < /tmp/d1.json
+          import json, sys
+          try:
+              data = json.load(sys.stdin)
+          except Exception:
+              print("")
+              raise SystemExit(0)
+          items = data if isinstance(data, list) else data.get("result", [])
+          print(next((x.get("uuid", "") for x in items if x.get("name") == "game-du19-db"), ""))
+          PY
+          }
+
+          npx --yes wrangler@4 d1 list --json > /tmp/d1.json 2>/dev/null || echo '[]' > /tmp/d1.json
+          DB_ID="$(find_id)"
+
+          if [ -z "$DB_ID" ]; then
+            echo "未找到 game-du19-db，正在创建…"
+            npx --yes wrangler@4 d1 create game-du19-db || true
+            npx --yes wrangler@4 d1 list --json > /tmp/d1.json 2>/dev/null || echo '[]' > /tmp/d1.json
+            DB_ID="$(find_id)"
+          fi
+
+          if [ -z "$DB_ID" ]; then
+            echo "::error::D1 建库失败——请确认 CLOUDFLARE_API_TOKEN 拥有 D1 编辑权限"
+            exit 1
+          fi
+          echo "D1 database_id = $DB_ID"
+
+          python3 - "$DB_ID" <<'PY'
+          import io, re, sys
+          db_id = sys.argv[1]
+          p = "wrangler.toml"
+          s = io.open(p, encoding="utf-8").read()
+          s = re.sub(r'database_id\s*=\s*"[^"]*"', 'database_id = "%s"' % db_id, s)
+          io.open(p, "w", encoding="utf-8").write(s)
+          print(io.open(p, encoding="utf-8").read())
+          PY
+
+          npx --yes wrangler@4 d1 execute game-du19-db --remote --file=./migrations/0001_init.sql -y
+          echo "id=$DB_ID" >> "$GITHUB_OUTPUT"
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4
@@ -34,12 +86,9 @@ jobs:
           command: pages deploy . --project-name=game-du19-top --branch=master
 
       - name: Attach custom domain
-        env:
-          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT: 0f62d1e4af076d41a94f7489551ab364
         run: |
           curl -sS -X POST \
-            "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects/game-du19-top/domains" \
-            -H "Authorization: Bearer $CF_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/game-du19-top/domains" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             -H "Content-Type: application/json" \
             --data '{"name":"game.du-19.top"}' || true
