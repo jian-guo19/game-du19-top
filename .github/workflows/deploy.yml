@@ -31,52 +31,10 @@ jobs:
             -H "Content-Type: application/json" \
             --data '{"name":"game-du19-top","production_branch":"master"}' || true
 
-      # 建库（幂等）→ 把 database_id 写进 wrangler.toml → 建表
+      # 建库（幂等）→ 建表 → 把 database_id 写进 wrangler.toml
       - name: Ensure D1 database and schema
         id: d1
-        run: |
-          set -euo pipefail
-          find_id() {
-            python3 - <<'PY' < /tmp/d1.json
-          import json, sys
-          try:
-              data = json.load(sys.stdin)
-          except Exception:
-              print("")
-              raise SystemExit(0)
-          items = data if isinstance(data, list) else data.get("result", [])
-          print(next((x.get("uuid", "") for x in items if x.get("name") == "game-du19-db"), ""))
-          PY
-          }
-
-          npx --yes wrangler@4 d1 list --json > /tmp/d1.json 2>/dev/null || echo '[]' > /tmp/d1.json
-          DB_ID="$(find_id)"
-
-          if [ -z "$DB_ID" ]; then
-            echo "未找到 game-du19-db，正在创建…"
-            npx --yes wrangler@4 d1 create game-du19-db || true
-            npx --yes wrangler@4 d1 list --json > /tmp/d1.json 2>/dev/null || echo '[]' > /tmp/d1.json
-            DB_ID="$(find_id)"
-          fi
-
-          if [ -z "$DB_ID" ]; then
-            echo "::error::D1 建库失败——请确认 CLOUDFLARE_API_TOKEN 拥有 D1 编辑权限"
-            exit 1
-          fi
-          echo "D1 database_id = $DB_ID"
-
-          python3 - "$DB_ID" <<'PY'
-          import io, re, sys
-          db_id = sys.argv[1]
-          p = "wrangler.toml"
-          s = io.open(p, encoding="utf-8").read()
-          s = re.sub(r'database_id\s*=\s*"[^"]*"', 'database_id = "%s"' % db_id, s)
-          io.open(p, "w", encoding="utf-8").write(s)
-          print(io.open(p, encoding="utf-8").read())
-          PY
-
-          npx --yes wrangler@4 d1 execute game-du19-db --remote --file=./migrations/0001_init.sql -y
-          echo "id=$DB_ID" >> "$GITHUB_OUTPUT"
+        run: python3 scripts/ensure_d1.py
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4
