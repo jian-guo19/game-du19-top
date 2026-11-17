@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 326" width="680" height="326" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8f9fe"/><stop offset="1" stop-color="#edf1fb"/>
+    </linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#283470" flood-opacity="0.13"/>
+    </filter>
+  </defs>
+  <rect width="680" height="326" fill="url(#bg)"/>
+  <circle cx="648" cy="14" r="70" fill="#c9d7ff" opacity="0.3"/>
+  <circle cx="32" cy="312" r="64" fill="#ffd8b8" opacity="0.26"/>
+
+  <text x="28" y="36" font-size="19" font-weight="700" fill="#252b45">出问题了？按这个顺序查，别急着重装</text>
+  <text x="28" y="59" font-size="12.5" fill="#6b7285">大部分情况不是酒馆坏了，而是某一层没接上。</text>
+
+  <g filter="url(#sh)">
+    <rect x="28" y="86" width="624" height="42" rx="11" fill="#fff5e9" stroke="#e6a45c" stroke-width="1.2"/>
+    <rect x="28" y="136" width="624" height="42" rx="11" fill="#eaf2ff" stroke="#6e9fe4" stroke-width="1.2"/>
+    <rect x="28" y="186" width="624" height="42" rx="11" fill="#f3edff" stroke="#a17bda" stroke-width="1.2"/>
+    <rect x="28" y="236" width="624" height="42" rx="11" fill="#e8f8f0" stroke="#57b58c" stroke-width="1.2"/>
+  </g>
+
+  <g font-size="12.5" font-weight="700">
+    <text x="46" y="112" fill="#8a5a20">打不开网页</text>
+    <text x="46" y="162" fill="#2f5f9e">发消息没人回</text>
+    <text x="46" y="212" fill="#68439b">回话不像角色</text>
+    <text x="46" y="262" fill="#247a59">点生成没反应</text>
+  </g>
+  <g font-size="12" fill="#4d576c">
+    <text x="180" y="112">看启动窗口是不是还开着；地址是不是 localhost:8000</text>
+    <text x="180" y="162">看后端有没有选、Key 是否有效、模型名是否原样复制</text>
+    <text x="180" y="212">看角色卡有没有选中；设定栏是不是被自己清空了</text>
+    <text x="180" y="262">看图像扩展装了没；图像接口是不是另外配的</text>
+  </g>
+  <g font-size="11" font-weight="700" fill="#fff" text-anchor="middle">
+    <rect x="590" y="94" width="46" height="26" rx="7" fill="#e6a45c"/><text x="613" y="111">先看</text>
+    <rect x="590" y="144" width="46" height="26" rx="7" fill="#6e9fe4"/><text x="613" y="161">先看</text>
+    <rect x="590" y="194" width="46" height="26" rx="7" fill="#a17bda"/><text x="613" y="211">先看</text>
+    <rect x="590" y="244" width="46" height="26" rx="7" fill="#57b58c"/><text x="613" y="261">先看</text>
+  </g>
+
+  <rect x="28" y="294" width="624" height="22" rx="8" fill="#fff" fill-opacity="0.86" stroke="#dbe2f2" stroke-dasharray="4 3"/>
+  <text x="42" y="309" font-size="11.5" fill="#4a5570">搜错之前，先记下报错原文——「酒馆用不了」很难查，「401 unauthorized」一搜就有方向。</text>
+</svg>

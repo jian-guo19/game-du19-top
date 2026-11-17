@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 274" width="680" height="274" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8f9fe"/><stop offset="1" stop-color="#edf1fb"/>
+    </linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#283470" flood-opacity="0.13"/>
+    </filter>
+  </defs>
+  <rect width="680" height="274" fill="url(#bg)"/>
+  <circle cx="646" cy="14" r="70" fill="#c9d7ff" opacity="0.3"/>
+  <circle cx="34" cy="260" r="64" fill="#ffd8b8" opacity="0.26"/>
+
+  <text x="28" y="36" font-size="19" font-weight="700" fill="#252b45">打开之后，先看懂这三块就够</text>
+  <text x="28" y="59" font-size="12.5" fill="#6b7285">别被一屏按钮吓到：你平时只会用到左边选人、中间看话、最下面打字。</text>
+
+  <g filter="url(#sh)">
+    <rect x="28" y="82" width="150" height="160" rx="13" fill="#fff5e9" stroke="#e6a45c" stroke-width="1.4"/>
+    <rect x="190" y="82" width="286" height="160" rx="13" fill="#eaf2ff" stroke="#6e9fe4" stroke-width="1.4"/>
+    <rect x="488" y="82" width="166" height="160" rx="13" fill="#f3edff" stroke="#a17bda" stroke-width="1.4"/>
+  </g>
+
+  <g font-size="13.5" font-weight="700">
+    <text x="44" y="108" fill="#8a5a20">① 左边：角色</text>
+    <text x="206" y="108" fill="#2f5f9e">② 中间：对话</text>
+    <text x="504" y="108" fill="#68439b">③ 右边：设置</text>
+  </g>
+  <g font-size="11.5" fill="#5f687d">
+    <text x="44" y="133">点一下就换人</text>
+    <text x="44" y="151">导入角色卡也在这</text>
+    <text x="44" y="169">当前角色亮着</text>
+    <text x="44" y="198">第一句先问</text>
+    <text x="44" y="216">「你是谁？」</text>
+
+    <text x="206" y="133">你和角色的聊天记录</text>
+    <text x="206" y="151">回话会一条条往下长</text>
+    <text x="206" y="188">底部输入框：</text>
+    <text x="206" y="206">打字 → 点发送 / 回车</text>
+    <text x="206" y="226">生成中会出现转圈或光标</text>
+
+    <text x="504" y="133">模型、温度、字数</text>
+    <text x="504" y="151">这些先别乱动</text>
+    <text x="504" y="188">新手只改一处：</text>
+    <text x="504" y="206">确认模型选对了</text>
+    <text x="504" y="226">其他以后再学</text>
+  </g>
+
+  <rect x="28" y="250" width="626" height="20" rx="7" fill="#fff" fill-opacity="0.86" stroke="#dbe2f2" stroke-dasharray="4 3"/>
+  <text x="42" y="264" font-size="11.5" fill="#4a5570">最稳的上手顺序：左边选角色 → 右边确认模型 → 中间打字发送。跑通了再研究参数。</text>
+</svg>
