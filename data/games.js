@@ -37,7 +37,13 @@ window.GAMES_DATA = [
     experience: "（这里写你自己的过关体验和攻略要点，比如卡关位置、路线选择、隐藏内容触发方式。）",
     cover: "mirai-header.jpg",
     shots: ["mirais-midnight-stream-1.jpg", "mirais-midnight-stream-2.jpg", "mirais-midnight-stream-3.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/0618e9c50de6",
+      },
+    ],
+    password: "234000",
     source: "Steam 官方商店 API（App 3241760）+ 发行商公开资料"
   },
   {
@@ -56,7 +62,13 @@ window.GAMES_DATA = [
     experience: "（这里写你自己的过关体验和攻略要点，比如武器搭配、关卡打法、解锁顺序。）",
     cover: "wings-header.jpg",
     shots: ["wings-of-seduction-1.jpg", "wings-of-seduction-2.jpg", "wings-of-seduction-3.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/f53185c8d577",
+      },
+    ],
+    password: "234000",
     source: "Steam 官方商店 API（App 2455140）+ 发行公告"
   },
   {
@@ -75,7 +87,13 @@ window.GAMES_DATA = [
     experience: "（这里写你自己的过关体验和攻略要点。）",
     cover: "boundaries-card.jpg",
     shots: ["boundaries-1.jpg", "boundaries-2.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/bea750e4e9e9",
+      },
+    ],
+    password: "234000",
     source: "官方 Steam 社区公告 + itch.io / Patreon 页面 + 第三方资料库"
   },
 
@@ -96,7 +114,13 @@ window.GAMES_DATA = [
     experience: "（待补：卡关位置、路线选择、隐藏内容触发方式。）",
     cover: "room-404-erotic-massage-header.jpg",
     shots: ["room-404-erotic-massage-1.jpg", "room-404-erotic-massage-2.jpg", "room-404-erotic-massage-3.jpg", "room-404-erotic-massage-4.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/3c66bc87cedc",
+      },
+    ],
+    password: "234000",
     source: "Steam 商店页 4110220 + 发行商公告（封面无可安全使用版本）"
   },
   {
@@ -140,7 +164,13 @@ window.GAMES_DATA = [
     experience: "（待补：路线选择、结局条件。）",
     cover: "yume5-header.jpg",
     shots: ["yume-5-1.jpg", "yume-5-2.jpg", "yume-5-3.jpg", "yume-5-4.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/32aec87fcaf9",
+      },
+    ],
+    password: "234000",
     source: "Steam 官方商店头图（App 3172220）+ 第三方资料库"
   },
   {
@@ -159,7 +189,13 @@ window.GAMES_DATA = [
     experience: "（待补：数值管理要点、路线差异。）",
     cover: "dokidoki-erotic-massage-header.jpg",
     shots: ["dokidoki-erotic-massage-1.jpg", "dokidoki-erotic-massage-2.jpg", "dokidoki-erotic-massage-3.jpg", "dokidoki-erotic-massage-4.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/d924de037c3b",
+      },
+    ],
+    password: "234000",
     source: "DLsite RJ01437730 + 英文版 readme（封面无可安全使用版本）"
   },
   {
@@ -178,7 +214,13 @@ window.GAMES_DATA = [
     experience: "（待补：技能搭配、回合数压力点。）",
     cover: "angelic-pe-clinic-header.jpg",
     shots: ["angelic-pe-clinic-1.jpg", "angelic-pe-clinic-2.jpg", "angelic-pe-clinic-3.jpg", "angelic-pe-clinic-4.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/bfd1768f32a9",
+      },
+    ],
+    password: "234000",
     source: "DLsite RJ01644040 + 本地 read me.txt（封面无可安全使用版本）"
   },
   {
@@ -197,7 +239,13 @@ window.GAMES_DATA = [
     experience: "（待补：机关解法、巡逻规律。）",
     cover: "succubus-nightmare-header.jpg",
     shots: ["succubus-nightmare-1.jpg", "succubus-nightmare-2.jpg", "succubus-nightmare-3.jpg", "succubus-nightmare-4.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/e5a9c3b8d8fd",
+      },
+    ],
+    password: "234000",
     source: "Steam 商店页 4507930 + 发行商资料（封面无可安全使用版本）"
   },
   {
@@ -216,7 +264,13 @@ window.GAMES_DATA = [
     experience: "（待补：路线选择、关键选项。）",
     cover: "hime-enyoku-imperium-header.jpg",
     shots: ["hime-enyoku-imperium-1.jpg", "hime-enyoku-imperium-2.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/ca2594138108",
+      },
+    ],
+    password: "234000",
     source: "VNDB v61195 + 本地 readme.txt（封面无可安全使用版本）"
   },
   {
@@ -235,7 +289,13 @@ window.GAMES_DATA = [
     experience: "（待补：救出时机、陷阱解除顺序。）",
     cover: "quarta-alumines-tangerine-eg-header.jpg",
     shots: ["quarta-alumines-tangerine-eg-1.jpg", "quarta-alumines-tangerine-eg-2.jpg", "quarta-alumines-tangerine-eg-3.jpg", "quarta-alumines-tangerine-eg-4.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/d6cfc793e094",
+      },
+    ],
+    password: "234000",
     source: "DLsite RJ01591409 + 本地 ○readme.txt（封面无可安全使用版本）"
   },
   {
@@ -254,7 +314,13 @@ window.GAMES_DATA = [
     experience: "（待补：地图路线、能力解锁顺序。）",
     cover: "dusk-city-header.jpg",
     shots: ["dusk-city-1.jpg", "dusk-city-2.jpg", "dusk-city-3.jpg", "dusk-city-4.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/71265ab757f5",
+      },
+    ],
+    password: "234000",
     source: "Steam 官方商店头图（App 2973120）+ DLsite RJ01035443"
   },
   {
@@ -297,7 +363,13 @@ window.GAMES_DATA = [
     experience: "（待补：目录结构与播放设置。）",
     cover: "re-mrm-1-header.jpg",
     shots: ["re-mrm-1-1.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/fea1ef9a7db9",
+      },
+    ],
+    password: "234000",
     source: "DLsite RJ391748 + 本地 はじめにお読みください.txt / changelog.txt"
   },
   {
@@ -316,7 +388,13 @@ window.GAMES_DATA = [
     experience: "（待补：指名与服装选择对结局的影响、关键分歧点。）",
     cover: "tokumu-sousakan-rena-header.jpg",
     shots: ["tokumu-sousakan-rena-1.jpg", "tokumu-sousakan-rena-2.jpg", "tokumu-sousakan-rena-3.jpg", "tokumu-sousakan-rena-4.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/0fcb99952103",
+      },
+    ],
+    password: "234000",
     source: "Ci-en 制作公告（NoFuture＝端音 乱希）+ 本地 ◇はじめにお読みください.txt"
   },
   {
@@ -335,7 +413,13 @@ window.GAMES_DATA = [
     experience: "游戏介绍：\n\n◆剧情简介\n留下妻子和女儿在新买的独栋新房中，主角开始了单身赴任。\n这样的日子也即将过去两年。\n\n从旁人看来主角过着寂寞的生活，但本人反而觉得这样很好。\n因为，他已经好几年没有「鸡巴」勃起过了。\n\n与妻子的夜间生活完全没有，正担心夫妻关系恶化之际，就被单身赴任了。\n\n然而，每天在通勤电车上摇晃，他已经实在受够了。\n\n为了分散注意力而看到的女子高中生夺走了他的视线，在他入迷之际电车剧烈摇晃。\n因为没有可以抓的地方，不由自主地紧紧抓住了她的双胸……。\n\n到站的瞬间，主角慌忙冲下电车，但\n那时，他注意到本该无法勃起的「鸡巴」已经完全勃起了。\n\n就这样，想要久违地射精，但\n把积攒了数年的东西射到虚空中，实在太可惜了。\n\n主角对那个女子高中生「少女N」让自己勃起一事深表感谢，\n为了发泄那复活的性欲，他决定将她彻底玷污。\n\n那正是主角所理想的痴○……『完全痴○』！\n\n痴○系统\n◆更加丰富的痴○指令！\n全147种痴○指令，随意触摸！\n\n大量追加了反映S属性主角性格的痴○指令！\n用色情玩具和装饰尽情羞辱少女N吧！\n\n◆Live2D全动态！\n所有痴○指令都有动画，通过自然的动作享受「触摸」！\n表情和效果会随淫乱度和兴奋度细致变化！眺望她快要高潮的脸吧！\n\n被主角触摸时会拍开手、露出厌恶的表情！\n但是，只要持续触摸让她无法抵抗，就能让她在电车中毫无抵抗地不断高潮！\n\n◆少女N全语音！\n剧情语音自不必说，痴○中的语音也全部以「双耳录音」收录！\n痴○指令的语音会中途变化！通常、捂嘴、淫乱，请享受符合状况的语音！\n\n痴○场景中追加了根据少女N位置变化语音位置的新系统！\n用耳朵充分享受侵犯她的感觉吧！\n\n◆更加容易被发现……不，更加色情！\n紧张感才是痴○的精髓！少女N发出的声音、声响、气味会让乘客更容易发现！\n再加上体温，少女N身体散发的热气也会暴露！！\n\n……但是，没必要慌张！！主角的对策也万无一失！将这些文本之后复制到我的游戏网站里头，就是对应的按游戏的相应内容之下",
     cover: "kanzen-chikan-2-header.jpg",
     shots: ["kanzen-chikan-2-1.jpg", "kanzen-chikan-2-2.jpg", "kanzen-chikan-2-3.jpg", "kanzen-chikan-2-4.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/011d10d369fa",
+      },
+    ],
+    password: "234000",
     source: "Ci-en 制作进度公告（兎もに角）+ 本地 readme.txt / 说明.txt"
   },
   {
@@ -354,7 +438,13 @@ window.GAMES_DATA = [
     experience: "（待补：路线选择、章节卡点、画廊解锁条件。）",
     cover: "ripples-header.jpg",
     shots: ["ripples-1.jpg", "ripples-2.jpg", "ripples-3.jpg", "ripples-4.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/143fe441eb0a",
+      },
+    ],
+    password: "234000",
     source: "VNDB v33448 + itch.io（jestur.itch.io）+ 本地 log.txt"
   },
   {
@@ -373,7 +463,13 @@ window.GAMES_DATA = [
     experience: "（待补：结局触发条件、轮回中该保留哪些进度。）",
     cover: "round-and-round-train-header.jpg",
     shots: ["round-and-round-train-1.jpg", "round-and-round-train-2.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/a2f152e19ccd",
+      },
+    ],
+    password: "234000",
     source: "本地 credits.txt / changelog.txt + 第三方资料库条目"
   },
   {
@@ -392,7 +488,13 @@ window.GAMES_DATA = [
     experience: "（待补：数值成长节奏、场景解锁条件。）",
     cover: "hypno-app-2-header.jpg",
     shots: ["hypno-app-2-1.jpg", "hypno-app-2-2.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/8b3877b24fea",
+      },
+    ],
+    password: "234000",
     source: "本地 お読み下さい.txt + config.ini + 官方操作说明站点"
   },
   {
@@ -411,7 +513,13 @@ window.GAMES_DATA = [
     experience: "（待补：睡眠深度控制、隐藏路线触发条件。）",
     cover: "youmuin-header.jpg",
     shots: ["youmuin-1.jpg", "youmuin-2.jpg", "youmuin-3.jpg", "youmuin-4.jpg"],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/f8f61b0bfc00",
+      },
+    ],
+    password: "234000",
     source: "Ci-en 版本公告（私立さくらんぼ小学校・乳学校）+ 本地 ファイルの説明.txt"
   }
 ];
