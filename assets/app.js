@@ -263,7 +263,10 @@
 
     var links = (g.links && g.links.length)
       ? '<div class="shots">' + g.links.map(function (l) {
-          return '<a class="btn" href="' + esc(l.url) + '" target="_blank" rel="noopener">' +
+          // 站内锚点（#/cards 这类）就地跳转，不加新窗口
+          var jump = l.url.charAt(0) === "#";
+          return '<a class="btn" href="' + esc(l.url) + '"' +
+            (jump ? "" : ' target="_blank" rel="noopener"') + ">" +
             esc(l.label) + "</a>";
         }).join("") + "</div>" + pwdNote
       : '<div class="links-empty">下载与购买链接待补充。</div>';

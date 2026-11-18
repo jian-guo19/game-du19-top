@@ -324,6 +324,44 @@ window.GAMES_DATA = [
     source: "Steam 官方商店头图（App 2973120）+ DLsite RJ01035443"
   },
   {
+    id: "tavern-cards",
+    name: "SillyTavern Character Cards",
+    cnName: "酒馆角色卡",
+    developer: "各地作者 / 网络收集",
+    publisher: "个人整理打包",
+    releaseDate: "2026-11",
+    platform: "Windows / Android",
+    genres: ["角色卡", "AI 聊天", "工具"],
+    rating: 0,
+    status: "游玩中",
+    type: "software",
+    summary:
+      "给 SillyTavern（个人酒馆）用的一套角色卡合集：1286 张 PNG，按 22 个分类分好目录，" +
+      "包体约 1.0 GB。每张卡的图片本身就是封面，真正的角色设定写在文件元数据里，" +
+      "导入酒馆后会自动带出名字、开场白和人物描述，不需要另外配设定文件。" +
+      "根目录另附 CSV 版和 HTML 版索引，不用解压也能先按分类、标签翻一遍，挑好再导。",
+    experience:
+      "解压后是「酒馆角色卡」文件夹，里面一个「电子魅魔角色卡」总目录加 22 个分类。" +
+      "导入走酒馆左侧「角色管理」的「导入」按钮，可以一次多选，也可以直接把 PNG 拖进浏览器窗口。" +
+      "导入后卡会出现在列表里但显示「出现」，不算选中；要再点一下卡片、右上角显示出角色名，才算真正切换过去。" +
+      "发一句「你是谁」试一下，回话符合设定就说明卡是完整的；回得驴唇不对马嘴，多半是这张卡本身没写设定。" +
+      "分类是按内容打的标签，不是审核结果；「工具」那 5 张是快速回复集和节奏控制这类小配件，按需装。",
+    cover: "tavern-cards-header.jpg",
+    shots: ["tavern-cards-1.jpg", "tavern-cards-2.jpg", "tavern-cards-3.jpg"],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/e5638ec5c6eb",
+      },
+      {
+        label: "22 个分类清单",
+        url: "#/cards",
+      },
+    ],
+    password: "234000",
+    source: "本地目录清点：1286 个 PNG + 索引 CSV/HTML，22 个分类；打包后逐层校验（1290 个文件 / 24 个文件夹）"
+  },
+  {
     id: "re-mrm-1",
     name: "Re:MRM-1",
     cnName: "",
