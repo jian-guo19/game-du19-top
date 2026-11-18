@@ -1104,3 +1104,124 @@ body.is-detail .notice { display: none; }
 .c-count { font-size: 12px; color: var(--text-3); margin-left: 8px; }
 .c-count.near { color: #d98324; }
 .c-count.full { color: #e0556e; font-weight: 600; }
+/* ---------- 酒馆角色卡资源页 ---------- */
+.cards-tip .guide-tip-badge { background: #e6f7f1; color: #12866f; }
+
+.cards { max-width: 820px; margin: 0 auto; padding: 32px 0 80px; }
+.c-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 22px 0 4px;
+}
+.c-stat {
+  padding: 14px 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+.c-stat-v { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+.c-stat-k { margin-top: 4px; font-size: 11.5px; color: var(--text-3); }
+
+.c-list {
+  margin: 0 0 18px;
+  padding-left: 19px;
+  color: var(--text-2);
+  font-size: 14.5px;
+  line-height: 1.85;
+}
+.c-list li { margin-bottom: 5px; }
+
+.c-cats { display: flex; flex-wrap: wrap; gap: 8px; }
+.c-cat {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  font-size: 13.5px;
+  color: var(--text-2);
+}
+.c-cat b { font-size: 12px; font-weight: 600; color: var(--text-3); }
+
+.c-dl {
+  padding: 20px;
+  margin: 0 0 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.c-dl .btn { display: inline-block; }
+.c-dl .dl-note { margin: 12px 0 0; }
+.c-dl-files {
+  margin: 14px 0 0;
+  padding: 12px 0 0;
+  border-top: 1px dashed var(--border);
+  list-style: none;
+  font-size: 12.5px;
+  color: var(--text-3);
+  font-family: ui-monospace, Consolas, monospace;
+}
+.c-dl-files li { padding: 2px 0; }
+
+.c-notes { list-style: none; counter-reset: cnote; margin: 0; padding: 0; }
+.c-notes li { position: relative; padding: 0 0 18px 34px; counter-increment: cnote; }
+.c-notes li::before {
+  content: counter(cnote);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 22px;
+}
+.c-note-t { margin-bottom: 4px; font-size: 14.5px; font-weight: 600; color: var(--text); }
+.c-note-d { font-size: 14px; line-height: 1.75; color: var(--text-2); }
+
+@media (max-width: 640px) {
+  .cards { padding: 22px 0 60px; }
+  .c-stats { grid-template-columns: repeat(2, 1fr); }
+}
+/* ---------- 教程页 → 角色卡资源 的转发条 ---------- */
+.t-xlink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0 20px;
+  padding: 12px 16px;
+  background: #e9f8f3;
+  border: 1px solid #c9ebdf;
+  border-radius: var(--radius-sm);
+  color: #14705c;
+  font-size: 13.5px;
+  line-height: 1.65;
+  transition: 0.18s;
+}
+.t-xlink b {
+  flex: 0 0 auto;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: #fff;
+  color: #12866f;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+}
+.t-xlink:hover { text-decoration: none; border-color: #12866f; background: #dcf5ec; }
+
+.c-more {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13.5px;
+  color: var(--primary);
+}
+.c-more:hover { text-decoration: underline; }

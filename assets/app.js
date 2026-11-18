@@ -14,6 +14,7 @@
   var detailView = document.getElementById("detailView");
   var guideView = document.getElementById("guideView");
   var tavernView = document.getElementById("tavernView");
+  var cardsView = document.getElementById("cardsView");
   var grid = document.getElementById("grid");
   var filters = document.getElementById("filters");
   var catNav = document.getElementById("catNav");
@@ -23,6 +24,7 @@
   var guides = window.GUIDES || [];
   var guideTable = window.GUIDE_TABLE || null;
   var tavern = window.TAVERN_GUIDE || null;
+  var cards = window.CARDS_DATA || null;
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -433,6 +435,8 @@
       '<p class="t-kicker">' + esc(tavern.kicker) + "</p>" +
       "<h1>" + esc(tavern.title) + "</h1>" +
       '<p class="t-intro">' + esc(tavern.lead) + "</p>" +
+      '<a class="t-xlink" href="#/cards">' +
+      "<b>角色卡资源</b>不想自己找卡？现成 1286 张，22 个分类，挑好直接导 →</a>" +
       '<div class="t-toc">' + toc + "</div>" +
       "</header>" +
       body + end +
@@ -447,6 +451,70 @@
     Array.prototype.forEach.call(tavernView.querySelectorAll(".t-figure img, .t-shot-img img"), function (im) {
       im.addEventListener("click", function () { openLightbox(im.src); });
     });
+  }
+
+  // ---------- 酒馆角色卡资源 ----------
+  function renderCards() {
+    if (!cardsView || !cards) return;
+
+    var stat = cards.stats.map(function (s) {
+      return '<div class="c-stat"><div class="c-stat-v">' + esc(s.v) + "</div>" +
+        '<div class="c-stat-k">' + esc(s.k) + "</div></div>";
+    }).join("");
+
+    var cats = cards.cats.map(function (c) {
+      return '<span class="c-cat">' + esc(c.n) + "<b>" + esc(c.c) + "</b></span>";
+    }).join("");
+
+    var whatList = cards.what.map(function (t) {
+      return "<li>" + esc(t) + "</li>";
+    }).join("");
+
+    var steps = cards.steps.map(function (st) {
+      return '<li><div class="t-step-t">' + esc(st.t) + "</div>" +
+        '<div class="t-step-d">' + esc(st.d) + "</div></li>";
+    }).join("");
+
+    var d = cards.download;
+    var files = (d.files || []).map(function (f) {
+      return "<li>" + esc(f) + "</li>";
+    }).join("");
+
+    var dl = '<div class="c-dl">' +
+      '<a class="btn btn-primary" href="' + esc(d.url) + '" target="_blank" rel="noopener">' +
+      esc(d.label) + "</a>" +
+      '<p class="dl-note">解压密码：<b class="dl-pwd">' + esc(d.password) +
+      '</b>　·　三层嵌套，密码只在第一层输一次　·　<a href="#/guide">解压步骤看图解</a></p>' +
+      '<ul class="c-dl-files">' + files + "</ul></div>";
+
+    var notes = cards.notes.map(function (n) {
+      return '<li><div class="c-note-t">' + esc(n.t) + "</div>" +
+        '<div class="c-note-d">' + esc(n.d) + "</div></li>";
+    }).join("");
+
+    function sec(num, title, body) {
+      return '<article class="t-sec"><div class="t-head"><span class="t-num">' + num +
+        "</span><h2>" + title + "</h2></div>" + body + "</article>";
+    }
+
+    cardsView.innerHTML = '<div class="cards">' +
+      '<a class="back" href="#/">← 返回列表</a>' +
+      '<header class="tavern-head">' +
+      '<p class="t-kicker">' + esc(cards.kicker) + "</p>" +
+      "<h1>" + esc(cards.title) + "</h1>" +
+      '<p class="t-intro">' + esc(cards.lead) + "</p>" +
+      '<div class="c-stats">' + stat + "</div>" +
+      "</header>" +
+      sec("01", "这里面有什么",
+        '<ul class="c-list">' + whatList + "</ul>" +
+        '<div class="c-cats">' + cats + "</div>") +
+      sec("02", "怎么导入到酒馆",
+        '<ol class="t-steps">' + steps + "</ol>" +
+        '<div class="t-note">导入卡住的时候，问题基本不在酒馆：要么这张卡本身没写设定，' +
+        "要么文件被转成了 JPG。先换一张同类卡试，能回话就说明是卡的问题，不是环境的问题。" +
+        '<a class="c-more" href="#/tavern">酒馆还没装好？看图文版：解压 → 配接口 → 导卡 → 出图 → 排查 →</a></div>') +
+      sec("03", "下载", dl + '<div class="t-note">' + esc(d.tip) + "</div>") +
+      sec("04", "注意事项", '<ol class="c-notes">' + notes + "</ol>");
   }
 
   // ---------- 账号与评论 ----------
@@ -614,6 +682,7 @@
         listView.hidden = true;
         if (guideView) guideView.hidden = true;
         if (tavernView) tavernView.hidden = true;
+        if (cardsView) cardsView.hidden = true;
         detailView.hidden = false;
         renderDetail(g);
         setChrome(null, g.name + " · game.du-19.top");
@@ -627,6 +696,7 @@
       listView.hidden = true;
       detailView.hidden = true;
       if (tavernView) tavernView.hidden = true;
+      if (cardsView) cardsView.hidden = true;
       if (guideView) {
         guideView.hidden = false;
         renderGuide();
@@ -641,6 +711,7 @@
       listView.hidden = true;
       detailView.hidden = true;
       if (guideView) guideView.hidden = true;
+      if (cardsView) cardsView.hidden = true;
       if (tavernView) {
         tavernView.hidden = false;
         renderTavern();
@@ -650,10 +721,26 @@
       return;
     }
 
+    if (/^#\/cards/.test(location.hash)) {
+      document.body.classList.add("is-detail");
+      listView.hidden = true;
+      detailView.hidden = true;
+      if (guideView) guideView.hidden = true;
+      if (tavernView) tavernView.hidden = true;
+      if (cardsView) {
+        cardsView.hidden = false;
+        renderCards();
+      }
+      setChrome(null, "酒馆的各个角色卡 · game.du-19.top");
+      window.scrollTo(0, 0);
+      return;
+    }
+
     document.body.classList.remove("is-detail");
     detailView.hidden = true;
     if (guideView) guideView.hidden = true;
     if (tavernView) tavernView.hidden = true;
+    if (cardsView) cardsView.hidden = true;
     listView.hidden = false;
     setChrome(null, TITLE_HOME);
     buildFilters();
