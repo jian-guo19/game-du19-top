@@ -389,6 +389,12 @@
       }).join("");
 
       var shots = (s.shots || []).map(function (c) {
+        if (c && typeof c === "object" && c.src) {
+          return '<figure class="t-shot-img">' +
+            '<img src="' + esc(c.src) + '" alt="' + esc(c.alt || c.caption || "") + '" loading="lazy" />' +
+            (c.caption ? "<figcaption>" + esc(c.caption) + "</figcaption>" : "") +
+            "</figure>";
+        }
         return '<div class="t-shot"><span class="t-shot-mark">图</span>' +
           '<div><div class="t-shot-t">等你补图</div>' +
           '<div class="t-shot-d">' + esc(c) + "</div></div></div>";
@@ -438,7 +444,7 @@
         if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
-    Array.prototype.forEach.call(tavernView.querySelectorAll(".t-figure img"), function (im) {
+    Array.prototype.forEach.call(tavernView.querySelectorAll(".t-figure img, .t-shot-img img"), function (im) {
       im.addEventListener("click", function () { openLightbox(im.src); });
     });
   }
