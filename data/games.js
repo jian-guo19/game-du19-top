@@ -324,29 +324,6 @@ window.GAMES_DATA = [
     source: "Steam 官方商店头图（App 2973120）+ DLsite RJ01035443"
   },
   {
-    id: "sillytavern",
-    name: "SillyTavern",
-    cnName: "个人酒馆",
-    developer: "SillyTavern Contributors",
-    publisher: "SillyTavern Contributors",
-    releaseDate: "持续更新（开源项目）",
-    platform: "Windows / Linux / macOS / 浏览器",
-    genres: ["工具", "AI 聊天", "角色卡"],
-    rating: 0,
-    status: "使用中",
-    type: "software",
-    tutorial: true,
-    summary:
-      "一个跑在自己电脑上的 AI 聊天前端。它本身不带模型，需要你自己接一个文字模型接口；" +
-      "接好之后，导入角色卡就能按设定聊天。聊天记录、角色卡和配置都留在本地。" +
-      "想让角色出图，还要另外装扩展并配置图像接口。本站收录的是软件介绍，不提供下载资源。",
-    experience: "（待补：自己常用的模型、角色卡与出图配置。）",
-    cover: "sillytavern-header.jpg",
-    shots: ["sillytavern-1.jpg"],
-    links: [],
-    source: "官方仓库 README + 官方文档 docs.sillytavern.app（界面图取自该文档）+ 个人使用整理"
-  },
-  {
     id: "re-mrm-1",
     name: "Re:MRM-1",
     cnName: "",

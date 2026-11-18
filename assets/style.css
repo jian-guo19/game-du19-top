@@ -1105,7 +1105,6 @@ body.is-detail .notice { display: none; }
 .c-count.near { color: #d98324; }
 .c-count.full { color: #e0556e; font-weight: 600; }
 /* ---------- 酒馆角色卡资源页 ---------- */
-.cards-tip .guide-tip-badge { background: #e6f7f1; color: #12866f; }
 
 .cards { max-width: 820px; margin: 0 auto; padding: 32px 0 80px; }
 .c-stats {
@@ -1225,3 +1224,17 @@ body.is-detail .notice { display: none; }
   color: var(--primary);
 }
 .c-more:hover { text-decoration: underline; }
+/* 置顶的部署教程：比普通提示条重一档，但不抢主色 */
+.guide-tip.is-pinned {
+  border-style: solid;
+  border-color: hsl(var(--hue) 55% 84%);
+  background: linear-gradient(180deg, #fff, hsl(var(--hue) 60% 98%));
+}
+.guide-tip.is-pinned .guide-tip-text { color: var(--text); }
+.guide-tip.is-pinned .guide-tip-text b { font-weight: 700; }
+.guide-tip.is-pinned .guide-tip-badge {
+  background: var(--primary);
+  color: #fff;
+  letter-spacing: 0.1em;
+}
+.guide-tip.is-pinned:hover .guide-tip-badge { background: var(--primary); color: #fff; }

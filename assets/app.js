@@ -731,7 +731,7 @@
         cardsView.hidden = false;
         renderCards();
       }
-      setChrome(null, "酒馆的各个角色卡 · game.du-19.top");
+      setChrome("cards", "酒馆的各个角色卡 · game.du-19.top");
       window.scrollTo(0, 0);
       return;
     }
