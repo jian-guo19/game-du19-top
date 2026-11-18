@@ -304,8 +304,9 @@
 
     var body = guides.map(function (g) {
       var steps = (g.steps || []).map(function (s) {
+        var code = s.code ? '<pre class="g-code">' + esc(s.code) + "</pre>" : "";
         return "<li><div class=\"g-step-t\">" + esc(s.t) + "</div>" +
-          '<div class="g-step-d">' + esc(s.d) + "</div></li>";
+          '<div class="g-step-d">' + esc(s.d) + "</div>" + code + "</li>";
       }).join("");
 
       var note = g.note

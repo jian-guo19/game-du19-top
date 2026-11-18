@@ -674,6 +674,21 @@ body.is-detail .notice { display: none; }
 .g-step-t { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
 .g-step-d { font-size: 14px; line-height: 1.8; color: var(--text-2); }
 
+.g-code {
+  margin: 10px 0 2px;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: hsl(var(--hue) 40% 97.5%);
+  color: var(--text);
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+}
+
 .g-note {
   padding: 12px 16px;
   border-left: 3px solid var(--primary);
