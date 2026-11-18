@@ -18,7 +18,7 @@ window.TAVERN_GUIDE = {
       num: "00",
       title: "先说人话：它到底是什么",
       lead: "先别管那些英文名词。你只要记住一句话：酒馆 = 一个跑在你电脑上的聊天网页。它自己不写故事，也不自带大脑。",
-      fig: "assets/tutorial/fig-what.png",
+      fig: "assets/tutorial/fig-what.webp",
       alt: "酒馆在你电脑里的位置：你、酒馆、模型接口、角色卡四段关系",
       caption: "图里这四段，就是整件事的全貌。后面每一节都在解决其中一段。",
       steps: [
@@ -33,7 +33,7 @@ window.TAVERN_GUIDE = {
       num: "01",
       title: "装上并第一次打开",
       lead: "目标很简单：得到一个能双击启动的文件夹。不是把压缩包里的文件一个个翻出来用。",
-      fig: "assets/tutorial/fig-start.png",
+      fig: "assets/tutorial/fig-start.webp",
       alt: "从压缩包到打开网页的五步流程：下载、解压、进目录、启动、打开",
       caption: "照着这五步走，别跳步。最容易出问题的是路径和第一步的解压。",
       steps: [
@@ -63,7 +63,7 @@ window.TAVERN_GUIDE = {
       num: "02",
       title: "打开之后，先看懂这三块",
       lead: "第一次打开会看到一屏按钮，别慌。你平时真正会碰的，只有左边选人、中间看话、最下面打字。",
-      fig: "assets/tutorial/fig-chat.png",
+      fig: "assets/tutorial/fig-chat.webp",
       alt: "酒馆主界面分区：左侧角色区、中间对话区、右侧设置区",
       caption: "先按这个分区认路。右边的参数先别动，跑通之后再研究。",
       steps: [
@@ -86,7 +86,7 @@ window.TAVERN_GUIDE = {
       num: "03",
       title: "让它能回话：选一种模型",
       lead: "没有模型接口，酒馆就是一个漂亮但不会说话的空壳。这一步二选一就行，不用两种都配。",
-      fig: "assets/tutorial/fig-api.png",
+      fig: "assets/tutorial/fig-api.webp",
       alt: "两条接入路线对比：本地模型与在线接口，各自三步",
       caption: "本地免费但吃机器；在线接口要 Key 但上手最快。小白通常从在线接口开始。",
       steps: [
@@ -110,7 +110,7 @@ window.TAVERN_GUIDE = {
       num: "04",
       title: "导入角色卡：让它演起来",
       lead: "角色卡就是一张 PNG。图片是给人看的，里面夹带的那段设定文字才是给 AI 看的。",
-      fig: "assets/tutorial/fig-card.png",
+      fig: "assets/tutorial/fig-card.webp",
       alt: "角色卡导入流程：拿到 PNG、导入酒馆、点开角色、开始聊天",
       caption: "角色卡不是普通图片。保存时一定保留完整的 .png 文件。",
       steps: [
@@ -138,7 +138,7 @@ window.TAVERN_GUIDE = {
       num: "05",
       title: "想出图，再走这一步",
       lead: "聊天和出图是两件事。默认酒馆只会聊天；要出图，得额外装扩展，再单独配一个图像接口。",
-      fig: "assets/tutorial/fig-image.png",
+      fig: "assets/tutorial/fig-image.webp",
       alt: "出图链路：你点生成、酒馆扩展、图像接口、图片回到聊天",
       caption: "这里最容易误会：文字接口的 Key 不能拿去画图，两套接口是分开的。",
       steps: [
@@ -166,7 +166,7 @@ window.TAVERN_GUIDE = {
       num: "06",
       title: "出错了，按这个顺序查",
       lead: "别一上来就卸载重装。大部分问题不是酒馆坏了，而是某一层没接上。",
-      fig: "assets/tutorial/fig-fix.png",
+      fig: "assets/tutorial/fig-fix.webp",
       alt: "四类常见故障的排查顺序：打不开网页、没人回话、不像角色、生成没反应",
       caption: "先分层，再动手。网页、模型、角色、图像，各查各的。",
       steps: [
