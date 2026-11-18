@@ -115,7 +115,13 @@ window.GAMES_DATA = [
     experience: "（待补：玩法要点、结局条件。）",
     cover: "choken-slap-header.jpg",
     shots: [],
-    links: [],
+    links: [
+      {
+        label: "夸克网盘下载",
+        url: "https://pan.quark.cn/s/c2dea9ee0493",
+      },
+    ],
+    password: "234000",
     source: "社团 Fanbox 公告 + 资料库条目（封面无可安全使用版本）"
   },
   {
