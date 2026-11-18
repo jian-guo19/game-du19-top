@@ -11,8 +11,7 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INDEX = os.path.join(ROOT, "index.html")
-PATTERN = re.compile(r'(src|href)="((?:assets|data)/[^"?#]+\.(?:js|css))"')
-
+PATTERN = re.compile(r'(src|href)="((?:assets|data)/[^"?#]+\.(?:js|css))(?:\?v=[^"]*)?"')
 
 def digest(rel):
     path = os.path.join(ROOT, rel)
@@ -35,10 +34,10 @@ def main():
 
     out, count = PATTERN.subn(repl, html)
     if out == html:
-        print("没有需要打戳的资源引用")
+        print("资源引用已是最新，无需改动")
         return
     io.open(INDEX, "w", encoding="utf-8", newline="\n").write(out)
-    print(f"已给 {count} 个资源加上版本戳：")
+    print(f"已处理 {count} 个资源引用：")
     for rel, h in seen.items():
         print(f"  {rel}?v={h}")
 

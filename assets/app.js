@@ -440,6 +440,7 @@
 
   // ---------- 账号与评论 ----------
   var currentUser = null;
+  var userReady = null;   // 用户信息加载完成的 Promise，评论区要等它
 
   function loginUrl() {
     return "/login.html?next=" + encodeURIComponent(location.pathname + location.hash);
@@ -475,23 +476,26 @@
 
   function renderUserBar() {
     var bar = document.getElementById("userBar");
-    if (!bar) return;
-    api("/api/me").then(function (d) {
+    userReady = api("/api/me").then(function (d) {
       currentUser = d.user || null;
-      if (currentUser) {
-        bar.innerHTML = '<span class="ub-name">' + esc(currentUser.username) +
-          (currentUser.role === "admin" ? '<span class="ub-badge">管理员</span>' : "") +
-          '</span><button type="button" class="ub-out" id="ubOut">退出</button>';
-        var out = document.getElementById("ubOut");
-        if (out) out.addEventListener("click", function () {
-          api("/api/logout", { method: "POST" }).then(function () {
-            location.href = "/login.html";
-          }).catch(function () { location.href = "/login.html"; });
-        });
-      } else {
-        bar.innerHTML = '<a class="ub-in" href="' + loginUrl() + '">登录 / 注册</a>';
+      if (bar) {
+        if (currentUser) {
+          bar.innerHTML = '<span class="ub-name">' + esc(currentUser.username) +
+            (currentUser.role === "admin" ? '<span class="ub-badge">管理员</span>' : "") +
+            '</span><button type="button" class="ub-out" id="ubOut">退出</button>';
+          var out = document.getElementById("ubOut");
+          if (out) out.addEventListener("click", function () {
+            api("/api/logout", { method: "POST" }).then(function () {
+              location.href = "/login.html";
+            }).catch(function () { location.href = "/login.html"; });
+          });
+        } else {
+          bar.innerHTML = '<a class="ub-in" href="' + loginUrl() + '">登录 / 注册</a>';
+        }
       }
-    }).catch(function () {});
+      return currentUser;
+    }).catch(function () { return null; });
+    return userReady;
   }
 
   function initComments(gameId) {
@@ -507,7 +511,14 @@
         }
       });
     }
-    refresh();
+
+    // 等 /api/me 回来再画，否则会误显示成「未登录」
+    if (userReady) {
+      box.innerHTML = '<div class="c-empty">加载中…</div>';
+      userReady.then(refresh, refresh);
+    } else {
+      refresh();
+    }
   }
 
   function paintComments(box, gameId, list, refresh) {
