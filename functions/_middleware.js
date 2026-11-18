@@ -7,9 +7,6 @@ const PUBLIC = [
   /^\/api\//,
   // Cloudflare Pages 会把 /login.html 308 重定向到 /login，两种写法都要放行
   /^\/login(\.html)?\/?$/,
-  // 新手区公开页：不登录也能看解压教程（它只依赖 data/guides.js）
-  /^\/guide(\.html)?\/?$/,
-  /^\/data\/guides\.js$/,
   /^\/assets\//,      // 样式、脚本、图片等静态资源
   /^\/favicon\.ico$/,
 ];
