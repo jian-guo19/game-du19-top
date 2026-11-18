@@ -534,6 +534,21 @@ body.is-detail .notice { display: none; }
   border: 1px dashed hsl(var(--hue) 40% 82%);
   border-radius: var(--radius-sm);
 }
+.dl-note {
+  margin: 12px 0 0;
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--text-2);
+}
+.dl-pwd {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: hsl(var(--hue) 45% 94%);
+  color: var(--text);
+  font-family: ui-monospace, Consolas, monospace;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
 .links-empty {
   background: var(--card);
   border: 1px dashed var(--border);

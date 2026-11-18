@@ -254,11 +254,16 @@
         }).join("") + "</div>"
       : '<div class="placeholder">暂无截图 —— 把图片放进 assets/images/ 后在数据文件的 shots 字段登记即可显示</div>';
 
+    var pwdNote = (g.links && g.links.length && g.password)
+      ? '<p class="dl-note">解压密码：<b class="dl-pwd">' + esc(g.password) +
+        '</b>　·　三层嵌套，密码只在第一层输一次　·　<a href="/guide">解压步骤看图解</a></p>'
+      : "";
+
     var links = (g.links && g.links.length)
       ? '<div class="shots">' + g.links.map(function (l) {
           return '<a class="btn" href="' + esc(l.url) + '" target="_blank" rel="noopener">' +
             esc(l.label) + "</a>";
-        }).join("") + "</div>"
+        }).join("") + "</div>" + pwdNote
       : '<div class="links-empty">下载与购买链接待补充。</div>';
 
     detailView.innerHTML =
