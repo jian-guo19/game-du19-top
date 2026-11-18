@@ -275,10 +275,10 @@ window.GAMES_DATA = [
       "接好之后，导入角色卡就能按设定聊天。聊天记录、角色卡和配置都留在本地。" +
       "想让角色出图，还要另外装扩展并配置图像接口。本站收录的是软件介绍，不提供下载资源。",
     experience: "（待补：自己常用的模型、角色卡与出图配置。）",
-    cover: "",
-    shots: [],
+    cover: "sillytavern-header.jpg",
+    shots: ["sillytavern-1.jpg"],
     links: [],
-    source: "官方仓库 README + 个人使用整理"
+    source: "官方仓库 README + 官方文档 docs.sillytavern.app（界面图取自该文档）+ 个人使用整理"
   },
   {
     id: "re-mrm-1",
