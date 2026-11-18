@@ -40,23 +40,53 @@ a:hover { text-decoration: underline; }
   border: 0;
 }
 
-/* ---------- 18+ 小标签（不拦截，仅角落提示） ---------- */
+/* ---------- 18+ 小标签（不拦截，仅角落提示；刻意不做成按钮形状） ---------- */
 .age-chip {
   display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 10.5px;
+  font-weight: 700;
   line-height: 1;
-  padding: 4px 6px;
-  margin-right: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  border-radius: 5px;
+  letter-spacing: 0.4px;
   color: var(--text-3);
+  opacity: 0.85;
   cursor: help;
-  vertical-align: middle;
   transition: 0.18s;
 }
-.age-chip:hover { border-color: var(--text-2); color: var(--text-2); }
-.site-nav { display: flex; align-items: center; }
+.age-chip:hover { color: var(--text-2); opacity: 1; }
+.site-nav { display: flex; align-items: center; gap: 22px; margin-left: 34px; }
+
+/* 顶栏右侧：账号区 + 回主界面，整体压低视觉权重 */
+.nav-side {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+}
+.nav-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--text-2);
+  padding: 5px 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  transition: 0.18s;
+  white-space: nowrap;
+}
+.nav-home:hover { border-color: var(--primary); color: var(--primary); text-decoration: none; }
+.nav-home svg {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* 首页时它没有去处，留位但不可点，避免顶栏宽度跳动 */
+body:not(.is-detail) .nav-home { visibility: hidden; }
 
 /* ---------- 通用组件 ---------- */
 .btn {
@@ -86,7 +116,6 @@ a:hover { text-decoration: underline; }
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 62px;
 }
 .brand {
@@ -100,8 +129,24 @@ a:hover { text-decoration: underline; }
 .brand:hover { text-decoration: none; }
 .brand-nut { width: 26px; height: 26px; display: block; }
 .site-nav a { color: var(--text-2); font-size: 14px; }
-.nav-link { margin-right: 16px; }
-.nav-link:hover { color: var(--primary); }
+.nav-link {
+  position: relative;
+  padding: 5px 1px;
+  transition: color 0.18s;
+}
+.nav-link:hover { color: var(--primary); text-decoration: none; }
+/* 当前所在页：文字加深 + 下方一道细横线，让它明确是「标签页」而不是普通链接 */
+.nav-link.is-active { color: var(--text); font-weight: 600; }
+.nav-link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--primary);
+}
 
 /* ---------- Hero 门面 ---------- */
 .hero {
@@ -745,7 +790,25 @@ body.is-detail .notice { display: none; }
 .g-table-scroll tbody tr:nth-child(even) td { background: #fbfbfe; }
 
 /* ---------- 酒馆图文教程 ---------- */
-.detail-tutorial { margin-top: 14px; }
+/* 详情页里的教程入口：和标签同重量，不再跟顶栏的导航键抢眼 */
+.detail-tutorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 12px 0 0;
+  padding: 4px 11px;
+  font-size: 13px;
+  color: var(--primary);
+  border: 1px solid hsl(var(--hue) 75% 62% / 0.35);
+  border-radius: 999px;
+  background: hsl(var(--hue) 75% 62% / 0.06);
+  transition: 0.18s;
+}
+.detail-tutorial:hover {
+  text-decoration: none;
+  background: hsl(var(--hue) 75% 62% / 0.13);
+  border-color: var(--primary);
+}
 .guide-tip + .guide-tip { margin-top: -14px; }
 .tavern-tip .guide-tip-badge { background: #f3ecff; color: #7c55b8; }
 
@@ -966,26 +1029,43 @@ body.is-detail .notice { display: none; }
   .t-head { gap: 9px; }
   .t-steps li { padding-left: 32px; }
   .t-toc { font-size: 12px; }
-  .nav-link { margin-right: 12px; }
+  .site-nav { margin-left: 14px; gap: 13px; }
+  .nav-side { gap: 10px; }
+  .age-chip { display: none; }
+  .nav-home span { display: none; }
+  .nav-home { padding: 6px 8px; }
   .intro { padding-top: 30px; }
   .intro h1, .detail-head h1 { font-size: 25px; }
   .grid { grid-template-columns: 1fr; }
 }
 
 /* ---------- 账号状态栏 ---------- */
-.user-bar { display: inline-flex; align-items: center; gap: 8px; }
-.ub-name { font-size: 13.5px; color: var(--text-2); display: inline-flex; align-items: center; gap: 6px; }
+.user-bar { display: inline-flex; align-items: center; gap: 10px; }
+.ub-name { font-size: 13px; color: var(--text-2); display: inline-flex; align-items: center; gap: 5px; }
+/* 角色标记只做颜色区分，不再占一个「药丸」的位置 */
 .ub-badge {
-  font-size: 11px; padding: 1px 7px; border-radius: 999px;
-  background: hsl(var(--hue) 75% 62% / .12); color: var(--primary); font-weight: 600;
+  font-size: 10.5px; padding: 0; border-radius: 0;
+  background: none; color: var(--text-3); font-weight: 500;
 }
 .ub-in, .ub-out {
-  font-size: 13px; padding: 5px 12px; border-radius: 999px; cursor: pointer;
+  font-size: 13px; cursor: pointer;
+  font-family: inherit; text-decoration: none; transition: 0.18s;
+}
+.ub-in {
+  padding: 5px 12px; border-radius: 999px;
   border: 1px solid var(--border); background: var(--card); color: var(--text-2);
-  font-family: inherit; text-decoration: none; transition: .18s;
 }
 .ub-in:hover { border-color: var(--primary); color: var(--primary); }
-.ub-out:hover { border-color: #e0556e; color: #e0556e; }
+/* 退出对已登录用户是低频操作，降级为纯文字 */
+.ub-out {
+  padding: 0; border: 0; background: none; color: var(--text-3);
+}
+.ub-out:hover { color: #e0556e; }
+
+/* 手机屏（≤480）：顶栏放不下用户名，隐藏它；退出与回主界面图标保留可用 */
+@media (max-width: 480px) {
+  .ub-name { display: none; }
+}
 
 /* ---------- 评论区 ---------- */
 .comment-box { margin-top: 4px; }

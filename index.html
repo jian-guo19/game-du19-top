@@ -15,13 +15,18 @@
           <img class="brand-nut" src="assets/logo.png" alt="" width="26" height="26" />
           <span>du-19</span>
         </a>
-        <nav class="site-nav">
-          <a class="nav-link" href="#/tavern">酒馆教程</a>
-          <a class="nav-link" href="#/guide">新手指南</a>
+        <nav class="site-nav" aria-label="主导航">
+          <a class="nav-link" href="#/tavern" data-nav="tavern">酒馆教程</a>
+          <a class="nav-link" href="#/guide" data-nav="guide">新手指南</a>
+        </nav>
+        <div class="nav-side">
           <span id="ageChip" class="age-chip" title="本站收录的作品含成人向题材，仅面向成年玩家">18+</span>
           <span class="user-bar" id="userBar"></span>
-          <a href="https://du-19.top/" target="_blank" rel="noopener">返回博客</a>
-        </nav>
+          <a class="nav-home" href="#/" title="返回主界面（游戏列表）">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.2 12 4.5l8 6.7"/><path d="M6.4 10.4V19.5h11.2v-9.1"/></svg>
+            <span>返回主界面</span>
+          </a>
+        </div>
       </div>
     </header>
 

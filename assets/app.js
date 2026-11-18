@@ -244,7 +244,7 @@
     if (g.rating) tags += '<span class="tag status">个人评分 ' + esc(g.rating) + "/5</span>";
 
     var tutorialBtn = g.tutorial
-      ? '<a class="btn btn-primary detail-tutorial" href="#/tavern">看图文教程 →</a>'
+      ? '<a class="detail-tutorial" href="#/tavern">酒馆图文教程 →</a>'
       : "";
 
     var shots = (g.shots && g.shots.length)
@@ -591,6 +591,19 @@
     });
   }
 
+  // ---------- 顶栏状态：当前所在页高亮 + 浏览器标签标题跟着换 ----------
+  var TITLE_HOME = "玩过的游戏 · game.du-19.top";
+  function setChrome(navKey, title) {
+    var links = document.querySelectorAll(".site-nav .nav-link");
+    for (var i = 0; i < links.length; i++) {
+      var on = links[i].getAttribute("data-nav") === navKey;
+      links[i].classList.toggle("is-active", on);
+      if (on) links[i].setAttribute("aria-current", "page");
+      else links[i].removeAttribute("aria-current");
+    }
+    document.title = title || TITLE_HOME;
+  }
+
   // ---------- hash 路由 ----------
   function route() {
     var m = location.hash.match(/^#\/game\/(.+)$/);
@@ -603,6 +616,7 @@
         if (tavernView) tavernView.hidden = true;
         detailView.hidden = false;
         renderDetail(g);
+        setChrome(null, g.name + " · game.du-19.top");
         window.scrollTo(0, 0);
         return;
       }
@@ -617,6 +631,7 @@
         guideView.hidden = false;
         renderGuide();
       }
+      setChrome("guide", "新手入门 · 分卷解压与报错排查 · game.du-19.top");
       window.scrollTo(0, 0);
       return;
     }
@@ -630,6 +645,7 @@
         tavernView.hidden = false;
         renderTavern();
       }
+      setChrome("tavern", "个人酒馆 · 图文入门 · game.du-19.top");
       window.scrollTo(0, 0);
       return;
     }
@@ -639,6 +655,7 @@
     if (guideView) guideView.hidden = true;
     if (tavernView) tavernView.hidden = true;
     listView.hidden = false;
+    setChrome(null, TITLE_HOME);
     buildFilters();
     renderGrid();
   }
