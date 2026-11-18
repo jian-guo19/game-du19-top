@@ -36,6 +36,16 @@ jobs:
         id: d1
         run: python3 scripts/ensure_d1.py
 
+      # 数据文件语法校验：字符串里混入真实换行会让整站 JS 崩掉且页面空白
+      - name: Validate data files
+        run: |
+          set -e
+          for f in data/*.js; do
+            echo "检查 $f"
+            node --check "$f"
+          done
+          echo "数据文件语法 OK"
+
       # 给 JS/CSS 加内容哈希，避免浏览器拿 4 小时缓存的旧版本
       - name: Stamp asset versions
         run: python3 scripts/stamp_assets.py
