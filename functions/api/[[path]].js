@@ -173,7 +173,7 @@ export async function onRequest(context) {
         const { gameId, body } = await request.json().catch(() => ({}));
         const text = String(body || '').trim();
         if (!gameId) return json({ error: '缺少 gameId' }, 400);
-        if (text.length < 1 || text.length > 1000) return json({ error: '评论需 1–1000 字' }, 400);
+        if (text.length < 1 || text.length > 100) return json({ error: '评论需 1–100 字' }, 400);
         const now = Math.floor(Date.now() / 1000);
         const res = await env.DB.prepare(
           'INSERT INTO comments (game_id, user_id, body, created_at) VALUES (?, ?, ?, ?)',

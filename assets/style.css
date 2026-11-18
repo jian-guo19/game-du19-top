@@ -980,3 +980,8 @@ body.is-detail .notice { display: none; }
 .c-del:hover { color: #e0556e; }
 .c-body { font-size: 14.5px; line-height: 1.7; color: var(--text-2); white-space: pre-wrap; word-break: break-word; }
 .c-empty { font-size: 14px; color: var(--text-3); padding: 10px 0; }
+
+/* 评论字数提示 */
+.c-count { font-size: 12px; color: var(--text-3); margin-left: 8px; }
+.c-count.near { color: #d98324; }
+.c-count.full { color: #e0556e; font-weight: 600; }

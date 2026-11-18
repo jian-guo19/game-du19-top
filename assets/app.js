@@ -524,8 +524,9 @@
   function paintComments(box, gameId, list, refresh) {
     var form = currentUser
       ? '<div class="c-form">' +
-          '<textarea id="cInput" rows="3" maxlength="1000" placeholder="说说你的看法…（最多 1000 字）"></textarea>' +
-          '<div class="c-form-foot"><span class="c-as">以 ' + esc(currentUser.username) + " 的身份发表</span>" +
+          '<textarea id="cInput" rows="3" maxlength="100" placeholder="说说你的看法…（最多 100 字）"></textarea>' +
+          '<div class="c-form-foot"><span class="c-as">以 ' + esc(currentUser.username) + " 的身份发表" +
+          '<span class="c-count" id="cCount">0/100</span></span>' +
           '<button type="button" class="btn btn-primary" id="cSend">发表</button></div></div>'
       : '<div class="c-form c-guest">登录后才能评论 · <a href="' + loginUrl() + '">去登录</a></div>';
 
@@ -545,6 +546,15 @@
     box.innerHTML = form + '<div class="c-list">' + items + "</div>";
 
     var send = document.getElementById("cSend");
+    var ta0 = document.getElementById("cInput");
+    var count = document.getElementById("cCount");
+    if (ta0 && count) {
+      ta0.addEventListener("input", function () {
+        var n = ta0.value.length;
+        count.textContent = n + "/100";
+        count.className = "c-count" + (n >= 100 ? " full" : n >= 90 ? " near" : "");
+      });
+    }
     if (send) {
       send.addEventListener("click", function () {
         var ta = document.getElementById("cInput");
