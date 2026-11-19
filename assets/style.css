@@ -1238,3 +1238,8 @@ body.is-detail .notice { display: none; }
   letter-spacing: 0.1em;
 }
 .guide-tip.is-pinned:hover .guide-tip-badge { background: var(--primary); color: #fff; }
+
+/* 游戏介绍区块 */
+.intro-text p { margin: 0 0 10px; line-height: 1.85; }
+.intro-text p:last-child { margin-bottom: 0; }
+.intro-source { margin-top: 12px; font-size: 12px; color: var(--text-3); }

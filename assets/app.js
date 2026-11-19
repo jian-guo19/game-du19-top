@@ -231,6 +231,20 @@
   }
 
   // ---------- 详情 ----------
+  function introSection(g) {
+    var text = g.intro || "";
+    if (!text) return "";
+    var paras = String(text).split(/\n+/).filter(function (s) { return s.trim(); });
+    var body = paras.map(function (p) {
+      return "<p>" + esc(p) + "</p>";
+    }).join("");
+    var from = g.introSource
+      ? '<p class="intro-source">介绍来源：' + esc(g.introSource) + "</p>"
+      : "";
+    return '<section class="section"><h2>游戏介绍</h2>' +
+      '<div class="intro-text">' + body + "</div>" + from + "</section>";
+  }
+
   function renderDetail(g) {
     var facts = [
       ["开发商", g.developer], ["发行商", g.publisher],
@@ -279,8 +293,9 @@
       (g.cnName ? '<p class="detail-cn">' + esc(g.cnName) + "</p>" : "") +
       '<div class="detail-tags">' + tags + "</div>" + tutorialBtn + "</div>" +
       '<div class="facts">' + facts + "</div>" +
-      '<section class="section"><h2>游戏介绍</h2><p>' + esc(g.summary) + "</p></section>" +
+      '<section class="section"><h2>简介</h2><p>' + esc(g.summary) + "</p></section>" +
       '<section class="section"><h2>截图</h2>' + shots + "</section>" +
+      introSection(g) +
       '<section class="section"><h2>过关体验与攻略</h2><p>' + esc(g.experience) + "</p></section>" +
       '<section class="section"><h2>下载与购买</h2>' + links + "</section>" +
       '<section class="section" id="commentsSec"><h2>评论</h2>' +
