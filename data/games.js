@@ -1,25 +1,3 @@
-/**
- * 游戏数据源 —— 唯一需要维护的文件
- * 加一款游戏 = 往数组里加一个对象；字段留空会自动显示占位提示，不影响渲染。
- *
- * 字段说明：
- *   id          唯一英文标识，同时用作图片目录名（assets/images/<id>/）
- *   name        游戏本名（务必用作品本身的官方名字，不要用译名替代原名）
- *   cnName      官方中文名，没有就留空
- *   developer   开发商
- *   publisher   发行商
- *   releaseDate 发行日期
- *   platform    平台，如 "Windows / Linux / macOS"
- *   genres      标签数组
- *   rating      个人评分（1-5），留空不显示
- *   status      游玩状态：已通关 / 游玩中 / 弃坑 / 待补
- *   summary     官方简介整理（客观描述，不含露骨内容）
- *   experience  个人过关体验 / 攻略要点（自己的话）
- *   cover       封面图路径，相对 assets/images/；留空用占位
- *   shots       截图路径数组；留空用占位
- *   links       下载与购买链接数组；按你的要求暂时全部留空
- *   source      资料来源，便于以后核对
- */
 window.GAMES_DATA = [
   {
     id: "mirais-midnight-stream",
@@ -29,22 +7,19 @@ window.GAMES_DATA = [
     publisher: "Mango Party / Mango Party News",
     releaseDate: "2025-06-19",
     platform: "Windows",
-    genres: ["视觉小说", "RPG", "直播题材", "狐妖"],
     rating: 0,
     status: "已通关",
-    summary:
-      "一款视觉小说与 RPG 结合的作品。玩家扮演「金棒流」门徒，为向门派证明实力而挑战传说中的二尾妖狐。战胜之后局面急转——妖狐失去力量，玩家转而帮助她通过直播活动恢复妖力。游戏围绕事件推进、神社修复与好感度路线展开，兼具故事性与模拟经营要素。支持简体中文、繁体中文、英语、日语、韩语，日语与英语全配音。",
+    summary: "一款视觉小说与 RPG 结合的作品。玩家扮演「金棒流」门徒，为向门派证明实力而挑战传说中的二尾妖狐。战胜之后局面急转——妖狐失去力量，玩家转而帮助她通过直播活动恢复妖力。游戏围绕事件推进、神社修复与好感度路线展开，兼具故事性与模拟经营要素。支持简体中文、繁体中文、英语、日语、韩语，日语与英语全配音。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "身为驱魔师的你，为了向门派证明自己的实力，决心讨伐传说中消失已久的大妖狐。没想到见面三分钟，传说中的大妖狐已经败倒在你的裤档下喘息！ ？ 不甘心的妖狐主张现代人都不再畏惧妖狐，导致信仰力下降。 唯有讨伐强大的妖狐，才能达到证明实力的目的，于是你同意帮助二尾妖狐恢复妖力后再一决胜负。 对于如何恢复妖力？你的心中产生了一个大胆的想法…\n玩家将扮演被驱魔师工作所耽误的超级经纪人，帮助败给自己的二尾妖狐十七夜月 未来，恢复她原有的实力，再堂堂正正的一决胜负。 脑洞大开的你帮助妖狐恢复妖力的方式，就是进行时下最流行的「ERO直播」！ 游戏中将有多达11种直播主题供玩家选择，\n透过调教训练妖狐的魅力与色气数值，并积极的直播、更新赞助平台，提升粉丝对妖狐的信仰值。 你的选择将影响妖狐对你的好感与仇恨，当心压力的累积，一个不小心说不定会毁灭世界？ 游戏中玩家会与妖狐共度49天的直播生活，从互不相识的两人，到理解彼此背后的心意，你是否能与妖狐抓住属于两人的幸福？翻云覆雨的15种结局，一切端看你的抉择！ 本次共收录超过100张CG，含差分超过700张CG。\n十七夜月 未来: 有着冰山美人那般美艳高冷的外表，过去受信奉自己的村民背叛后产生了精神创伤。会因为一点小事就累积压力，精神容易受打击。 由于太久没有接触社会，缺乏现代常识，常常会与主角产生代沟。\n◇ 超过30张动态姿势\n◇ 超过100张精美CG，含差分超过700张\n◇ 15种可替换服装\n◇ 超过100,000字精美文本\n◇ 超过10种可探索结局",
     experience: "（这里写你自己的过关体验和攻略要点，比如卡关位置、路线选择、隐藏内容触发方式。）",
     cover: "mirai-header.jpg",
+    source: "Steam 官方商店 API（App 3241760）+ 发行商公开资料",
+    genres: ["视觉小说", "RPG", "直播题材", "狐妖"],
     shots: ["mirais-midnight-stream-1.jpg", "mirais-midnight-stream-2.jpg", "mirais-midnight-stream-3.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/0618e9c50de6",
-      },
+      { label: "百度网盘（提取码 amfr）", url: "https://pan.baidu.com/s/17oclE6NbrAq2bsiiL2Rk_w" },
     ],
-    password: "234000",
-    source: "Steam 官方商店 API（App 3241760）+ 发行商公开资料"
   },
   {
     id: "wings-of-seduction",
@@ -54,22 +29,17 @@ window.GAMES_DATA = [
     publisher: "Hide Games / Ramen Cat Studio",
     releaseDate: "2024-07-19",
     platform: "Windows / macOS",
-    genres: ["幸存者射击", "Roguelike", "弹幕", "像素风"],
     rating: 0,
     status: "已通关",
-    summary:
-      "一款幸存者类清版射击游戏。玩家驾驶战机迎战四面涌来的敌机，通过击破敌人获得经验并升级主机枪、护卫机、副武器、必杀技四类强化，游戏提供 15 种武器可供搭配，每局构筑都不同。作品特色是把传统射击的「爆衣」机制做成射击部位与服装破坏系统，并配有 Live2D 演出；同时提供可关闭裸露画面的直播模式。支持简体中文、繁体中文、英语、日语等九种语言。",
+    summary: "一款幸存者类清版射击游戏。玩家驾驶战机迎战四面涌来的敌机，通过击破敌人获得经验并升级主机枪、护卫机、副武器、必杀技四类强化，游戏提供 15 种武器可供搭配，每局构筑都不同。作品特色是把传统射击的「爆衣」机制做成射击部位与服装破坏系统，并配有 Live2D 演出；同时提供可关闭裸露画面的直播模式。支持简体中文、繁体中文、英语、日语等九种语言。",
     experience: "（这里写你自己的过关体验和攻略要点，比如武器搭配、关卡打法、解锁顺序。）",
     cover: "wings-header.jpg",
+    source: "Steam 官方商店 API（App 2455140）+ 发行公告",
+    genres: ["幸存者射击", "Roguelike", "弹幕", "像素风"],
     shots: ["wings-of-seduction-1.jpg", "wings-of-seduction-2.jpg", "wings-of-seduction-3.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/f53185c8d577",
-      },
+      { label: "百度网盘（提取码 a22z）", url: "https://pan.baidu.com/s/1bU4hACxoV4vRbrE6aWiJKw" },
     ],
-    password: "234000",
-    source: "Steam 官方商店 API（App 2455140）+ 发行公告"
   },
   {
     id: "boundaries-of-morality",
@@ -79,149 +49,122 @@ window.GAMES_DATA = [
     publisher: "Novel",
     releaseDate: "2025（Steam 抢先体验）",
     platform: "Windows / Linux / macOS / Android",
-    genres: ["视觉小说", "3DCG", "沙盒", "多结局"],
     rating: 0,
     status: "游玩中",
-    summary:
-      "一款选择驱动的 3DCG 视觉小说。玩家扮演入职大公司的女主角 Emma，在职场中面对机遇、算计与道德抉择。作品设有欲望、阴谋、堕落、道德等多条动态参数，选择会实时影响人物关系与剧情走向，并提供男女双主角视角与多结局。开发方在 itch.io、Patreon 与 Discord 持续更新；Steam 页面（App 3504360）目前已下架。",
+    summary: "一款选择驱动的 3DCG 视觉小说。玩家扮演入职大公司的女主角 Emma，在职场中面对机遇、算计与道德抉择。作品设有欲望、阴谋、堕落、道德等多条动态参数，选择会实时影响人物关系与剧情走向，并提供男女双主角视角与多结局。开发方在 itch.io、Patreon 与 Discord 持续更新；Steam 页面（App 3504360）目前已下架。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "《道德的边界：在充满阴谋与抉择的世界中前行》\n踏入《道德的边界》，这是一款以叙事为驱动、基于选择的游戏。在游戏中，你将指引年轻职场人艾玛，在复杂且往往充满危险的企业世界中穿梭。你要帮她揭开一张由秘密、阴谋和道德困境构成的网络，做出那些将塑造她职业与个人生活的关键决策。\n塑造艾玛的命运：道德 vs 野心\n在这款互动故事游戏中，你的选择至关重要。艾玛会在对成功的不懈追求中屈服于谎言、诱惑和操纵，还是会坚守忠诚、诚实和自己的道德准则？在你应对一个个挑战场景时，去探索道德与野心之间错综复杂的平衡吧，每个场景都会导向独特且影响深远的结果。游戏采用引人入胜的视觉小说风格，搭配动画场景，让艾玛的旅程栩栩如生。\n让《道德的边界》脱颖而出的核心特色：\n动态角色发展：见证艾玛核心特质的持续演变 —— 渔网、阴谋、堕落与道德，这些特质直接反映了你所做决策的后果。这个深入的角色参数系统能让你将她塑造成一位正直的领导者，或是一名操纵大师。\n对情感与人际关系的真实探索：深入探究杏欲与渔网的真实机制，为扣人心弦的故事情节增添深度与复杂杏。探寻艾玛的选择所带来的后果，以及这些选择如何影响她的个人与职业关系。这种恋爱游戏元素为核心玩法增添了另一重维度。\n终极道德困境：体验在坚守道德标准与屈服于冷酷野心之间的激烈挣扎。指引艾玛，是让她捍卫自己的理想，还是成为一个愤世嫉俗的玩家，为了成功而愿意妥协自己的价值观。这是对你自身道德选择的真正考验。\n沉浸式玩法与迷人特色：\n非线杏剧情与多重结局：你的决策将决定艾玛的最终命运，并影响她周围人的生活。体验一段独特的叙事旅程，其中包含分支情节以及各种令人满意且意义重大的结局。\n互动对话：参与富有意义的对话，其中的分支对话选项会直接影响人际关系和故事的发展。运用你的智慧与魅力，在办公室政治的复杂杏中周旋。\n丰富的恋爱线：与关键角色发展亲密关系，见证他们的互动会因你的选择而发生动态变化。体验以渔网、背叛与忠诚为核心的情感驱动剧情。\n精美的视觉设计：沉浸在精美呈现的场景和动画情节中，这些元素会增强故事的感染力，让《道德的边界》的世界活灵活现。\n独特的场景与情节：在你做出那些塑…",
     experience: "（这里写你自己的过关体验和攻略要点。）",
     cover: "boundaries-card.jpg",
+    source: "官方 Steam 社区公告 + itch.io / Patreon 页面 + 第三方资料库",
+    genres: ["视觉小说", "3DCG", "沙盒", "多结局"],
     shots: ["boundaries-1.jpg", "boundaries-2.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/bea750e4e9e9",
-      },
+      { label: "百度网盘（提取码 5x0b）", url: "https://pan.baidu.com/s/1LsP7uS0wpK2-2Cfag8Pt5g" },
     ],
-    password: "234000",
-    source: "官方 Steam 社区公告 + itch.io / Patreon 页面 + 第三方资料库"
   },
-
-  /* ===== 以下按同一套格式补全，状态统一为「待补」= 还没写自己的体验 ===== */
   {
     id: "room-404-erotic-massage",
     name: "Room 404: Erotic Massage",
-    cnName: "",
     developer: "シン・ギュラリティー（Shin Singularity）",
     publisher: "akaeroCore / DLsite",
     releaseDate: "2026-09-16",
     platform: "Windows",
-    genres: ["3D模拟", "经营"],
     rating: 0,
     status: "待补",
-    summary:
-      "第一人称视角的按摩店经营模拟。玩家经营一间个人按摩店，为三位顾客提供手脚与肩背的放松服务，可以自由调整房间灯光、音乐，并使用不同的按摩工具。Steam AppID 4110220。",
+    summary: "第一人称视角的按摩店经营模拟。玩家经营一间个人按摩店，为三位顾客提供手脚与肩背的放松服务，可以自由调整房间灯光、音乐，并使用不同的按摩工具。Steam AppID 4110220。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "忙碌一整天的女孩子们身体可是又硬又紧，从脚尖到头部由外而内，帮她好好放松一下吧。轻柔地揉捏那敏感的部位，涂上按摩油让身体滑润发亮，让她们在情欲按摩尽情的释放身体与心灵深处的欲望吧……\n故事概要\n你在一栋多租户大楼里经营着一家私人按摩院。\n但在那之下，你的真实身分其实是个情欲按摩师。\n透过优惠折扣诱惑上门的理想身材女人，透过情欲按摩的技巧，随心所欲地开发她的身体……。\n这次的目标，有即将毕业在企业实习的大学生「纱奈」、OL「小春」、图书馆管理员「凛音」。\n从手、脚尖开始慢慢攻势，逐步深入核心……\n涂上按摩油、柔软地揉捏柔软的肌肤，最真实感的按摩体验。\n搭配情欲香氛与玩具，让女孩的脑海被你的按摩完全占据吧。\n哦呀……明明昨天才来，今天又上门了吗……\n让她们沉沦情欲按摩的极乐天堂吧！\n以按摩融化身心\n第一人称视角体验成为按摩师，不受限角度的观察女人性感的身体！\n想看到女人被挑逗时，难耐扭动的模样，\n想亲身体验触摸她柔软的身体，一步步攻略她的防线。\n紧张、兴奋、情欲、觉醒，四阶段，让女客人们慢慢沦陷，\n最终沉沦在情欲按摩的手法中，张开双腿主动迎接你的玩弄！\n角色介绍\n▲伊藤 纱奈\n大学生／21岁／163cm\n做事随性，不太会因事情而慌张。\n即使遇到困难，也能坦率地向他人求助。\n常常会有些冒失的言行，让周围的人被她牵着走。\n有时容易陷入自己的思考中。\n▲日向 小春\n活动策划公司职员／25岁／161cm\n开朗又正向，能很快和任何人打成一片。\n有着不服输、努力不懈的一面。\n有时会不看气氛就一头冲进去，还有点健忘与粗心。\n▲白川 凛音\n图书馆管理员／24岁／160cm\n举止得体、有礼貌，心地善良又富有同理心。\n擅长倾听他人的话，内心坚强但不太主张自己。\n有时会压抑自己的感情，容易自责，对恋爱也有些胆怯。\n游戏特色\n25种按摩道具，包含按摩精油、眼罩、情欲香氛…等，增加游戏体验特殊道具\n11种不同体位，增加一名男性按摩师与一名女性按摩师协助\n21个按摩部位，从脚底板到内腔通通都可按下去\n多变化的房间设定，灯光、音乐、明亮度任意调整",
     experience: "（待补：卡关位置、路线选择、隐藏内容触发方式。）",
     cover: "room-404-erotic-massage-header.jpg",
+    source: "Steam 商店页 4110220 + 发行商公告（封面无可安全使用版本）",
+    genres: ["3D模拟", "经营"],
     shots: ["room-404-erotic-massage-1.jpg", "room-404-erotic-massage-2.jpg", "room-404-erotic-massage-3.jpg", "room-404-erotic-massage-4.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/3c66bc87cedc",
-      },
+      { label: "百度网盘（提取码 rf4w）", url: "https://pan.baidu.com/s/14tcnDcVL8mljlwDb5XTuBw" },
     ],
-    password: "234000",
-    source: "Steam 商店页 4110220 + 发行商公告（封面无可安全使用版本）"
   },
   {
     id: "choken-slap",
     name: "Choke'n Slap!",
-    cnName: "",
     developer: "abubu / NEWNANKA",
     publisher: "NEWNANKA",
     releaseDate: "2026-08-09",
     platform: "Windows / Android",
-    genres: ["互动模拟", "Live2D"],
     rating: 0,
     status: "待补",
-    summary:
-      "由 abubu 制作、NEWNANKA 社团发行的短篇触摸互动小游戏，使用 Unity 与 Live2D 制作，以场景互动为核心。",
+    summary: "由 abubu 制作、NEWNANKA 社团发行的短篇触摸互动小游戏，使用 Unity 与 Live2D 制作，以场景互动为核心。",
     experience: "（待补：玩法要点、结局条件。）",
     cover: "choken-slap-header.jpg",
+    source: "社团 Fanbox 公告 + 资料库条目（封面无可安全使用版本）",
+    genres: ["互动模拟", "Live2D"],
     shots: [],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/c2dea9ee0493",
-      },
+      { label: "百度网盘（提取码 zuxf）", url: "https://pan.baidu.com/s/1iEjveNemQtxmjOdnUwRkxA" },
     ],
-    password: "234000",
-    source: "社团 Fanbox 公告 + 资料库条目（封面无可安全使用版本）"
   },
   {
     id: "yume-5",
     name: "YUME 5: Spring Festival of Lust",
-    cnName: "",
     developer: "Lovely Games",
     publisher: "Lovely Games",
     releaseDate: "2025-02-14",
     platform: "Windows",
-    genres: ["视觉小说", "RPG", "模拟"],
     rating: 0,
     status: "待补",
-    summary:
-      "以春节与情人节为舞台的视觉小说。玩家扮演一名摄影师，与前女神陈曦展开剧情互动，含 RPG 与模拟要素。Steam AppID 3172220。",
+    summary: "以春节与情人节为舞台的视觉小说。玩家扮演一名摄影师，与前女神陈曦展开剧情互动，含 RPG 与模拟要素。Steam AppID 3172220。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "【SLG/官中/步兵】 梦5：春节 YUME 5 Spring Festival of Lust 官方中文步兵版【3.56G】\n发行日期:2025 年 2 月 14 日\n开发商:Lovely Games\n发行商:Lovely Games Hentai Club, Lovely Games\n概要：\n通过WASD键操控现代的陈夕，移动方向是正常的；而她的前世角色则是反向行动的镜像。玩家需要同时控制两者探索迷宫 随着关卡深入，镜像迷宫的复杂度提升，请注意要规避障碍走到终点！",
     experience: "（待补：路线选择、结局条件。）",
     cover: "yume5-header.jpg",
+    source: "Steam 官方商店头图（App 3172220）+ 第三方资料库",
+    genres: ["视觉小说", "RPG", "模拟"],
     shots: ["yume-5-1.jpg", "yume-5-2.jpg", "yume-5-3.jpg", "yume-5-4.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/32aec87fcaf9",
-      },
+      { label: "百度网盘（提取码 kmw6）", url: "https://pan.baidu.com/s/1DT17WIfOACxV-BYleQW3Nw" },
     ],
-    password: "234000",
-    source: "Steam 官方商店头图（App 3172220）+ 第三方资料库"
   },
   {
     id: "dokidoki-erotic-massage",
     name: "DokiDoki! Erotic Massage",
-    cnName: "",
     developer: "ツインテール教（Twin-Tailism）",
     publisher: "ツインテール教",
     releaseDate: "2025-09-19",
     platform: "Windows / Android",
-    genres: ["经营", "视觉小说"],
     rating: 0,
     status: "待补",
-    summary:
-      "按摩诊所经营模拟。玩家扮演新开业的按摩师，在三个月（12 周）内通过「咨询 → 按摩 → 行动选择」的每周循环偿还债务，并与常客逐步建立关系。含双路线与通关后的无尽模式。本地版本 2.1.4。",
+    summary: "按摩诊所经营模拟。玩家扮演新开业的按摩师，在三个月（12 周）内通过「咨询 → 按摩 → 行动选择」的每周循环偿还债务，并与常客逐步建立关系。含双路线与通关后的无尽模式。本地版本 2.1.4。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "你是一名刚开业的新手整体师。\n客人迟迟不上门，而债务偿还期限却迫在眉睫——只剩3个月（12周）……\n就在这时，美少女・田中奈奈出现了。\n「我的肩膀好酸……能拜托你吗？」\n与纯真又容易受影响的她相遇，将改变你的命运。\n咨询 → 按摩 → 自由行动 的循环！\n是为了还债努力打工，还是靠赌博一举逆转？\n你的选择将决定结局！\n除了奈奈之外，还有其他女性……？\n满足条件后，还可以与商店店员、讨债的龙姐发生亲密事件……？\n其他\n・游戏时间：2～3小时（一周目）\n・多结局\n・通关后：可在无尽模式中尽情享受按摩！\n◆处女路线\n前作《心跳加速！性骚扰健康检查》未发生的世界线。\n你将与纯洁无瑕的处女奈奈从零开始建立关系。\n◆经验者路线\n经历了前作事件的世界线。\n她已非处女，但还不认识你。\n※即使没玩过前作也完全没问题！两条路线都能享受♡\n全部12周的内容中，试玩版可游玩至第3周！可以体验基本系统。\n※存档无法继承\n※请务必通过试玩版确认运行情况\n规格等相关内容在Ci-en上介绍。\n如有故障、疑问、需求等，请通过Ci-en的评论区联系我们。\n·DLC游戏介绍·\n心跳加速！性感按摩【龙姐篇+本篇彩色化DLC】",
     experience: "（待补：数值管理要点、路线差异。）",
     cover: "dokidoki-erotic-massage-header.jpg",
+    source: "DLsite RJ01437730 + 英文版 readme（封面无可安全使用版本）",
+    genres: ["经营", "视觉小说"],
     shots: ["dokidoki-erotic-massage-1.jpg", "dokidoki-erotic-massage-2.jpg", "dokidoki-erotic-massage-3.jpg", "dokidoki-erotic-massage-4.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/d924de037c3b",
-      },
+      { label: "百度网盘（提取码 u6j9）", url: "https://pan.baidu.com/s/1LNWZxT8P7mtiK16pnFpoeg" },
     ],
-    password: "234000",
-    source: "DLsite RJ01437730 + 英文版 readme（封面无可安全使用版本）"
   },
   {
     id: "angelic-pe-clinic",
     name: "天使の早漏治療クリニック",
-    cnName: "",
     developer: "べあふるーつ（Bear Fruits）",
     publisher: "べあふるーつ",
     releaseDate: "2026-07-04",
     platform: "Windows",
-    genres: ["RPG", "回合制"],
     rating: 0,
     status: "待补",
-    summary:
-      "RPG Maker 制作的回合制耐久战斗 RPG。玩家扮演一名冒险者，在护士塞拉经营的诊所中接受治疗，以撑过规定回合数为胜利条件，含技能配装与商店系统。",
+    summary: "RPG Maker 制作的回合制耐久战斗 RPG。玩家扮演一名冒险者，在护士塞拉经营的诊所中接受治疗，以撑过规定回合数为胜利条件，含技能配装与商店系统。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "由于行动迟缓且胆小怕事，主人公总是输给那些出现在副本中的怪物娘。这个困扰着他的问题一直存在。 这样一个人偶然发现了写着“早泄治疗专业天使诊所”的招牌。 在那家诊所里，我遇到了一位自称是“天使”的护士——塞拉。 她提出的早泄治疗方法是：忍受来自她的诱惑，从而逐渐适应做爱的过程。 虽然内心充满困惑，但还是接受了治疗。不过，正如预期的那样，由于无法战胜塞拉那些花哨的伪装，最终还是暴露出了自己的无能。 然而，那个面无表情的女孩却说出了诸如“可爱”、“喜欢”之类的友善话语……",
     experience: "（待补：技能搭配、回合数压力点。）",
     cover: "angelic-pe-clinic-header.jpg",
+    source: "DLsite RJ01644040 + 本地 read me.txt（封面无可安全使用版本）",
+    genres: ["RPG", "回合制"],
     shots: ["angelic-pe-clinic-1.jpg", "angelic-pe-clinic-2.jpg", "angelic-pe-clinic-3.jpg", "angelic-pe-clinic-4.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/bfd1768f32a9",
-      },
+      { label: "百度网盘（提取码 t419）", url: "https://pan.baidu.com/s/1ELZuoKV39oVWfirA_dicNg" },
     ],
-    password: "234000",
-    source: "DLsite RJ01644040 + 本地 read me.txt（封面无可安全使用版本）"
   },
   {
     id: "succubus-nightmare",
@@ -231,97 +174,80 @@ window.GAMES_DATA = [
     publisher: "Mango Party",
     releaseDate: "2026-09-11",
     platform: "Windows",
-    genres: ["3DCG", "解谜"],
     rating: 0,
     status: "待补",
-    summary:
-      "3D 解谜逃脱游戏。玩家扮演姐姐夏洛特，带领妹妹爱伊逃离由魅魔掌控的庄园，在庄园与教堂之间解开谜题并躲避巡逻。Steam AppID 4507930，官方简中名《魅魔的梦魇》。",
+    summary: "3D 解谜逃脱游戏。玩家扮演姐姐夏洛特，带领妹妹爱伊逃离由魅魔掌控的庄园，在庄园与教堂之间解开谜题并躲避巡逻。Steam AppID 4507930，官方简中名《魅魔的梦魇》。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "人物介绍\n游戏共有两个场景关卡- 豪宅篇以及教堂篇\n与场景互动，找出逃生的路。\n小心那些被控制的仆人\n利用你们与生俱来的能力逃离他们的魔爪！\n失败了则会面临惩罚与屈辱\n一共有25种自由镜头H画面，等你来解锁。",
     experience: "（待补：机关解法、巡逻规律。）",
     cover: "succubus-nightmare-header.jpg",
+    source: "Steam 商店页 4507930 + 发行商资料（封面无可安全使用版本）",
+    genres: ["3DCG", "解谜"],
     shots: ["succubus-nightmare-1.jpg", "succubus-nightmare-2.jpg", "succubus-nightmare-3.jpg", "succubus-nightmare-4.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/e5a9c3b8d8fd",
-      },
+      { label: "百度网盘（提取码 piuu）", url: "https://pan.baidu.com/s/1fpcqkePzybiXvArhjhBkqA" },
     ],
-    password: "234000",
-    source: "Steam 商店页 4507930 + 发行商资料（封面无可安全使用版本）"
   },
   {
     id: "hime-enyoku-imperium",
     name: "姫と艶欲のインペリウム",
-    cnName: "",
     developer: "Escu:de",
     publisher: "Escu:de",
     releaseDate: "2026-04-24",
     platform: "Windows",
-    genres: ["SLG", "奇幻"],
     rating: 0,
     status: "待补",
-    summary:
-      "奇幻题材 SLG／ADV。被封印千年的破灭魔导师路修斯苏醒后，为取回力量与记忆，与帝国第一皇女伊蕾娜周旋，逐步揭开帝国隐藏的秘密。本地附带简中版启动程序。",
+    summary: "奇幻题材 SLG／ADV。被封印千年的破灭魔导师路修斯苏醒后，为取回力量与记忆，与帝国第一皇女伊蕾娜周旋，逐步揭开帝国隐藏的秘密。本地附带简中版启动程序。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "故事\n主人公卢修斯因其强大的力量给世界带来混乱，而被人们称为“毁灭术士”，令人畏惧。\n被“英雄”击败并封印的卢修斯，在沉睡千年后苏醒过来。促使她觉醒的催化剂是伊蕾娜，她是诺克斯海姆帝国的第一公主，该帝国凭借其军事和科技实力统治着这片大陆。\n卢修斯感到她身上某种力量唤醒了他。\n为了恢复他仍然缺乏的力量和记忆，并实现更彻底的复活，他试图利用伊蕾娜的力量。然而，身为公主和“英雄”后裔的伊琳娜拒绝了卢修斯，表示她不会站在“毁灭术士”一边。\n为了迫使伊琳娜打破封印，卢修斯开始了一种仪式，通过羞辱和愉悦来暴露和控制她的思想——“审讯法”。\n一千年前，卢修斯为何会成为“毁灭术士”？\n为什么伊雷娜有能力打破卢修斯的封印？\n一位来自千年前的魔法师和帝国的公主。\n两人的相遇卷入了许多人的阴谋诡计之中，最终揭开了帝国的秘密。",
     experience: "（待补：路线选择、关键选项。）",
     cover: "hime-enyoku-imperium-header.jpg",
+    source: "VNDB v61195 + 本地 readme.txt（封面无可安全使用版本）",
+    genres: ["SLG", "奇幻"],
     shots: ["hime-enyoku-imperium-1.jpg", "hime-enyoku-imperium-2.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/ca2594138108",
-      },
+      { label: "百度网盘（提取码 ef3e）", url: "https://pan.baidu.com/s/1uoPGXhyx7RWHbDfejPtoZw" },
     ],
-    password: "234000",
-    source: "VNDB v61195 + 本地 readme.txt（封面无可安全使用版本）"
   },
   {
     id: "quarta-alumines-tangerine-eg",
     name: "駆錬輝晶 クォルタ アルミネス & タンジェル EG",
-    cnName: "",
     developer: "下り坂ガードレール",
     publisher: "下り坂ガードレール",
     releaseDate: "2026-05-01",
     platform: "Windows",
-    genres: ["RPG", "像素风"],
     rating: 0,
     status: "待补",
-    summary:
-      "RPG Maker MV 制作的战斗 RPG，系列第三作。以两位变身女主角为主角，加入同时攻击、追击攻击，以及同伴被俘后需及时救出否则状态持续变化的机制。本地为体验版。",
+    summary: "RPG Maker MV 制作的战斗 RPG，系列第三作。以两位变身女主角为主角，加入同时攻击、追击攻击，以及同伴被俘后需及时救出否则状态持续变化的机制。本地为体验版。",
     experience: "（待补：救出时机、陷阱解除顺序。）",
     cover: "quarta-alumines-tangerine-eg-header.jpg",
+    source: "DLsite RJ01591409 + 本地 ○readme.txt（封面无可安全使用版本）",
+    genres: ["RPG", "像素风"],
     shots: ["quarta-alumines-tangerine-eg-1.jpg", "quarta-alumines-tangerine-eg-2.jpg", "quarta-alumines-tangerine-eg-3.jpg", "quarta-alumines-tangerine-eg-4.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/d6cfc793e094",
-      },
+      { label: "百度网盘（提取码 6wql）", url: "https://pan.baidu.com/s/16SZgukvNByhRz-07_bG99g" },
     ],
-    password: "234000",
-    source: "DLsite RJ01591409 + 本地 ○readme.txt（封面无可安全使用版本）"
   },
   {
     id: "dusk-city",
     name: "Dusk City",
-    cnName: "",
     developer: "すてねこLAB.",
     publisher: "Dieselmine（国际版）",
     releaseDate: "2024-07-25",
     platform: "Windows / Android",
-    genres: ["像素风", "动作RPG"],
     rating: 0,
     status: "待补",
-    summary:
-      "2D 像素风类银河恶魔城动作 RPG。文明沉入海底、永夜笼罩的世界里，玩家登陆一座岛屿，探索城镇与遗迹、强化武器与行动能力，逐步揭开世界谜团。日版原名《DECOY 群青の魔女》。Steam AppID 2973120。",
+    summary: "2D 像素风类银河恶魔城动作 RPG。文明沉入海底、永夜笼罩的世界里，玩家登陆一座岛屿，探索城镇与遗迹、强化武器与行动能力，逐步揭开世界谜团。日版原名《DECOY 群青の魔女》。Steam AppID 2973120。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "繁华的时代已经过去，地球进入暮色。\n人们如今在残存的土地上过着简朴而宁静的生活。\n在某个岛屿上，有一个被称为“魔女”的存在，她用自己的魔法力量帮助镇上的人们。\n而你将在踏进这座岛屿并探索它的过程中，发现这个世界的种种谜团。\nDusk City – 沉静的灯火\n市长找你讨论关于建造全新商业设施的事。\n帮助她完成建设，在度过的每一天里与居民们交流互动吧。\n◇剧情简介\n市长向你咨询：”想在市区新建一座商业设施。”\n你将协助建设，完成设施项目，并与城市居民交流互动，度过每一天。\n倾听居民们的请求漫步城市街头，\n挑战竞速大赛或足球游戏，\n悠闲享受钓鱼乐趣……\n随着事件推进，\n或许还能与大家共度更亲密的时光……？\n◇新增遗迹与迷你游戏",
     experience: "（待补：地图路线、能力解锁顺序。）",
     cover: "dusk-city-header.jpg",
+    source: "Steam 官方商店头图（App 2973120）+ DLsite RJ01035443",
+    genres: ["像素风", "动作RPG"],
     shots: ["dusk-city-1.jpg", "dusk-city-2.jpg", "dusk-city-3.jpg", "dusk-city-4.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/71265ab757f5",
-      },
+      { label: "百度网盘（提取码 ht8g）", url: "https://pan.baidu.com/s/15vQDjBjYDJ7TuREChMzkgQ" },
     ],
-    password: "234000",
-    source: "Steam 官方商店头图（App 2973120）+ DLsite RJ01035443"
   },
   {
     id: "tavern-cards",
@@ -331,111 +257,76 @@ window.GAMES_DATA = [
     publisher: "个人整理打包",
     releaseDate: "2026-11",
     platform: "Windows / Android",
-    genres: ["角色卡", "AI 聊天", "工具"],
     rating: 0,
     status: "游玩中",
-    type: "software",
-    summary:
-      "给 SillyTavern（个人酒馆）用的一套角色卡合集：1286 张 PNG，按 22 个分类分好目录，" +
-      "包体约 1.0 GB。每张卡的图片本身就是封面，真正的角色设定写在文件元数据里，" +
-      "导入酒馆后会自动带出名字、开场白和人物描述，不需要另外配设定文件。" +
-      "根目录另附 CSV 版和 HTML 版索引，不用解压也能先按分类、标签翻一遍，挑好再导。",
-    experience:
-      "解压后是「酒馆角色卡」文件夹，里面一个「电子魅魔角色卡」总目录加 22 个分类。" +
-      "导入走酒馆左侧「角色管理」的「导入」按钮，可以一次多选，也可以直接把 PNG 拖进浏览器窗口。" +
-      "导入后卡会出现在列表里但显示「出现」，不算选中；要再点一下卡片、右上角显示出角色名，才算真正切换过去。" +
-      "发一句「你是谁」试一下，回话符合设定就说明卡是完整的；回得驴唇不对马嘴，多半是这张卡本身没写设定。" +
-      "分类是按内容打的标签，不是审核结果；「工具」那 5 张是快速回复集和节奏控制这类小配件，按需装。",
+    summary: "给 SillyTavern（个人酒馆）用的一套角色卡合集：1286 张 PNG，按 22 个分类分好目录，包体约 1.0 GB。每张卡的图片本身就是封面，真正的角色设定写在文件元数据里，导入酒馆后会自动带出名字、开场白和人物描述，不需要另外配设定文件。根目录另附 CSV 版和 HTML 版索引，不用解压也能先按分类、标签翻一遍，挑好再导。",
+    experience: "解压后是「酒馆角色卡」文件夹，里面一个「电子魅魔角色卡」总目录加 22 个分类。导入走酒馆左侧「角色管理」的「导入」按钮，可以一次多选，也可以直接把 PNG 拖进浏览器窗口。导入后卡会出现在列表里但显示「出现」，不算选中；要再点一下卡片、右上角显示出角色名，才算真正切换过去。发一句「你是谁」试一下，回话符合设定就说明卡是完整的；回得驴唇不对马嘴，多半是这张卡本身没写设定。分类是按内容打的标签，不是审核结果；「工具」那 5 张是快速回复集和节奏控制这类小配件，按需装。",
     cover: "tavern-cards-header.jpg",
+    source: "本地目录清点：1286 个 PNG + 索引 CSV/HTML，22 个分类；打包后逐层校验（1290 个文件 / 24 个文件夹）",
+    genres: ["角色卡", "AI 聊天", "工具"],
     shots: ["tavern-cards-1.jpg", "tavern-cards-2.jpg", "tavern-cards-3.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/e5638ec5c6eb",
-      },
-      {
-        label: "22 个分类清单",
-        url: "#/cards",
-      },
+      { label: "夸克网盘下载", url: "https://pan.quark.cn/s/e5638ec5c6eb" },
+      { label: "22 个分类清单", url: "#/cards" },
     ],
-    password: "234000",
-    source: "本地目录清点：1286 个 PNG + 索引 CSV/HTML，22 个分类；打包后逐层校验（1290 个文件 / 24 个文件夹）"
   },
   {
     id: "re-mrm-1",
     name: "Re:MRM-1",
-    cnName: "",
     developer: "流水（ryusui）",
     publisher: "流水（ryusui）",
     releaseDate: "2022-05-20（2026-03-11 更新至 v2.1.0）",
     platform: "Windows",
-    genres: ["工具", "视频"],
     rating: 0,
     status: "待补",
-    type: "software",
-    summary:
-      "一款 3DCG 视频收纳与播放应用。附带简短的导入剧情（剧情模式）与回放画廊（画廊模式），既可以用自带应用播放，也可以直接读取 MP4 文件。DLsite 商品号 RJ391748；注意应用会按固定文件名识别视频，改动 movie 目录下的文件名或位置会导致读取失败。",
+    summary: "一款 3DCG 视频收纳与播放应用。附带简短的导入剧情（剧情模式）与回放画廊（画廊模式），既可以用自带应用播放，也可以直接读取 MP4 文件。DLsite 商品号 RJ391748；注意应用会按固定文件名识别视频，改动 movie 目录下的文件名或位置会导致读取失败。",
     experience: "（待补：目录结构与播放设置。）",
     cover: "re-mrm-1-header.jpg",
+    source: "DLsite RJ391748 + 本地 はじめにお読みください.txt / changelog.txt",
+    genres: ["工具", "视频"],
     shots: ["re-mrm-1-1.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/fea1ef9a7db9",
-      },
+      { label: "百度网盘（提取码 k81t）", url: "https://pan.baidu.com/s/1KNqygdlBWGzKiG8WfoeuuA" },
     ],
-    password: "234000",
-    source: "DLsite RJ391748 + 本地 はじめにお読みください.txt / changelog.txt"
   },
   {
     id: "tokumu-sousakan-rena",
     name: "特務捜査官レナ 屈辱の娼館奉仕",
-    cnName: "",
     developer: "NoFuture（端音 乱希）",
     publisher: "NoFuture",
     releaseDate: "2026-11-08",
     platform: "Windows",
-    genres: ["视觉小说", "ADV", "3D"],
     rating: 0,
     status: "待补",
-    summary:
-      "18 禁 AVG。以强力搜查官蕾娜为主角：她在任务中失手被敌方组织擒获，被迫在高级娼馆接客。游戏围绕「指名」与「服装指定」展开，共 10 套服装，客人指定的服装是否照做会影响事件分歧与最终结局——走顺从的娼妇路线还是反抗路线由玩家选择决定。本地为 v1.0.0，附带体验版存档继承说明。",
+    summary: "18 禁 AVG。以强力搜查官蕾娜为主角：她在任务中失手被敌方组织擒获，被迫在高级娼馆接客。游戏围绕「指名」与「服装指定」展开，共 10 套服装，客人指定的服装是否照做会影响事件分歧与最终结局——走顺从的娼妇路线还是反抗路线由玩家选择决定。本地为 v1.0.0，附带体验版存档继承说明。",
     experience: "（待补：指名与服装选择对结局的影响、关键分歧点。）",
     cover: "tokumu-sousakan-rena-header.jpg",
+    source: "Ci-en 制作公告（NoFuture＝端音 乱希）+ 本地 ◇はじめにお読みください.txt",
+    genres: ["视觉小说", "ADV", "3D"],
     shots: ["tokumu-sousakan-rena-1.jpg", "tokumu-sousakan-rena-2.jpg", "tokumu-sousakan-rena-3.jpg", "tokumu-sousakan-rena-4.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/0fcb99952103",
-      },
+      { label: "百度网盘（提取码 4rso）", url: "https://pan.baidu.com/s/1ZnkKRuFbxK1on2lfchZKkQ" },
     ],
-    password: "234000",
-    source: "Ci-en 制作公告（NoFuture＝端音 乱希）+ 本地 ◇はじめにお読みください.txt"
   },
   {
     id: "kanzen-chikan-2",
     name: "完全痴○2 清楚なJKを汚し尽くす",
-    cnName: "",
     developer: "兎もに角",
     publisher: "兎もに角",
-    releaseDate: "",
     platform: "Windows",
-    genres: ["触摸模拟", "Live2D", "电车"],
     rating: 0,
     status: "待补",
-    summary:
-      "指令选择 + 数值管理型的触摸模拟，Unity × Live2D 制作，是同社团《完全痴○》的续作（换了舞台与角色，没玩过前作也能上手）。舞台改成电车车厢，用多个 wave 推进局面，行动次数与被发现的风险都比前作更紧，需要在限制内把各项行为做到位。角色支持自定义，含路线分歧。存档位于 %USERPROFILE%\AppData\LocalLow\Tomonikaku\KanzenChikan2\Save\。",
+    summary: "指令选择 + 数值管理型的触摸模拟，Unity × Live2D 制作，是同社团《完全痴○》的续作（换了舞台与角色，没玩过前作也能上手）。舞台改成电车车厢，用多个 wave 推进局面，行动次数与被发现的风险都比前作更紧，需要在限制内把各项行为做到位。角色支持自定义，含路线分歧。存档位于 %USERPROFILE%AppDataLocalLowTomonikakuKanzenChikan2Save。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "◆剧情简介\n留下妻子和女儿在新买的独栋新房中，主角开始了单身赴任。\n这样的日子也即将过去两年。\n从旁人看来主角过着寂寞的生活，但本人反而觉得这样很好。\n因为，他已经好几年没有「鸡巴」勃起过了。\n与妻子的夜间生活完全没有，正担心夫妻关系恶化之际，就被单身赴任了。\n然而，每天在通勤电车上摇晃，他已经实在受够了。\n为了分散注意力而看到的女子高中生夺走了他的视线，在他入迷之际电车剧烈摇晃。\n因为没有可以抓的地方，不由自主地紧紧抓住了她的双胸……。\n到站的瞬间，主角慌忙冲下电车，但\n那时，他注意到本该无法勃起的「鸡巴」已经完全勃起了。\n就这样，想要久违地射精，但\n把积攒了数年的东西射到虚空中，实在太可惜了。\n主角对那个女子高中生「少女N」让自己勃起一事深表感谢，\n为了发泄那复活的性欲，他决定将她彻底玷污。\n那正是主角所理想的痴○……『完全痴○』！\n痴○系统\n◆更加丰富的痴○指令！\n全147种痴○指令，随意触摸！\n大量追加了反映S属性主角性格的痴○指令！\n用色情玩具和装饰尽情羞辱少女N吧！\n◆Live2D全动态！\n所有痴○指令都有动画，通过自然的动作享受「触摸」！\n表情和效果会随淫乱度和兴奋度细致变化！眺望她快要高潮的脸吧！\n被主角触摸时会拍开手、露出厌恶的表情！\n但是，只要持续触摸让她无法抵抗，就能让她在电车中毫无抵抗地不断高潮！\n◆少女N全语音！\n剧情语音自不必说，痴○中的语音也全部以「双耳录音」收录！\n痴○指令的语音会中途变化！通常、捂嘴、淫乱，请享受符合状况的语音！\n痴○场景中追加了根据少女N位置变化语音位置的新系统！\n用耳朵充分享受侵犯她的感觉吧！\n◆更加容易被发现……不，更加色情！\n紧张感才是痴○的精髓！少女N发出的声音、声响、气味会让乘客更容易发现！\n再加上体温，少女N身体散发的热气也会暴露！！\n……但是，没必要慌张！！主角的对策也万无一失！\n◆电车内的状况变化！\n电车内的状况共分为6个阶段的WAVE变化！\nWAVE1：普通的拥挤满员电车！\nWAVE2：停站中的电车！为了不被站台侧的人发现，在看不见的地方痴○！\nWAVE3：本以为在前一个WAVE已经到了下车站，没想到…",
     experience: "游戏介绍：\n\n◆剧情简介\n留下妻子和女儿在新买的独栋新房中，主角开始了单身赴任。\n这样的日子也即将过去两年。\n\n从旁人看来主角过着寂寞的生活，但本人反而觉得这样很好。\n因为，他已经好几年没有「鸡巴」勃起过了。\n\n与妻子的夜间生活完全没有，正担心夫妻关系恶化之际，就被单身赴任了。\n\n然而，每天在通勤电车上摇晃，他已经实在受够了。\n\n为了分散注意力而看到的女子高中生夺走了他的视线，在他入迷之际电车剧烈摇晃。\n因为没有可以抓的地方，不由自主地紧紧抓住了她的双胸……。\n\n到站的瞬间，主角慌忙冲下电车，但\n那时，他注意到本该无法勃起的「鸡巴」已经完全勃起了。\n\n就这样，想要久违地射精，但\n把积攒了数年的东西射到虚空中，实在太可惜了。\n\n主角对那个女子高中生「少女N」让自己勃起一事深表感谢，\n为了发泄那复活的性欲，他决定将她彻底玷污。\n\n那正是主角所理想的痴○……『完全痴○』！\n\n痴○系统\n◆更加丰富的痴○指令！\n全147种痴○指令，随意触摸！\n\n大量追加了反映S属性主角性格的痴○指令！\n用色情玩具和装饰尽情羞辱少女N吧！\n\n◆Live2D全动态！\n所有痴○指令都有动画，通过自然的动作享受「触摸」！\n表情和效果会随淫乱度和兴奋度细致变化！眺望她快要高潮的脸吧！\n\n被主角触摸时会拍开手、露出厌恶的表情！\n但是，只要持续触摸让她无法抵抗，就能让她在电车中毫无抵抗地不断高潮！\n\n◆少女N全语音！\n剧情语音自不必说，痴○中的语音也全部以「双耳录音」收录！\n痴○指令的语音会中途变化！通常、捂嘴、淫乱，请享受符合状况的语音！\n\n痴○场景中追加了根据少女N位置变化语音位置的新系统！\n用耳朵充分享受侵犯她的感觉吧！\n\n◆更加容易被发现……不，更加色情！\n紧张感才是痴○的精髓！少女N发出的声音、声响、气味会让乘客更容易发现！\n再加上体温，少女N身体散发的热气也会暴露！！\n\n……但是，没必要慌张！！主角的对策也万无一失！将这些文本之后复制到我的游戏网站里头，就是对应的按游戏的相应内容之下",
     cover: "kanzen-chikan-2-header.jpg",
+    source: "Ci-en 制作进度公告（兎もに角）+ 本地 readme.txt / 说明.txt",
+    genres: ["触摸模拟", "Live2D", "电车"],
     shots: ["kanzen-chikan-2-1.jpg", "kanzen-chikan-2-2.jpg", "kanzen-chikan-2-3.jpg", "kanzen-chikan-2-4.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/011d10d369fa",
-      },
+      { label: "百度网盘（提取码 ukp7）", url: "https://pan.baidu.com/s/1OWckRbOLTQo0nR_vGupboQ" },
     ],
-    password: "234000",
-    source: "Ci-en 制作进度公告（兎もに角）+ 本地 readme.txt / 说明.txt"
   },
   {
     id: "ripples",
@@ -445,22 +336,19 @@ window.GAMES_DATA = [
     publisher: "Jestur",
     releaseDate: "持续更新（本地 0.8.0，2025-06-26 构建）",
     platform: "Windows / Linux / macOS / Android",
-    genres: ["视觉小说", "科幻", "悬疑"],
     rating: 0,
     status: "待补",
-    summary:
-      "科幻题材的欧美视觉小说，Ren'Py 制作。主角是高三学生，与老朋友 Darci 重逢后照常上学，却在这一天陆续得知亡父的旧事，开始怀疑父亲的死另有内情；剧情按章节推进，含多条关系线与画廊收集要素。本地为 0.8.0 版。",
+    summary: "科幻题材的欧美视觉小说，Ren'Py 制作。主角是高三学生，与老朋友 Darci 重逢后照常上学，却在这一天陆续得知亡父的旧事，开始怀疑父亲的死另有内情；剧情按章节推进，含多条关系线与画廊收集要素。本地为 0.8.0 版。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "在你还未成年的时候，父亲因为工厂的事故而离开了你...\n你不得不和妈妈蒂芙尼姐姐杰西卡相依为命。\n而你上学的学校里面有非常多的辣妹~\n就这样，平静而快乐的生活过去了很多年。\n然而一次意外的发现，让你开始探究你父亲去世的原因...",
     experience: "（待补：路线选择、章节卡点、画廊解锁条件。）",
     cover: "ripples-header.jpg",
+    source: "VNDB v33448 + itch.io（jestur.itch.io）+ 本地 log.txt",
+    genres: ["视觉小说", "科幻", "悬疑"],
     shots: ["ripples-1.jpg", "ripples-2.jpg", "ripples-3.jpg", "ripples-4.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/143fe441eb0a",
-      },
+      { label: "百度网盘（提取码 5zc9）", url: "https://pan.baidu.com/s/11oCoTNkoQPGxh3OWGpRUKw" },
     ],
-    password: "234000",
-    source: "VNDB v33448 + itch.io（jestur.itch.io）+ 本地 log.txt"
   },
   {
     id: "round-and-round-train",
@@ -468,49 +356,38 @@ window.GAMES_DATA = [
     cnName: "轮回电车（ぐるぐる痴漢電車）",
     developer: "でいすぺあ（dispair）",
     publisher: "でいすぺあ",
-    releaseDate: "",
     platform: "Windows",
-    genres: ["2D", "触摸模拟", "电车"],
     rating: 0,
     status: "待补",
-    summary:
-      "2D 电车题材触摸模拟。以天数推进为主线，时间用尽后会进入新的「轮回」，玩家要靠一次次循环把女主角的状态改过来，同时收集多个结局；通关后还有额外模式。CV 为神代そら（椎名花菜 役）。本地是集成 BepInEx / AutoTranslator 汉化插件的版本，启动时会多一个控制台窗口。",
+    summary: "2D 电车题材触摸模拟。以天数推进为主线，时间用尽后会进入新的「轮回」，玩家要靠一次次循环把女主角的状态改过来，同时收集多个结局；通关后还有额外模式。CV 为神代そら（椎名花菜 役）。本地是集成 BepInEx / AutoTranslator 汉化插件的版本，启动时会多一个控制台窗口。",
     experience: "（待补：结局触发条件、轮回中该保留哪些进度。）",
     cover: "round-and-round-train-header.jpg",
+    source: "本地 credits.txt / changelog.txt + 第三方资料库条目",
+    genres: ["2D", "触摸模拟", "电车"],
     shots: ["round-and-round-train-1.jpg", "round-and-round-train-2.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/a2f152e19ccd",
-      },
+      { label: "百度网盘（提取码 fjix）", url: "https://pan.baidu.com/s/1ZGR4FFUy31Iry_tA5m_ePw" },
     ],
-    password: "234000",
-    source: "本地 credits.txt / changelog.txt + 第三方资料库条目"
   },
   {
     id: "hypno-app-2",
     name: "HypnoApp2",
-    cnName: "",
     developer: "dobuworks",
     publisher: "dobuworks",
-    releaseDate: "",
     platform: "Windows",
-    genres: ["3D模拟", "Unity", "调教"],
     rating: 0,
     status: "待补",
-    summary:
-      "社团 dobuworks 的 Unity 3D 模拟作品，官方自述为「用洗脑 App 调教清纯大小姐的模拟游戏」，是本系列第二作，本地版本 1.0.5。提供多档图形设置（可切「超軽量」并配合 800x600 全屏降低负载），另有作者维护的操作说明站点。",
+    summary: "社团 dobuworks 的 Unity 3D 模拟作品，官方自述为「用洗脑 App 调教清纯大小姐的模拟游戏」，是本系列第二作，本地版本 1.0.5。提供多档图形设置（可切「超軽量」并配合 800x600 全屏降低负载），另有作者维护的操作说明站点。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "自由度MAX！　用洗脑APP让清纯的大小姐高潮到发狂，使其堕落成OO的雌杏奴隶吧！\n最近在漫画或CG收录集中经常见到的“催○APP”，您不想试着用用看吗…？\n这款游戏，便是尽可能真实地再现了使用催○APP进行H触摸的模拟游戏！\n并非只是鉴赏固定流程的演出，而是由您自己成为主人公，随心所欲地调教女孩子吧！\n女主角会根据您的游玩内容，通过多彩的台词与动画作出反应。\n从前作“用洗脑APP对傲慢大小姐为所欲为的模拟游戏”进一步进化！\n通过银语或服装更换等新系统，以及追加的姿势，自由度大幅提升！\n与前作相比的进化点",
     experience: "（待补：数值成长节奏、场景解锁条件。）",
     cover: "hypno-app-2-header.jpg",
+    source: "本地 お読み下さい.txt + config.ini + 官方操作说明站点",
+    genres: ["3D模拟", "Unity", "调教"],
     shots: ["hypno-app-2-1.jpg", "hypno-app-2-2.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/8b3877b24fea",
-      },
+      { label: "百度网盘（提取码 mzys）", url: "https://pan.baidu.com/s/1ctLt0RD0442XfchaFjg87w" },
     ],
-    password: "234000",
-    source: "本地 お読み下さい.txt + config.ini + 官方操作说明站点"
   },
   {
     id: "youmuin",
@@ -518,39 +395,228 @@ window.GAMES_DATA = [
     cnName: "妖梦员",
     developer: "私立さくらんぼ小学校・乳学校",
     publisher: "私立さくらんぼ小学校・乳学校",
-    releaseDate: "",
     platform: "Windows",
-    genres: ["SLG", "触摸模拟", "奇幻"],
     rating: 0,
     status: "待补",
-    summary:
-      "吉里吉里 Z 制作的成人向作品，玩法围绕「睡眠中的对象」：调节睡眠深度、脱衣与穿衣、累积快感到条件达成，再解锁隐藏路线与额外事件。本地为 1.71 版（官方后续发布 1.7.2 修正了旧系统 exe 的卡关问题）。目录里还附了引擎设置、存档位置变更、文件损坏检查等小工具。",
+    summary: "吉里吉里 Z 制作的成人向作品，玩法围绕「睡眠中的对象」：调节睡眠深度、脱衣与穿衣、累积快感到条件达成，再解锁隐藏路线与额外事件。本地为 1.71 版（官方后续发布 1.7.2 修正了旧系统 exe 的卡关问题）。目录里还附了引擎设置、存档位置变更、文件损坏检查等小工具。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "这是[私立さくらんぼ乳学校]在23年5月13日更新的一款睡歼触摸SLG大作。\n游戏历经5年开发时间！通关完结要28小时！103条路线！超过700个剧情！",
     experience: "（待补：睡眠深度控制、隐藏路线触发条件。）",
     cover: "youmuin-header.jpg",
+    source: "Ci-en 版本公告（私立さくらんぼ小学校・乳学校）+ 本地 ファイルの説明.txt",
+    genres: ["SLG", "触摸模拟", "奇幻"],
     shots: ["youmuin-1.jpg", "youmuin-2.jpg", "youmuin-3.jpg", "youmuin-4.jpg"],
     links: [
-      {
-        label: "夸克网盘下载",
-        url: "https://pan.quark.cn/s/f8f61b0bfc00",
-      },
+      { label: "百度网盘（提取码 gaw8）", url: "https://pan.baidu.com/s/1Ko430VSST3Agp8VvRmQZqw" },
     ],
-    password: "234000",
-    source: "Ci-en 版本公告（私立さくらんぼ小学校・乳学校）+ 本地 ファイルの説明.txt"
-  }
+  },
+  {
+    id: "fina",
+    name: "プリンセスサクリファイス～供犠姫フィーナの冒険～",
+    cnName: "献给精灵神的祭品巫女 供牺姬菲娜",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    summary: "========================================================\n刀剑与魔法。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "========================================================\n刀剑与魔法。一个充满暴力与神秘的时代。\n造物主上帝早已离去，不会拯救人类。\n世间仅存的，只有那些喜怒无常的神灵。\n为了获得神灵的帮助，人们将一位高贵的巫女作为祭品献祭。\n她们被称为祭祀公主。\n========================================================\n一部融合了角色扮演和冒险元素的成熟奇幻角色扮演小说。\n神灵赐予祭祀公主三种力量。主人公菲娜正是凭借这些力量进行战斗。",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    cover: "fina-header.jpg",
+    source: "嘤嘤怪之家 yyg2.app",
+    genres: ["RPG", "奇幻", "异种"],
+    shots: ["fina-1.jpg", "fina-2.jpg", "fina-3.jpg", "fina-4.jpg"],
+    links: [
+      { label: "百度网盘（提取码 hc2v）", url: "https://pan.baidu.com/s/1CIHDKu4br8l3jY49Vppkqg" },
+    ],
+  },
+  {
+    id: "amaama-yuwaku",
+    name: "あまあま×あまあまなゆ～わく",
+    cnName: "甜蜜×甜蜜的诱惑",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    summary: "剧情简介\n住在宁静村庄的少年米尔（名称可更改）。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "剧情简介\n住在宁静村庄的少年米尔（名称可更改）。\n某天，在森林中被甜美的香味吸引，发现了一座陌生的宅邸。然而，突然听到人狼的叫声，慌忙逃到宅邸避难。\n但这座宅邸却是住着一群魅魔姐姐们的危险场所……\n米尔究竟能否平安逃脱……！？\n★游戏系统\n游戏的目的很简单！在众多机关和逼近的魅魔的追逐下，收集每个关卡里的逃脱钥匙即可！\n每次被抓住都会被榨取（精力）……→生命值归零就会游戏结束→之后会迎来魅魔们更加甜蜜的“疼爱”……！？",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    cover: "amaama-yuwaku-header.jpg",
+    source: "嘤嘤怪之家 yyg2.app",
+    genres: ["RPG", "甜蜜", "同居"],
+    shots: ["amaama-yuwaku-1.jpg", "amaama-yuwaku-2.jpg"],
+    links: [
+      { label: "百度网盘（提取码 t1d6）", url: "https://pan.baidu.com/s/1VK8cIXU1ReMdAoQIh2Dizw" },
+    ],
+  },
+  {
+    id: "jerez-arena-2",
+    name: "Jerez's Arena II",
+    cnName: "赫雷斯的角斗场 II",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    summary: "游戏介绍\n赫雷斯的角斗场：Jerez's Arena Ver1.2.01 官方中文步兵版\n没想到这款神作居然更新了，分享最新Ver1.2.01版本！\n相比初始版大量新游戏内容，以及修复各种BUG，最终完美版！\n\n这是一款由[永恒艾莉丝工坊]制作组出品的日式T教SLG游戏。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "赫雷斯的角斗场：Jerez's Arena Ver1.2.01 官方中文步兵版\n相比初始版大量新游戏内容，以及修复各种BUG，最终完美版！\n这是一款由[永恒艾莉丝工坊]制作组出品的日式T教SLG游戏。\n游戏搭载超赞官方中文！质量绝对是上上之选！\n在这里将游戏的官方中文版分享给大家~\n全程高质量步兵不骑马，让你冲到爆炸！\n这是一款游戏杏超高的经营T教SLG游戏\n你将扮演超无下限的黑心男主，对两名美人进行全方位的【条教】和【训练】\n不仅要打造最强的决斗者，也要育成最柔媚的风俗娘！\n游戏画风质量超高，每张CG都社保无比~\n全程事件25+，并且有高质量CV语音\n可纯可绿可公交，玩法丰富自由度极高！\n总之只要你喜欢SLG，就绝对不能错过这款超赞GAME！\n游戏剧情：\n格伦这个畜生，大概是全帝国最没下限的奴隶主了\n这个男人高傲疯狂，没有任何节操和下限，一生只为追求金钱\n任何落在这家伙手上的奴隶，命运都十分的……多牟\n在那场奴隶拍卖会上\n他不知为何用巨款买下了大家都不看好的奴隶……克劳迪娅（Claudia）\n大家也都在感叹，这个曾经是公爵之女的奴隶，在格伦手上到底能活多久\n但是这个奴隶，却和格伦做了一笔“交易”\n用斗技场冠军的荣耀，来换取自己的“自由”\n没有任何怜悯的奴隶主\n为了改变命运豁出去一切的公爵之女\n目的神秘的黑暗精灵\n三人踏上了最强决斗者的育成之旅……\n在命运的前方是满载的荣耀，还是无止境的羞辱呢…\n游戏内容：\n控住奴隶主格伦，将克劳迪娅训练成最强，最忠诚风搔的女奴吧！\n全方位的对其进行【条教】和【训练】\n每天用自己的身体来教会她各种绝妙的H技\n将其一点点培养成角斗场的冠军！\n游戏中包含超大量事件",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    cover: "jerez-arena-2-header.jpg",
+    source: "嘤嘤怪之家 yyg2.app",
+    genres: ["SLG", "奇幻", "经营"],
+    shots: ["jerez-arena-2-1.jpg", "jerez-arena-2-2.jpg"],
+    links: [
+      { label: "百度网盘（提取码 83xc）", url: "https://pan.baidu.com/s/1i3JqmNmu7bP_z1eVkNFFpA" },
+    ],
+  },
+  {
+    id: "silvy-rebirth",
+    name: "Personality Excretion Hero Silvy's Rebirth",
+    cnName: "人格排泄勇者希尔薇的重启人生",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    summary: "游戏介绍\n杏格極差的勇者「希爾薇」與勇者的守護者「肯因」， 為了阻止『破滅之波』向魔王發起了決戰。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "杏格極差的勇者「希爾薇」與勇者的守護者「肯因」， 為了阻止『破滅之波』向魔王發起了決戰。 然而，肯因竟然被身為勇者的妹妹希爾薇出賣獻祭！ 飲恨而死的肯因憑藉女神的奇蹟回到了過去，重返與妹妹重新踏上旅途。 要對陷害自己的勇者展開復仇？還是引導妹妹成為真正的勇者? 根據玩家的選擇，勇者希爾薇的命運將迎來巨大的變化！\n杏格極差的勇者「希爾薇」與勇者的守護者「肯因」，\n為了阻止『破滅之波』向魔王發起了決戰。\n然而，肯因竟然被身為勇者的義妹希爾薇出賣獻祭！\n飲恨而死的肯因憑藉女神的奇蹟回到了過去，重返與妹妹重新踏上旅途。\n要對陷害自己的勇者展開復仇？還是引導妹妹成為真正的勇者?\n根據玩家的選擇，勇者希爾薇的命運將迎來巨大的變化！\n人物介紹\n雖然說是被選上成為擊退「破滅之波」的偉大勇者。\n但自從獲得勇者力量後，就變成了一個自大傲慢的女人。\n連自己唯一的親人都能出賣，是個令王國上下都討厭的存在。\n本作的主角，同時也是希爾薇的義兄。\n對希爾薇百般保護，最後被選為引導及保護勇者的「守護者」。\n是希爾薇小時候最依賴的家人。\n艾因王國的公主，自願與主角一行人踏上擊退「破滅之波」的旅途。\n雖然非常正直且清廉，做事不喜歡拐彎抹角。\n但是沒有任何經驗的她，面對感情的事總會無從應對。\n傳說中四賢者之一的魔女，智商相當高且博學多聞。\n儘管如此，有時還是會露出天然呆的本杏。\n特別喜歡年輕男人的肉體。\n遊戲系統\n經典JRPG玩法\n一路上的戰鬥都是採用經典回合制RPG，\n除此之外，也能跟NPC接各種任物賺錢買裝備。\n好感度\n每個角色都有個別的好感度，可以透過送禮來提升。\n好感度到達一定程度，還能到服裝店幫女角色們更換服裝。\n遊戲中有幾個結局也必須靠好感度來達成解鎖條件。\n業力值\n影響遊戲結局的重要數值。\n只要幫助他人完成任務，就能減少業力值。\n試著把希爾薇矯正成真正的勇者吧！\n人格排泄\n本作的主題之一，藉由人格排泄可以排出靈魂中不好的東西。\n雖然進行人格排泄能大幅減少業力值，但是角色的理杏值也會因此降低。\n理杏值\n理杏值降低將會影響色色劇情的互動。\n所有ERO劇情皆有正常理杏值與理杏值低下兩種場景讓玩家探索…",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    cover: "silvy-rebirth-header.jpg",
+    source: "嘤嘤怪之家 yyg2.app",
+    genres: ["RPG", "异种", "女主人公"],
+    shots: ["silvy-rebirth-1.jpg", "silvy-rebirth-2.jpg", "silvy-rebirth-3.jpg"],
+    links: [],
+  },
+  {
+    id: "danchi-idol",
+    name: "むかしグラビアアイドルだった団地妻",
+    cnName: "曾经是写真偶像的团地妻",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    summary: "※本作品是将ci-en上作为2026年7月、8月、9月特典发布的内容整合为一部的作品。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "※本作品是将ci-en上作为2026年7月、8月、9月特典发布的内容整合为一部的作品。\n作品内容与特典内容相同。\n※背景有一部分使用了AI。",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    cover: "danchi-idol-header.jpg",
+    source: "嘤嘤怪之家 yyg2.app",
+    genres: ["ADV", "NTR", "人妻"],
+    shots: [],
+    links: [],
+  },
+  {
+    id: "shion",
+    name: "冒険者シオンは戦えない！",
+    cnName: "冒险者紫苑无法战斗！",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    summary: "游戏介绍\n不会战斗、也不会使用魔法的冒险者「紫苑」，在接取各式各样的委託途中，逐渐被捲入充满诱惑与危险的境遇之中。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "不会战斗、也不会使用魔法的冒险者「紫苑」，在接取各式各样的委託途中，逐渐被捲入充满诱惑与危险的境遇之中。\n冒险者紫苑在经历各种色情事件的同时，为了变强而努力奋斗的无战斗撸管特化RPG！\n这是一款玩家将在城镇与迷你地下城之间往返，收集各种事情事件，玩法简单的无战斗色情RPG。\n随着故事推进，会逐渐解锁新的区域、新的色情事件与阶段式的色情事件，\n能够让玩家轻松地一边撸管一边游玩的游戏！\n随着游戏进行，将能够探索「夜晚的城镇」，体验与白天截然不同，充满危险的城镇！",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    cover: "shion-header.jpg",
+    source: "嘤嘤怪之家 yyg2.app",
+    genres: ["RPG", "异种", "女主人公"],
+    shots: [],
+    links: [],
+  },
+  {
+    id: "eris-dysnomia",
+    name: "ErisDysnomia",
+    cnName: "艾莉丝·迪斯诺米亚",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    genres: ["RPG", "黑暗奇幻"],
+    shots: [],
+    links: [
+      { label: "百度网盘（提取码 ckpm）", url: "https://pan.baidu.com/s/10Sttlck73uPqMmRQmk4rNw" },
+    ],
+  },
+  {
+    id: "foresia",
+    name: "Foresia -The Lust Curse-",
+    cnName: "佛瑞西亚：欲望诅咒",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    genres: ["RPG", "奇幻", "诅咒"],
+    shots: [],
+    links: [
+      { label: "百度网盘（提取码 vax7）", url: "https://pan.baidu.com/s/1MAmZuvMmPYd1KgQgolI65A" },
+    ],
+  },
+  {
+    id: "monster-black-market",
+    name: "Monster Black Market",
+    cnName: "怪物黑市",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    genres: ["SLG", "魔物", "经营"],
+    shots: [],
+    links: [
+      { label: "百度网盘（提取码 xx07）", url: "https://pan.baidu.com/s/1MpozdByXwjaEUp6_O0iOxg" },
+    ],
+  },
+  {
+    id: "inyoku-no-mato",
+    name: "淫欲の魔塔",
+    cnName: "淫欲的魔塔",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    genres: ["RPG", "塔攻略"],
+    shots: [],
+    links: [],
+  },
+  {
+    id: "aideal-rays",
+    name: "AidealRays",
+    cnName: "阿尔迪尔之辉",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    genres: ["RPG", "奇幻"],
+    shots: [],
+    links: [],
+  },
+  {
+    id: "elf-girl-lyfia",
+    name: "Elf Girl Lyfia and the Labyrinth of Dreams",
+    cnName: "精灵少女莉菲亚与梦之迷宫",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    genres: ["RPG", "精灵", "迷宫"],
+    shots: [],
+    links: [],
+  },
+  {
+    id: "cyan-record",
+    name: "シアン・レコード -落第騎士の姦银録-",
+    cnName: "蔚蓝纪事 -落第骑士银姦录-",
+    platform: "Windows",
+    rating: 0,
+    status: "待补",
+    summary: "游戏介绍\n魔力、慾望、以及……欢迎来到蔚蓝纪事的世界！\n可以进行处女PLAY！在魔力=费洛蒙的世界中，悠伊能否彻底守住自己的贞洁呢……！？\n以霸王硬上弓的情节为主，来场有点色色的冒险吧！\n★不管是谁来玩都能简单操作的指令式战斗！\n★轻松通关的「简单模式」、能享受RPG乐趣的「普通模式」、想要全力战斗的「困难模式」，3种难易度任你选择！\n★目标是体验女孩子的感。",
+    introSource: "嘤嘤怪之家 yyg2.app",
+    intro: "魔力、慾望、以及……欢迎来到蔚蓝纪事的世界！\n可以进行处女PLAY！在魔力=费洛蒙的世界中，悠伊能否彻底守住自己的贞洁呢……！？\n以霸王硬上弓的情节为主，来场有点色色的冒险吧！\n★不管是谁来玩都能简单操作的指令式战斗！\n★轻松通关的「简单模式」、能享受RPG乐趣的「普通模式」、想要全力战斗的「困难模式」，3种难易度任你选择！\n★目标是体验女孩子的感受。不管是纯爱PLAY、还是处女PLAY，都由你来做选择！\n即使在镇上也不能安心。\n被费洛蒙吸引的男人们会用尽各种手段来靠近悠伊……\n推荐给喜欢对色色的事情一无所知的女孩被欺骗、受辱、卖银的人。\n有战斗色色、败北色色！\n使用仅存的魔力来进行冒险吧！\n输掉的话，可能就随魔兽想怎么来就怎么来……？\n战斗中的束缚工口立绘全都是以LIVE2D来呈现！\n在冒险的旅途中，悠伊会遇到左右她命运的4个人。\n他们究竟是会扭转悠伊的人生、还是……\n每个人都有各自的ERO事件，也有专属的结局！\n装载记录主角・悠伊的「第一次」的第一次报告。\n第一次做爱、第一次接吻、第一次肛门、第一次卖银……\n完成只属于你的「第一次报告」吧！\n处女文本差分也应有尽有！\n各种各样的事件！例如⁚\n・输给哥布林后被带回巢浦西……\n・被关在盗贼基地，当玩物……\n・在按摩店被百合按摩师按摩全身……\n・睡在朋友的房间里时，被入侵者睡X！？\n・在地下赌场绝顶耐久\n・因为没钱，所以在酒吧进行过激的打工！\n・跟青梅竹马的女孩来场甜蜜蜜的sese！\n……还有其他更多！\n主角・悠伊・雅克萊特\n155cm/50kg\n被譽為天才、備受眾人期待加入騎士團的魔導士見習生。\n但卻因為某件事而失去了魔力……\n雖然很膽小，但其實是個心思單純的女孩。對喜歡的人非常專一。\n在只有女孩子的單純環境中長大，似乎很容易受騙……？",
+    experience: "（这里写你自己的过关体验和攻略要点。）",
+    cover: "cyan-record-header.jpg",
+    source: "嘤嘤怪之家 yyg2.app",
+    genres: ["RPG", "奇幻", "骑士"],
+    shots: ["cyan-record-1.jpg"],
+    links: [],
+  },
 ];
 
-/**
- * 站点文案 —— 也在这一个文件里维护
- *   intro    hero 区那一句话
- *   updated  最近一次更新时间（只写日期，页面上自己算多久前）
- *   notices  个人公告，按时间倒序排，最新的放最前面；留空数组则显示「暂无公告」
- *            tag 是自己起的短标签，别超过 4 个字
- *
- * 公告想好之后，把下面这段的注释去掉、改成自己的话就能显示：
- *   { date: "2026-11-20", tag: "开张", text: "站点先上线，三款放上来。" },
- */
 window.SITE_META = {
-  intro: "一些我装过、也上手过的作品。介绍整理自公开渠道；标「待补」的是还没写自己体验的。",
+  intro: "ä¸äºæè£è¿ãä¹ä¸æè¿çä½åãä»ç»æ´çèªå¬å¼æ¸ éï¼æ ãå¾è¡¥ãçæ¯è¿æ²¡åèªå·±ä½éªçã",
   updated: "2026-11-17",
-  notices: []
+  notices: [],
 };
