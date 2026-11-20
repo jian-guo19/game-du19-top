@@ -4,7 +4,7 @@
   var games = window.GAMES_DATA || [];
   var meta = window.SITE_META || {};
   var IMG = "assets/images/";
-  var CATS = ["全部", "电脑游戏", "手机游戏", "模拟器游戏", "实用软件"];
+  var CATS = ["全部", "电脑游戏", "手机游戏", "模拟器游戏", "其他游戏", "实用软件"];
 
   // 当前筛选状态
   var state = { cat: "全部", tag: "全部", q: "" };
@@ -65,6 +65,7 @@
   // ---------- 分类判定：一款作品可能同时属于多个分类 ----------
   function categoriesOf(g) {
     if (g.type === "software") return ["实用软件"];
+    if (g.type === "other") return ["其他游戏"];
     var hay = ((g.platform || "") + " " + (g.genres || []).join(" ")).toLowerCase();
     var out = [];
     if (/模拟器|emulator|switch|yuzu|ryujinx|psp|gba|nds|nsp/.test(hay)) out.push("模拟器游戏");
