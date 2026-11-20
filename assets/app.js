@@ -47,7 +47,8 @@
     var s = String(u == null ? "" : u).trim();
     if (!s) return "";
     if (s.charAt(0) === "#") return s;
-    if (/^\/(?!\/)/.test(s)) return s;
+    if (s.slice(0, 2) === "//") return "";   // 协议相对地址（//host/x）一律不收
+    if (s.charAt(0) === "/") return s;
     var m = /^([a-z][a-z0-9+.-]*):/i.exec(s);
     if (!m) return s;                       // 无协议头 → 当作相对路径
     var scheme = m[1].toLowerCase();

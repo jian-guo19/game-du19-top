@@ -193,4 +193,49 @@ const ok = (name, cond, extra = '') => {
   ok('响应带 HSTS', !!r.headers.get('Strict-Transport-Security'));
 }
 
+// ---------------------------------------------------------------- URL 白名单
+// 从 app.js 源码里取出 safeUrl 函数体，测的就是线上那段代码
+{
+  const src = fs.readFileSync(path.join(ROOT, 'assets/app.js'), 'utf8');
+  const m = src.match(/function safeUrl\(u\) \{[\s\S]*?\n  \}/);
+  assert.ok(m, 'app.js 里找不到 safeUrl');
+  const safeUrl = new Function('return (' + m[0].replace(/^function safeUrl/, 'function') + ')')();
+
+  const cases = [
+    ['javascript:alert(1)', ''],
+    ['JaVaScRiPt:alert(1)', ''],
+    ['data:text/html,x', ''],
+    ['vbscript:x', ''],
+    ['//evil.com/x', ''],
+    ['#/cards', '#/cards'],
+    ['/guide', '/guide'],
+    ['https://pan.baidu.com/s/1', 'https://pan.baidu.com/s/1'],
+    ['  https://ok.com  ', 'https://ok.com'],
+  ];
+  let bad = 0;
+  for (const [inp, exp] of cases) {
+    if (safeUrl(inp) !== exp) bad += 1;
+  }
+  ok(`URL 白名单 ${cases.length} 个用例全部正确`, bad === 0, `${bad} 项不符`);
+
+  // 真实数据不应被误杀
+  const vm = await import('node:vm');
+  const sandbox = { window: {} };
+  vm.createContext(sandbox);
+  for (const f of ['data/games.js']) {
+    const p = path.join(ROOT, f);
+    if (fs.existsSync(p)) vm.runInContext(fs.readFileSync(p, 'utf8'), sandbox);
+  }
+  const games = sandbox.window.GAMES_DATA || [];
+  let links = 0;
+  let killed = 0;
+  for (const g of games) {
+    for (const l of g.links || []) {
+      links += 1;
+      if (!safeUrl(l.url)) killed += 1;
+    }
+  }
+  ok(`真实数据 ${links} 条链接无一被误杀`, killed === 0, `${killed} 条被拦`);
+}
+
 console.log(`\n全部通过：${pass} 项`);
