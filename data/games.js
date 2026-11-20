@@ -270,7 +270,6 @@ window.GAMES_DATA = [
     genres: ["角色卡", "AI 聊天", "工具"],
     shots: ["tavern-cards-1.jpg", "tavern-cards-2.jpg", "tavern-cards-3.jpg"],
     links: [
-      { label: "夸克网盘下载", url: "https://pan.quark.cn/s/e5638ec5c6eb" },
       { label: "22 个分类清单", url: "#/cards" },
     ],
   },
@@ -490,7 +489,10 @@ window.GAMES_DATA = [
     source: "嘤嘤怪之家 yyg2.app",
     genres: ["RPG", "异种", "女主人公"],
     shots: ["silvy-rebirth-1-df47a9e7.jpg", "silvy-rebirth-2-cc431db4.jpg"],
-    links: [],
+    links: [
+      { label: "百度网盘（提取码 tcoe）", url: "https://pan.baidu.com/s/1U_ENWTkZFp5YxEiYLGl9BQ" },
+      { label: "夸克网盘（提取码 PjDB）", url: "https://pan.quark.cn/s/61d55ccc8d73" },
+    ],
   },
   {
     id: "danchi-idol",
@@ -507,7 +509,9 @@ window.GAMES_DATA = [
     source: "本地游戏（标题画面）+ 站长提供截图",
     genres: ["ADV", "监禁", "写真偶像"],
     shots: ["danchi-idol-1-af71cf28.jpg"],
-    links: [],
+    links: [
+      { label: "百度网盘（提取码 hio3）", url: "https://pan.baidu.com/s/1KEdI2XPDJgXGq5QKoUOLZg" },
+    ],
   },
   {
     id: "shion",
@@ -524,7 +528,10 @@ window.GAMES_DATA = [
     source: "嘤嘤怪之家 yyg2.app",
     genres: ["RPG", "异种", "女主人公"],
     shots: ["shion-1-2d17e28c.jpg", "shion-2-d3b21b82.jpg", "shion-3-05e5895d.jpg"],
-    links: [],
+    links: [
+      { label: "百度网盘（提取码 jcpc）", url: "https://pan.baidu.com/s/1UIiYvyaXId7bZ1X_yCSc1A" },
+      { label: "夸克网盘（提取码 R1kn）", url: "https://pan.quark.cn/s/56a6b6c5581d" },
+    ],
   },
   {
     id: "eris-dysnomia",
@@ -594,7 +601,9 @@ window.GAMES_DATA = [
     cover: "inyoku-no-mato-header-4323ba47.jpg",
     genres: ["RPG", "塔攻略"],
     shots: ["inyoku-no-mato-1-16ddd384.jpg", "inyoku-no-mato-2-adac4410.jpg", "inyoku-no-mato-3-a2c7ed0e.jpg", "inyoku-no-mato-4-39de1d17.jpg"],
-    links: [],
+    links: [
+      { label: "百度网盘（提取码 ye07）", url: "https://pan.baidu.com/s/1Gz6FwL4-lz7acCn9wj1X0Q" },
+    ],
   },
   {
     id: "aideal-rays",
@@ -610,7 +619,9 @@ window.GAMES_DATA = [
     cover: "aideal-rays-header-b2a8719c.jpg",
     genres: ["RPG", "奇幻"],
     shots: ["aideal-rays-1-32fd60d0.jpg", "aideal-rays-2-97542537.jpg", "aideal-rays-3-9ff5952d.jpg", "aideal-rays-4-b2e7c38f.jpg"],
-    links: [],
+    links: [
+      { label: "百度网盘（提取码 sdah）", url: "https://pan.baidu.com/s/1ArREh7Fg8VKeXFJf6MazzQ" },
+    ],
   },
   {
     id: "elf-girl-lyfia",
@@ -626,7 +637,9 @@ window.GAMES_DATA = [
     cover: "elf-girl-lyfia-header-f1ef3a71.jpg",
     genres: ["RPG", "精灵", "迷宫"],
     shots: ["elf-girl-lyfia-1-ea234f6c.jpg", "elf-girl-lyfia-2-32bba2c7.jpg", "elf-girl-lyfia-3-8170b6e5.jpg"],
-    links: [],
+    links: [
+      { label: "百度网盘（提取码 vt8o）", url: "https://pan.baidu.com/s/1Fc1-lgjXY3fuPAA7ZA7Nww" },
+    ],
   },
   {
     id: "cyan-record",
