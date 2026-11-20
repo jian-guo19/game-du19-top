@@ -701,6 +701,7 @@ window.GAMES_DATA = [
     shots: ["dave-the-diver-1-e45d738d.jpg", "dave-the-diver-2-2745d71d.jpg", "dave-the-diver-3-896d0115.jpg"],
     links: [
       { label: "百度网盘（提取码 w7yh）", url: "https://pan.baidu.com/s/11y2ZiLLRP7Gp1dELovUTGQ" },
+      { label: "夸克网盘（提取码 TeuD）", url: "https://pan.quark.cn/s/f6e07d4b52da" },
     ],
   },
   {
@@ -718,9 +719,10 @@ window.GAMES_DATA = [
     cover: "meikyuu-monogatari-header-9bbaa79e.jpg",
     source: "本地游戏截屏（迷宫物语）",
     genres: ["RPG", "迷宫", "探索"],
-    shots: ["meikyuu-monogatari-1-b481dad5.jpg", "meikyuu-monogatari-2-01c798c4.jpg", "meikyuu-monogatari-3-ba4ed6fa.jpg"],
+    shots: ["meikyuu-monogatari-1-234156f4.jpg", "meikyuu-monogatari-2-ccde5953.jpg", "meikyuu-monogatari-3-c8d31256.jpg"],
     links: [
       { label: "百度网盘（提取码 9v5c）", url: "https://pan.baidu.com/s/1rJXZeSCwpa4U2SWSzLAbQA" },
+      { label: "夸克网盘（提取码 ajWZ）", url: "https://pan.quark.cn/s/54526204707b" },
     ],
   },
   {
@@ -741,6 +743,7 @@ window.GAMES_DATA = [
     shots: ["vampire-crawlers-1-e7c00978.jpg", "vampire-crawlers-2-afaa10a1.jpg", "vampire-crawlers-3-2097bee9.jpg"],
     links: [
       { label: "百度网盘（提取码 b73r）", url: "https://pan.baidu.com/s/1LEsokk-pt2n8bHZGaFuwMA" },
+      { label: "夸克网盘（提取码 XGLM）", url: "https://pan.quark.cn/s/fcc0387a4db2" },
     ],
   },
   {
@@ -776,11 +779,13 @@ window.GAMES_DATA = [
     introSource: "AliceSoft 官方设定（本地未运行成功，无截屏）",
     intro: "故事发生在一座被封锁的要塞都市。主角作为佣兵卷入各方势力的争夺，在战斗中逐步揭开「封缄」背后的真相。\n战斗为小队制的战棋式交锋，角色的站位、技能与装备搭配决定胜负；城内可以接取任务、强化装备并推进剧情。",
     experience: "（这里写你自己的游玩体验与攻略要点。）",
+    cover: "fuukan-no-grasesta-header-4eecb183.jpg",
     source: "AliceSoft 官方设定（本地未运行成功，无截屏）",
     genres: ["RPG", "奇幻", "战记"],
-    shots: [],
+    shots: ["fuukan-no-grasesta-1-5d227c7c.jpg", "fuukan-no-grasesta-2-d837e2e8.jpg", "fuukan-no-grasesta-3-20fd4c9e.jpg"],
     links: [
       { label: "百度网盘（提取码 1h8p）", url: "https://pan.baidu.com/s/1M2paGiCrGx9Tf_IEWeEbHw" },
+      { label: "夸克网盘（提取码 qKgN）", url: "https://pan.quark.cn/s/484027247b01" },
     ],
   },
   {
@@ -795,11 +800,13 @@ window.GAMES_DATA = [
     introSource: "AliceSoft 官方设定（本地未运行成功，无截屏）",
     intro: "玩家扮演失去记忆、被称为「大器」的少年，与各地英灵（多为女性化的历史人物）结盟，逐步统一日本并远征世界。\n玩法为回合制地域制压：编成部队、分配据点、攻城略地，战斗以部队对部队的形式自动结算，配合武将技能与兵种相性。GOLD 版在原有基础上追加了新剧情、新武将。",
     experience: "（这里写你自己的游玩体验与攻略要点。）",
+    cover: "eiyuu-senki-header-401b650f.jpg",
     source: "AliceSoft 官方设定（本地未运行成功，无截屏）",
     genres: ["SLG", "历史", "战记"],
-    shots: [],
+    shots: ["eiyuu-senki-1-2798c722.jpg", "eiyuu-senki-2-f07de7ae.jpg", "eiyuu-senki-3-156e5581.jpg"],
     links: [
       { label: "百度网盘（提取码 nnym）", url: "https://pan.baidu.com/s/1KdjVwtFUyB20Sns_bXq6ag" },
+      { label: "夸克网盘（提取码 vJmV）", url: "https://pan.quark.cn/s/368ead3bf0c6" },
     ],
   },
 ];
