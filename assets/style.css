@@ -48,23 +48,28 @@ a:hover { text-decoration: underline; }
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0.5px;
-  color: hsl(var(--hue) 28% 50%);
+  color: hsl(var(--hue) 30% 46%);
   padding: 3px 7px;
   border-radius: 6px;
-  background: linear-gradient(180deg, hsl(var(--hue) 80% 98%), hsl(var(--hue) 70% 95%));
-  box-shadow: inset 0 0 0 1px hsl(var(--hue) 55% 90%);
-  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  opacity: 0.92;
   cursor: help;
   transition: 0.18s;
 }
-.age-chip:hover { color: hsl(var(--hue) 45% 42%); opacity: 1; }
+.age-chip:hover { color: hsl(var(--hue) 50% 38%); opacity: 1; background: rgba(255, 255, 255, 0.95); }
 
 /* 导航与账号区之间的竖向渐变分隔线 */
 .nav-divider {
   width: 1px;
   height: 18px;
   margin: 0 2px;
-  background: linear-gradient(180deg, transparent, rgba(40, 40, 80, 0.12), transparent);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    hsl(var(--hue) 45% 55% / 0.28),
+    transparent
+  );
 }
 
 .site-nav { display: flex; align-items: center; gap: 4px; margin-left: 24px; }
@@ -233,14 +238,14 @@ body:not(.is-detail) .nav-home { visibility: hidden; }
   color: var(--text);
   transition: background 0.2s ease;
 }
-.brand:hover { text-decoration: none; background: hsl(var(--hue) 80% 96% / 0.8); }
+.brand:hover { text-decoration: none; background: rgba(255, 255, 255, 0.62); }
 .brand-nut {
   width: 28px;
   height: 28px;
   display: block;
-  filter: drop-shadow(0 4px 8px hsl(var(--hue) 40% 40% / 0.18));
+  filter: drop-shadow(0 4px 8px hsl(var(--hue) 40% 40% / 0.22));
 }
-.site-nav a { color: var(--text-2); font-size: 14px; }
+.site-nav a { color: hsl(var(--hue) 22% 34%); font-size: 14px; }
 .nav-link {
   position: relative;
   padding: 7px 13px;
@@ -248,16 +253,18 @@ body:not(.is-detail) .nav-home { visibility: hidden; }
   transition: color 0.18s, background 0.18s, box-shadow 0.18s;
 }
 .nav-link:hover {
-  color: hsl(var(--hue) 55% 45%);
-  background: hsl(var(--hue) 85% 97%);
+  color: hsl(var(--hue) 62% 38%);
+  background: rgba(255, 255, 255, 0.68);
   text-decoration: none;
 }
-/* 当前所在页：胶囊底 + 底部一道渐变小光条，让它明确是「标签页」而不是普通链接 */
+/* 当前所在页：白色胶囊 + 底部一道渐变小光条，让它明确是「标签页」而不是普通链接 */
 .nav-link.is-active {
-  color: hsl(var(--hue) 55% 42%);
+  color: hsl(var(--hue) 62% 38%);
   font-weight: 600;
-  background: hsl(var(--hue) 88% 97%);
-  box-shadow: inset 0 0 0 1px hsl(var(--hue) 60% 89%);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.95),
+    0 6px 14px -12px rgba(40, 40, 80, 0.7);
 }
 .nav-link.is-active::after {
   content: "";

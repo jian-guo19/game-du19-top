@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>玩过的游戏 · game.du-19.top</title>
+  <meta name="description" content="我玩过的游戏：介绍、截图、过关体验与官方链接。" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/icons/site.webmanifest" />
+  <meta name="theme-color" content="#6b5cf0" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="site-header is-scrolled">
+      <div class="wrap header-inner">
+        <a class="brand" href="#/">
+          <img class="brand-nut" src="assets/logo.png" alt="" width="26" height="26" />
+          <span>du-19</span>
+        </a>
+        <nav class="site-nav" aria-label="主导航">
+          <a class="nav-link" href="#/tavern" data-nav="tavern">酒馆教程</a>
+          <a class="nav-link" href="#/guide" data-nav="guide">新手指南</a>
+        </nav>
+        <div class="nav-side">
+          <span class="nav-divider" aria-hidden="true"></span>
+          <span id="ageChip" class="age-chip" title="本站收录的作品含成人向题材，仅面向成年玩家">18+</span>
+          <span class="user-bar" id="userBar"><span class="ub-name">du-19<span class="ub-badge">管理员</span></span><button type="button" class="ub-out" id="ubOut">退出</button></span>
+          <a class="nav-home" href="#/" title="返回主界面（游戏列表）">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.2 12 4.5l8 6.7"/><path d="M6.4 10.4V19.5h11.2v-9.1"/></svg>
+            <span>返回主界面</span>
+          </a>
+        </div>
+      </div>
+      <div class="header-progress" id="headerProgress" style="width:58%" aria-hidden="true"></div>
+    </header>
+
+    <section class="hero" id="hero">
+      <div class="hero-blobs" aria-hidden="true">
+        <span class="blob b1"></span>
+        <span class="blob b2"></span>
+        <span class="blob b3"></span>
+      </div>
+
+      <div class="wrap hero-inner">
+        <h1 class="sr-only">玩过的游戏 · game.du-19.top</h1>
+
+        <!-- 个人 logo：取自博客头像那只大坚果，想换直接把 assets/logo.png 替换掉 -->
+        <div class="hero-logo">
+          <img src="assets/logo.png" alt="du-19" width="104" height="104" />
+        </div>
+
+        <p class="hero-eyebrow">GAME ARCHIVE · DU-19.TOP</p>
+        <p class="hero-sub" id="heroSub">33 款作品的介绍、截图与通关记录</p>
+
+        <div class="hero-search">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+          </svg>
+          <input id="q" type="search" placeholder="搜游戏名、开发商、标签…" autocomplete="off" aria-label="搜索游戏" />
+          <kbd class="search-kbd">/</kbd>
+        </div>
+
+        <nav class="cat-nav" id="catNav" aria-label="分类"></nav>
+
+        <div class="hero-stats" id="heroStats"></div>
+      </div>
+
+      <svg class="hero-curve" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,80 L0,34 Q720,-26 1440,34 L1440,80 Z" />
+      </svg>
+    </section>
+
+    <main class="wrap">
+      <section class="notice" id="noticeBox">
+        <div class="notice-head">
+          <span class="notice-badge">公告</span>
+          <span class="notice-title">个人公告区</span>
+          <span class="notice-more" id="noticeMore"></span>
+        </div>
+        <ul class="notice-list" id="noticeList"></ul>
+      </section>
+
+      <section id="listView">
+        <a class="guide-tip tavern-tip is-pinned" href="#/tavern">
+          <span class="guide-tip-badge">置顶</span>
+          <span class="guide-tip-text"><b>酒馆部署教程</b>　从解压、配接口到导入角色卡，七节图文带着图一步步走</span>
+          <span class="guide-tip-arrow">→</span>
+        </a>
+        <a class="guide-tip" href="#/guide">
+          <span class="guide-tip-badge">新手</span>
+          <span class="guide-tip-text">第一次在自己电脑上装游戏？分卷怎么解、报毒怎么办、双击没反应怎么查，这一页都写清楚了</span>
+          <span class="guide-tip-arrow">→</span>
+        </a>
+        <div class="toolbar">
+          <div id="filters" class="filters"></div>
+          <span id="count" class="count"></span>
+        </div>
+        <div id="grid" class="grid"></div>
+      </section>
+
+      <section id="detailView" hidden></section>
+
+      <section id="guideView" hidden></section>
+
+      <section id="tavernView" hidden></section>
+
+      <section id="cardsView" hidden></section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>本站作品含成人向题材，仅面向成年玩家 · 资料整理自公开渠道 · 不提供下载资源 · <a href="https://du-19.top/" target="_blank" rel="noopener">du-19.top</a></p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
