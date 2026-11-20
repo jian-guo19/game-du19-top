@@ -539,7 +539,7 @@ window.GAMES_DATA = [
     experience: "（这里写你自己的过关体验和攻略要点。）",
     cover: "eris-dysnomia-header-e29b4d9c.jpg",
     genres: ["RPG", "黑暗奇幻"],
-    shots: ["eris-dysnomia-1-bebbca16.jpg", "eris-dysnomia-2-4a6300b3.jpg", "eris-dysnomia-3-42708a72.jpg", "eris-dysnomia-4-c9ba6b1a.jpg"],
+    shots: ["eris-dysnomia-2-4a6300b3.jpg", "eris-dysnomia-3-42708a72.jpg", "eris-dysnomia-4-c9ba6b1a.jpg"],
     links: [
       { label: "百度网盘（提取码 ckpm）", url: "https://pan.baidu.com/s/10Sttlck73uPqMmRQmk4rNw" },
     ],
@@ -641,7 +641,7 @@ window.GAMES_DATA = [
     cover: "cyan-record-header-b678d687.jpg",
     source: "本地游戏目录识别（窗口标题）",
     genres: ["RPG", "迷宫", "人妻"],
-    shots: ["cyan-record-1-493a8aaa.jpg", "cyan-record-2-5add2dc3.jpg", "cyan-record-3-d2c3972e.jpg", "cyan-record-4-1f19d995.jpg"],
+    shots: ["cyan-record-1-493a8aaa.jpg", "cyan-record-3-d2c3972e.jpg", "cyan-record-4-1f19d995.jpg"],
     links: [],
   },
 ];
