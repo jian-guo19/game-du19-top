@@ -125,21 +125,32 @@ body:not(.is-detail) .nav-home { visibility: hidden; }
 .btn-primary:hover { background: hsl(var(--hue) 75% 56%); color: #fff; }
 
 /* ---------- 顶栏 ---------- */
-/* 毛玻璃 + 顶部一抹主色柔光 + 底边渐变发丝线；滚动后加深模糊与投影，形成「浮起」的层次 */
+/* 配色：靛蓝 → 紫罗兰 → 青 → 粉 的「极光」叠层。
+   刻意保持高明度（L≈94–96%），深色正文的对比度仍在 7:1 以上，
+   靠色相变化而不是压暗来做层次。 */
+:root {
+  --hdr-indigo: hsl(230 95% 95%);
+  --hdr-violet: hsl(272 92% 95.5%);
+  --hdr-cyan: hsl(192 90% 93.5%);
+  --hdr-pink: hsl(334 92% 95%);
+}
+
 .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
   background:
-    radial-gradient(90% 160% at 0% -40%, hsl(var(--hue) 95% 97% / 0.95), transparent 55%),
-    radial-gradient(70% 140% at 100% -60%, hsl(268 90% 97% / 0.75), transparent 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.9));
+    radial-gradient(120% 200% at 0% -60%, var(--hdr-indigo), transparent 56%),
+    radial-gradient(95% 180% at 46% -80%, var(--hdr-violet), transparent 58%),
+    radial-gradient(85% 170% at 100% -50%, var(--hdr-cyan), transparent 56%),
+    radial-gradient(55% 140% at 84% 150%, var(--hdr-pink), transparent 60%),
+    linear-gradient(100deg, hsl(228 92% 96%), hsl(262 88% 96%) 46%, hsl(198 88% 95%));
   -webkit-backdrop-filter: blur(14px) saturate(150%);
   backdrop-filter: blur(14px) saturate(150%);
-  box-shadow: 0 1px 3px rgba(40, 40, 80, 0.05);
+  box-shadow: 0 1px 3px rgba(40, 40, 80, 0.06);
   transition: background 0.25s ease, box-shadow 0.25s ease;
 }
-/* 顶部一道极淡的主色光带，给白底一点「材质感」 */
+/* 顶部光谱边：靛 → 紫 → 青 → 粉，1px，给彩色底一条「收边」 */
 .site-header::before {
   content: "";
   position: absolute;
@@ -151,8 +162,10 @@ body:not(.is-detail) .nav-home { visibility: hidden; }
   background: linear-gradient(
     90deg,
     transparent,
-    hsl(var(--hue) 90% 72% / 0.45) 30%,
-    hsl(272 85% 70% / 0.45) 70%,
+    hsl(230 90% 70% / 0.5) 18%,
+    hsl(272 88% 70% / 0.5) 42%,
+    hsl(192 85% 62% / 0.45) 68%,
+    hsl(334 85% 74% / 0.4) 86%,
     transparent
   );
 }
@@ -167,20 +180,24 @@ body:not(.is-detail) .nav-home { visibility: hidden; }
   background: linear-gradient(
     90deg,
     transparent,
-    hsl(var(--hue) 70% 62% / 0.18) 12%,
-    hsl(var(--hue) 75% 60% / 0.42) 50%,
-    hsl(var(--hue) 70% 62% / 0.18) 88%,
+    hsl(230 70% 62% / 0.2) 14%,
+    hsl(272 70% 62% / 0.34) 42%,
+    hsl(192 70% 55% / 0.3) 68%,
+    hsl(334 70% 65% / 0.2) 86%,
     transparent
   );
 }
+/* 滚动后：色相略微加深、模糊加强，做出「落定」的层次 */
 .site-header.is-scrolled {
   background:
-    radial-gradient(90% 160% at 0% -40%, hsl(var(--hue) 95% 97% / 0.85), transparent 55%),
-    radial-gradient(70% 140% at 100% -60%, hsl(268 90% 97% / 0.65), transparent 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.78));
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: 0 10px 26px -20px rgba(40, 40, 80, 0.5);
+    radial-gradient(120% 200% at 0% -60%, hsl(230 95% 93.5%), transparent 56%),
+    radial-gradient(95% 180% at 46% -80%, hsl(272 92% 94%), transparent 58%),
+    radial-gradient(85% 170% at 100% -50%, hsl(192 90% 91.5%), transparent 56%),
+    radial-gradient(55% 140% at 84% 150%, hsl(334 92% 93.5%), transparent 60%),
+    linear-gradient(100deg, hsl(228 92% 94.5%), hsl(262 88% 94.5%) 46%, hsl(198 88% 93.5%));
+  -webkit-backdrop-filter: blur(20px) saturate(185%);
+  backdrop-filter: blur(20px) saturate(185%);
+  box-shadow: 0 10px 26px -20px rgba(40, 40, 80, 0.55);
 }
 
 /* 阅读进度：顶栏底边一道渐变光，随滚动增长 */
