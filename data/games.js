@@ -107,6 +107,7 @@ window.GAMES_DATA = [
     shots: [],
     links: [
       { label: "百度网盘（提取码 zuxf）", url: "https://pan.baidu.com/s/1iEjveNemQtxmjOdnUwRkxA" },
+      { label: "夸克网盘（提取码 kD8Y）", url: "https://pan.quark.cn/s/67774cee2b0b" },
     ],
   },
   {
@@ -532,6 +533,7 @@ window.GAMES_DATA = [
     shots: ["danchi-idol-1-af71cf28.jpg"],
     links: [
       { label: "百度网盘（提取码 hio3）", url: "https://pan.baidu.com/s/1KEdI2XPDJgXGq5QKoUOLZg" },
+      { label: "夸克网盘（提取码 Qy33）", url: "https://pan.quark.cn/s/04ec7cb9a77d" },
     ],
   },
   {
@@ -646,6 +648,7 @@ window.GAMES_DATA = [
     shots: ["aideal-rays-1-32fd60d0.jpg", "aideal-rays-2-97542537.jpg", "aideal-rays-3-9ff5952d.jpg", "aideal-rays-4-b2e7c38f.jpg"],
     links: [
       { label: "百度网盘（提取码 sdah）", url: "https://pan.baidu.com/s/1ArREh7Fg8VKeXFJf6MazzQ" },
+      { label: "夸克网盘（提取码 8Ttq）", url: "https://pan.quark.cn/s/f9cb646d208c" },
     ],
   },
   {
@@ -681,7 +684,10 @@ window.GAMES_DATA = [
     source: "本地游戏目录识别（窗口标题）",
     genres: ["RPG", "迷宫", "人妻"],
     shots: ["cyan-record-1-493a8aaa.jpg", "cyan-record-3-d2c3972e.jpg", "cyan-record-4-1f19d995.jpg"],
-    links: [],
+    links: [
+      { label: "百度网盘（提取码 o5qr）", url: "https://pan.baidu.com/s/1_oUdYXV56ypOl5U4dC6mAw" },
+      { label: "夸克网盘（提取码 2he3）", url: "https://pan.quark.cn/s/67f0317d76ce" },
+    ],
   },
   {
     id: "dave-the-diver",
