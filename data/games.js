@@ -429,10 +429,10 @@ window.GAMES_DATA = [
     introSource: "嘤嘤怪之家 yyg2.app",
     intro: "========================================================\n刀剑与魔法。一个充满暴力与神秘的时代。\n造物主上帝早已离去，不会拯救人类。\n世间仅存的，只有那些喜怒无常的神灵。\n为了获得神灵的帮助，人们将一位高贵的巫女作为祭品献祭。\n她们被称为祭祀公主。\n========================================================\n一部融合了角色扮演和冒险元素的成熟奇幻角色扮演小说。\n神灵赐予祭祀公主三种力量。主人公菲娜正是凭借这些力量进行战斗。",
     experience: "（这里写你自己的过关体验和攻略要点。）",
-    cover: "fina-header-2049dbda.jpg",
-    source: "嘤嘤怪之家 yyg2.app",
+    cover: "fina-header-85b46757.jpg",
+    source: "本地游戏截屏（窗口标题：献给精灵神的祭品巫女供牺姬菲娜的冒险之旅 ver1.07）",
     genres: ["RPG", "奇幻", "异种"],
-    shots: ["fina-1-fce04cb0.jpg", "fina-2-0d4cbefd.jpg", "fina-3-3a003e52.jpg", "fina-4-a957422f.jpg"],
+    shots: ["fina-1-403a0720.jpg", "fina-2-eb51c4db.jpg", "fina-3-81a33b44.jpg", "fina-4-15ad1f1b.jpg"],
     links: [
       { label: "百度网盘（提取码 hc2v）", url: "https://pan.baidu.com/s/1CIHDKu4br8l3jY49Vppkqg" },
     ],
