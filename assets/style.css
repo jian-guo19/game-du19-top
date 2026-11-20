@@ -289,8 +289,10 @@ body:not(.is-detail) .nav-home { visibility: hidden; }
   overflow: hidden;
   padding: 56px 0 78px;
   color: #fff;
+  /* 底图 + 一层薄暗罩（保证白字对比度）；最后一行是图片加载前的兜底渐变 */
   background:
-    radial-gradient(120% 140% at 12% 0%, hsl(268 62% 66%) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(26, 18, 64, 0.18), rgba(26, 18, 64, 0.36)),
+    url("images/hero-bg.jpg") center top / cover no-repeat,
     linear-gradient(132deg, hsl(250 66% 56%) 0%, hsl(268 58% 60%) 48%, hsl(230 70% 52%) 100%);
 }
 .hero-blobs { position: absolute; inset: 0; z-index: 0; }
@@ -300,9 +302,10 @@ body:not(.is-detail) .nav-home { visibility: hidden; }
   filter: blur(48px);
   will-change: transform;
 }
-.b1 { width: 400px; height: 400px; left: -100px; top: -160px; background: rgba(255, 255, 255, 0.3); }
-.b2 { width: 300px; height: 300px; left: 17%; bottom: -130px; background: rgba(180, 210, 255, 0.55); }
-.b3 { width: 380px; height: 380px; right: -110px; top: -80px; background: rgba(255, 210, 245, 0.33); }
+/* 有底图后光斑要收力，否则会把图糊成一片 */
+.b1 { width: 400px; height: 400px; left: -100px; top: -160px; background: rgba(255, 255, 255, 0.16); }
+.b2 { width: 300px; height: 300px; left: 17%; bottom: -130px; background: rgba(180, 210, 255, 0.14); }
+.b3 { width: 380px; height: 380px; right: -110px; top: -80px; background: rgba(255, 210, 245, 0.18); }
 
 .hero-inner { position: relative; z-index: 2; text-align: center; }
 .hero-eyebrow {
