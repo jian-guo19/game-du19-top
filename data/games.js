@@ -448,10 +448,10 @@ window.GAMES_DATA = [
     introSource: "嘤嘤怪之家 yyg2.app",
     intro: "剧情简介\n住在宁静村庄的少年米尔（名称可更改）。\n某天，在森林中被甜美的香味吸引，发现了一座陌生的宅邸。然而，突然听到人狼的叫声，慌忙逃到宅邸避难。\n但这座宅邸却是住着一群魅魔姐姐们的危险场所……\n米尔究竟能否平安逃脱……！？\n★游戏系统\n游戏的目的很简单！在众多机关和逼近的魅魔的追逐下，收集每个关卡里的逃脱钥匙即可！\n每次被抓住都会被榨取（精力）……→生命值归零就会游戏结束→之后会迎来魅魔们更加甜蜜的“疼爱”……！？",
     experience: "（这里写你自己的过关体验和攻略要点。）",
-    cover: "amaama-yuwaku-header-7db1dcea.jpg",
+    cover: "amaama-yuwaku-header-fdabfb7e.jpg",
     source: "嘤嘤怪之家 yyg2.app",
     genres: ["RPG", "甜蜜", "同居"],
-    shots: ["amaama-yuwaku-1-b8082abd.jpg"],
+    shots: ["amaama-yuwaku-1-869c522b.jpg", "amaama-yuwaku-2-35f73f7c.jpg"],
     links: [
       { label: "百度网盘（提取码 t1d6）", url: "https://pan.baidu.com/s/1VK8cIXU1ReMdAoQIh2Dizw" },
     ],
