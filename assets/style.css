@@ -42,18 +42,32 @@ a:hover { text-decoration: underline; }
 
 /* ---------- 18+ 小标签（不拦截，仅角落提示；刻意不做成按钮形状） ---------- */
 .age-chip {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: 10.5px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1;
-  letter-spacing: 0.4px;
-  color: var(--text-3);
-  opacity: 0.85;
+  letter-spacing: 0.5px;
+  color: hsl(var(--hue) 28% 50%);
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, hsl(var(--hue) 80% 98%), hsl(var(--hue) 70% 95%));
+  box-shadow: inset 0 0 0 1px hsl(var(--hue) 55% 90%);
+  opacity: 0.9;
   cursor: help;
   transition: 0.18s;
 }
-.age-chip:hover { color: var(--text-2); opacity: 1; }
-.site-nav { display: flex; align-items: center; gap: 22px; margin-left: 34px; }
+.age-chip:hover { color: hsl(var(--hue) 45% 42%); opacity: 1; }
+
+/* 导航与账号区之间的竖向渐变分隔线 */
+.nav-divider {
+  width: 1px;
+  height: 18px;
+  margin: 0 2px;
+  background: linear-gradient(180deg, transparent, rgba(40, 40, 80, 0.12), transparent);
+}
+
+.site-nav { display: flex; align-items: center; gap: 4px; margin-left: 24px; }
 
 /* 顶栏右侧：账号区 + 回主界面，整体压低视觉权重 */
 .nav-side {
@@ -68,14 +82,20 @@ a:hover { text-decoration: underline; }
   gap: 5px;
   font-size: 13px;
   color: var(--text-2);
-  padding: 5px 11px;
-  border: 1px solid var(--border);
+  padding: 6px 13px;
+  border: 1px solid hsl(var(--hue) 50% 90% / 0.9);
   border-radius: 999px;
-  background: var(--card);
+  background: linear-gradient(180deg, #fff, hsl(var(--hue) 60% 98%));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 6px 14px -12px rgba(40, 40, 80, 0.5);
   transition: 0.18s;
   white-space: nowrap;
 }
-.nav-home:hover { border-color: var(--primary); color: var(--primary); text-decoration: none; }
+.nav-home:hover {
+  border-color: hsl(var(--hue) 70% 78%);
+  color: var(--primary);
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 8px 18px -10px hsl(var(--hue) 80% 60% / 0.55);
+}
 .nav-home svg {
   width: 13px;
   height: 13px;
@@ -105,47 +125,134 @@ body:not(.is-detail) .nav-home { visibility: hidden; }
 .btn-primary:hover { background: hsl(var(--hue) 75% 56%); color: #fff; }
 
 /* ---------- 顶栏 ---------- */
+/* 毛玻璃 + 顶部一抹主色柔光 + 底边渐变发丝线；滚动后加深模糊与投影，形成「浮起」的层次 */
 .site-header {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 20;
+  background:
+    radial-gradient(90% 160% at 0% -40%, hsl(var(--hue) 95% 97% / 0.95), transparent 55%),
+    radial-gradient(70% 140% at 100% -60%, hsl(268 90% 97% / 0.75), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.9));
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  backdrop-filter: blur(14px) saturate(150%);
+  box-shadow: 0 1px 3px rgba(40, 40, 80, 0.05);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
 }
-.header-inner {
-  display: flex;
-  align-items: center;
-  height: 62px;
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--text);
-}
-.brand:hover { text-decoration: none; }
-.brand-nut { width: 26px; height: 26px; display: block; }
-.site-nav a { color: var(--text-2); font-size: 14px; }
-.nav-link {
-  position: relative;
-  padding: 5px 1px;
-  transition: color 0.18s;
-}
-.nav-link:hover { color: var(--primary); text-decoration: none; }
-/* 当前所在页：文字加深 + 下方一道细横线，让它明确是「标签页」而不是普通链接 */
-.nav-link.is-active { color: var(--text); font-weight: 600; }
-.nav-link.is-active::after {
+/* 顶部一道极淡的主色光带，给白底一点「材质感」 */
+.site-header::before {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -3px;
+  top: 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--hue) 90% 72% / 0.45) 30%,
+    hsl(272 85% 70% / 0.45) 70%,
+    transparent
+  );
+}
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--hue) 70% 62% / 0.18) 12%,
+    hsl(var(--hue) 75% 60% / 0.42) 50%,
+    hsl(var(--hue) 70% 62% / 0.18) 88%,
+    transparent
+  );
+}
+.site-header.is-scrolled {
+  background:
+    radial-gradient(90% 160% at 0% -40%, hsl(var(--hue) 95% 97% / 0.85), transparent 55%),
+    radial-gradient(70% 140% at 100% -60%, hsl(268 90% 97% / 0.65), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.78));
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 10px 26px -20px rgba(40, 40, 80, 0.5);
+}
+
+/* 阅读进度：顶栏底边一道渐变光，随滚动增长 */
+.header-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   height: 2px;
+  width: 0;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(90deg, hsl(var(--hue) 90% 68%), hsl(268 85% 66%));
+  box-shadow: 0 0 10px hsl(var(--hue) 85% 62% / 0.55);
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  min-width: 0;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px 4px 4px;
+  margin-left: -4px;
+  border-radius: 999px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--text);
+  transition: background 0.2s ease;
+}
+.brand:hover { text-decoration: none; background: hsl(var(--hue) 80% 96% / 0.8); }
+.brand-nut {
+  width: 28px;
+  height: 28px;
+  display: block;
+  filter: drop-shadow(0 4px 8px hsl(var(--hue) 40% 40% / 0.18));
+}
+.site-nav a { color: var(--text-2); font-size: 14px; }
+.nav-link {
+  position: relative;
+  padding: 7px 13px;
+  border-radius: 999px;
+  transition: color 0.18s, background 0.18s, box-shadow 0.18s;
+}
+.nav-link:hover {
+  color: hsl(var(--hue) 55% 45%);
+  background: hsl(var(--hue) 85% 97%);
+  text-decoration: none;
+}
+/* 当前所在页：胶囊底 + 底部一道渐变小光条，让它明确是「标签页」而不是普通链接 */
+.nav-link.is-active {
+  color: hsl(var(--hue) 55% 42%);
+  font-weight: 600;
+  background: hsl(var(--hue) 88% 97%);
+  box-shadow: inset 0 0 0 1px hsl(var(--hue) 60% 89%);
+}
+.nav-link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+  width: 14px;
+  height: 2px;
+  margin-left: -7px;
   border-radius: 2px;
-  background: var(--primary);
+  background: linear-gradient(90deg, hsl(var(--hue) 90% 70%), hsl(272 80% 64%));
+  box-shadow: 0 0 8px hsl(var(--hue) 85% 60% / 0.7);
 }
 
 /* ---------- Hero 门面 ---------- */
@@ -1040,31 +1147,63 @@ body.is-detail .notice { display: none; }
 }
 
 /* ---------- 账号状态栏 ---------- */
-.user-bar { display: inline-flex; align-items: center; gap: 10px; }
-.ub-name { font-size: 13px; color: var(--text-2); display: inline-flex; align-items: center; gap: 5px; }
-/* 角色标记只做颜色区分，不再占一个「药丸」的位置 */
+.user-bar { display: inline-flex; align-items: center; gap: 9px; }
+.ub-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+/* 角色标记：一枚渐变小胶囊，只做身份区分，不抢主视觉 */
 .ub-badge {
-  font-size: 10.5px; padding: 0; border-radius: 0;
-  background: none; color: var(--text-3); font-weight: 500;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 1.5px 6px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, hsl(var(--hue) 90% 70%), hsl(268 80% 60%));
+  box-shadow: 0 4px 10px -6px hsl(var(--hue) 85% 55% / 0.9);
 }
 .ub-in, .ub-out {
   font-size: 13px; cursor: pointer;
   font-family: inherit; text-decoration: none; transition: 0.18s;
 }
 .ub-in {
-  padding: 5px 12px; border-radius: 999px;
+  padding: 6px 13px; border-radius: 999px;
   border: 1px solid var(--border); background: var(--card); color: var(--text-2);
 }
 .ub-in:hover { border-color: var(--primary); color: var(--primary); }
-/* 退出对已登录用户是低频操作，降级为纯文字 */
+/* 退出对已登录用户是低频操作，降级为纯文字，hover 才浮出淡红底 */
 .ub-out {
-  padding: 0; border: 0; background: none; color: var(--text-3);
+  padding: 5px 10px; border: 0; border-radius: 999px; background: none; color: var(--text-3);
 }
-.ub-out:hover { color: #e0556e; }
+.ub-out:hover { color: #e0556e; background: rgba(224, 85, 110, 0.08); }
 
 /* 手机屏（≤480）：顶栏放不下用户名，隐藏它；退出与回主界面图标保留可用 */
 @media (max-width: 480px) {
   .ub-name { display: none; }
+  .nav-link { padding: 6px 8px; font-size: 13px; }
+}
+
+/* 窄屏（≤720）：收紧间距，回主界面只留图标 */
+@media (max-width: 720px) {
+  .header-inner { height: 58px; }
+  .brand { font-size: 16px; }
+  .brand-nut { width: 24px; height: 24px; }
+  .site-nav { margin-left: 8px; gap: 0; }
+  .nav-link { padding: 6px 10px; font-size: 13.5px; }
+  .nav-home { padding: 7px; }
+  .nav-home span { display: none; }
+  .nav-side { gap: 8px; }
+}
+
+/* 更窄（≤560）：收起 18+ 与分隔线，把宽度让给导航和账号 */
+@media (max-width: 560px) {
+  .nav-divider, .age-chip { display: none; }
+  .site-nav { margin-left: 4px; }
 }
 
 /* ---------- 评论区 ---------- */

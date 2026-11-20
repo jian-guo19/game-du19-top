@@ -815,9 +815,26 @@
 
   window.addEventListener("hashchange", route);
 
+  // ---------- 顶栏：滚动后加深毛玻璃 + 底边阅读进度 ----------
+  var siteHeader = document.querySelector(".site-header");
+  var headerProgress = document.getElementById("headerProgress");
+
+  function updateHeader() {
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    if (siteHeader) siteHeader.classList.toggle("is-scrolled", y > 6);
+    if (headerProgress) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = max > 0 ? Math.min(100, Math.max(0, (y / max) * 100)) : 0;
+      headerProgress.style.width = pct + "%";
+    }
+  }
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  window.addEventListener("resize", updateHeader);
+
   // ---------- 启动 ----------
   renderChrome();
   buildCatNav();
   renderUserBar();
   route();
+  updateHeader();
 })();
