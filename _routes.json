@@ -3,8 +3,11 @@
   "include": ["/*"],
   "exclude": [
     "/assets/images/*",
+    "/assets/tutorial/*",
+    "/assets/icons/*",
     "/assets/logo.png",
     "/assets/style.css",
-    "/assets/login.css"
+    "/assets/login.css",
+    "/assets/login.js"
   ]
 }

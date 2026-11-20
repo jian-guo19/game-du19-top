@@ -46,6 +46,14 @@ jobs:
           done
           echo "数据文件语法 OK"
 
+      # 文本编码体检：挡「UTF-8 被按 latin-1 存盘」导致的首页乱码
+      - name: Check text encoding
+        run: python3 scripts/check_encoding.py
+
+      # 安全策略回归测试：限流、密码强度、fail-closed 门禁、安全响应头
+      - name: Security policy tests
+        run: node scripts/test_security.mjs
+
       # 给 JS/CSS 加内容哈希，避免浏览器拿 4 小时缓存的旧版本
       - name: Stamp asset versions
         run: python3 scripts/stamp_assets.py

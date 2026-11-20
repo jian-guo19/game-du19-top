@@ -34,8 +34,24 @@
 
   function imgPath(p) {
     if (!p) return "";
-    if (/^(https?:)?\/\//.test(p)) return p;
-    return IMG + p;
+    var s = String(p).trim();
+    if (/^https?:\/\//i.test(s)) return s;
+    // 只允许 assets/images 下的文件名，挡掉 ../ 和协议相对 //host/x
+    s = s.replace(/^\.?\//, "").replace(/\.\.(\/|$)/g, "");
+    if (s.charAt(0) === "/" || s.indexOf(":") !== -1) return "";
+    return IMG + s;
+  }
+
+  // 只放行 http(s)、站内绝对路径、相对路径和 #/ 锚点，其余（javascript:、data: 等）一律丢弃
+  function safeUrl(u) {
+    var s = String(u == null ? "" : u).trim();
+    if (!s) return "";
+    if (s.charAt(0) === "#") return s;
+    if (/^\/(?!\/)/.test(s)) return s;
+    var m = /^([a-z][a-z0-9+.-]*):/i.exec(s);
+    if (!m) return s;                       // 无协议头 → 当作相对路径
+    var scheme = m[1].toLowerCase();
+    return (scheme === "http" || scheme === "https") ? s : "";
   }
 
   // 没有封面时用标题卡占位，配色由 id 决定，同一款游戏每次看到的颜色一致
@@ -277,9 +293,11 @@
 
     var links = (g.links && g.links.length)
       ? '<div class="shots">' + g.links.map(function (l) {
+          var u = safeUrl(l.url);
+          if (!u) return "";                       // 非法协议直接丢掉这个链接
           // 站内锚点（#/cards 这类）就地跳转，不加新窗口
-          var jump = l.url.charAt(0) === "#";
-          return '<a class="btn" href="' + esc(l.url) + '"' +
+          var jump = u.charAt(0) === "#";
+          return '<a class="btn" href="' + esc(u) + '"' +
             (jump ? "" : ' target="_blank" rel="noopener"') + ">" +
             esc(l.label) + "</a>";
         }).join("") + "</div>" + pwdNote
@@ -397,7 +415,7 @@
 
     var body = tavern.sections.map(function (s) {
       var fig = s.fig
-        ? '<figure class="t-figure"><img src="' + esc(s.fig) +
+        ? '<figure class="t-figure"><img src="' + esc(safeUrl(s.fig)) +
           '" alt="' + esc(s.alt || s.title) + '" loading="lazy" />' +
           (s.caption ? "<figcaption>" + esc(s.caption) + "</figcaption>" : "") +
           "</figure>"
@@ -411,7 +429,7 @@
       var shots = (s.shots || []).map(function (c) {
         if (c && typeof c === "object" && c.src) {
           return '<figure class="t-shot-img">' +
-            '<img src="' + esc(c.src) + '" alt="' + esc(c.alt || c.caption || "") + '" loading="lazy" />' +
+            '<img src="' + esc(safeUrl(c.src)) + '" alt="' + esc(c.alt || c.caption || "") + '" loading="lazy" />' +
             (c.caption ? "<figcaption>" + esc(c.caption) + "</figcaption>" : "") +
             "</figure>";
         }
@@ -440,7 +458,7 @@
         "<h2>" + esc(tavern.end.title) + "</h2>" +
         "<p>" + esc(tavern.end.body) + "</p>" +
         (tavern.end.linkUrl
-          ? '<a class="btn btn-primary" href="' + esc(tavern.end.linkUrl) +
+          ? '<a class="btn btn-primary" href="' + esc(safeUrl(tavern.end.linkUrl)) +
             '" target="_blank" rel="noopener">' + esc(tavern.end.linkLabel || "了解更多") + "</a>"
           : "") +
         "</section>"
@@ -499,7 +517,7 @@
     }).join("");
 
     var dl = '<div class="c-dl">' +
-      '<a class="btn btn-primary" href="' + esc(d.url) + '" target="_blank" rel="noopener">' +
+      '<a class="btn btn-primary" href="' + esc(safeUrl(d.url)) + '" target="_blank" rel="noopener">' +
       esc(d.label) + "</a>" +
       '<p class="dl-note">解压密码：<b class="dl-pwd">' + esc(d.password) +
       '</b>　·　三层嵌套，密码只在第一层输一次　·　<a href="#/guide">解压步骤看图解</a></p>' +

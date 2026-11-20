@@ -13,7 +13,7 @@ import urllib.error
 import urllib.request
 
 NAME = "game-du19-db"
-MIGRATION = "migrations/0001_init.sql"
+MIGRATION_DIR = "migrations"
 CONFIG = "wrangler.toml"
 
 ACC = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "").strip()
@@ -61,17 +61,31 @@ def main():
     db_id = db["uuid"]
     print(f"D1 database_id = {db_id}")
 
-    # 3. 建表（逐条执行）
-    sql = io.open(MIGRATION, encoding="utf-8").read()
-    body = "\n".join(l for l in sql.splitlines() if not l.strip().startswith("--"))
-    stmts = [s.strip() for s in body.split(";") if s.strip()]
-    print(f"将执行 {len(stmts)} 条建表语句")
-    for i, stmt in enumerate(stmts, 1):
+    # 3. 建表（按文件名顺序执行 migrations/*.sql，逐条语句）
+    files = sorted(
+        os.path.join(MIGRATION_DIR, n)
+        for n in os.listdir(MIGRATION_DIR)
+        if n.endswith(".sql")
+    )
+    if not files:
+        sys.exit(f"{MIGRATION_DIR}/ 下没有 .sql 迁移文件")
+
+    stmts = []
+    for path in files:
+        sql = io.open(path, encoding="utf-8").read()
+        body = "\n".join(l for l in sql.splitlines() if not l.strip().startswith("--"))
+        for s in body.split(";"):
+            s = s.strip()
+            if s:
+                stmts.append((os.path.basename(path), s))
+
+    print(f"共 {len(files)} 个迁移文件、{len(stmts)} 条语句：{[os.path.basename(f) for f in files]}")
+    for i, (fname, stmt) in enumerate(stmts, 1):
         res = call(f"{BASE}/{db_id}/query", "POST", {"sql": stmt})
         if not res.get("success"):
-            sys.exit(f"第 {i} 条语句失败：{res.get('errors')}\nSQL: {stmt[:200]}")
+            sys.exit(f"第 {i} 条语句失败（{fname}）：{res.get('errors')}\nSQL: {stmt[:200]}")
         head = " ".join(stmt.split())[:70]
-        print(f"  [{i}/{len(stmts)}] OK  {head}")
+        print(f"  [{i}/{len(stmts)}] OK  {fname}  {head}")
 
     # 4. 把 database_id 写进 wrangler.toml
     cfg = io.open(CONFIG, encoding="utf-8").read()

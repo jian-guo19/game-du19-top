@@ -1,0 +1,21 @@
+# 安全响应头（Cloudflare Pages 静态资源）
+# 说明：Functions 的响应不经过这个文件，那边由 functions/_middleware.js 里的
+#       SECURITY_HEADERS 统一补，两处保持一致。
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=15552000
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; font-src 'self' data:; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+
+# 图片与字体：长缓存（内容不变就不用回源）
+/assets/images/*
+  Cache-Control: public, max-age=2592000
+
+/assets/tutorial/*
+  Cache-Control: public, max-age=2592000
+
+/assets/icons/*
+  Cache-Control: public, max-age=2592000
