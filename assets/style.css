@@ -901,6 +901,26 @@ body.is-detail .tavern-tip { display: none; }
 }
 .g-note.warn { background: #fdf4f3; border-left-color: #d9534f; color: #8b4a45; }
 
+/* 教程步骤里挂的下载链接 */
+.g-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin: 12px 0 4px;
+}
+.g-link-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+}
+.g-link-item .btn-sm { flex: none; }
+.g-link-note {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
 .g-table-sec { margin-top: 28px; padding-top: 34px; border-top: 1px solid var(--border); }
 .g-table-sec h2 { margin: 0 0 8px; font-size: 21px; letter-spacing: -0.3px; }
 .g-table-scroll {

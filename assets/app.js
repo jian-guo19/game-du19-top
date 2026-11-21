@@ -55,6 +55,21 @@
     return (scheme === "http" || scheme === "https") ? s : "";
   }
 
+  // 教程步骤里挂的下载链接：{ t: 按钮文字, url: 链接, note: 旁边的补充说明 }
+  function linksHtml(links) {
+    if (!links || !links.length) return "";
+    var items = links.map(function (l) {
+      var url = safeUrl(l.url);
+      if (!url) return "";
+      var note = l.note ? '<span class="g-link-note">' + esc(l.note) + "</span>" : "";
+      return '<span class="g-link-item">' +
+        '<a class="btn btn-sm" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(l.t || "下载") + "</a>" +
+        note + "</span>";
+    }).join("");
+    if (!items) return "";
+    return '<div class="g-links">' + items + "</div>";
+  }
+
   // 没有封面时用标题卡占位，配色由 id 决定，同一款游戏每次看到的颜色一致
   function hueOf(s) {
     var h = 0;
@@ -458,7 +473,7 @@
       var steps = (g.steps || []).map(function (s) {
         var code = s.code ? '<pre class="g-code">' + esc(s.code) + "</pre>" : "";
         return "<li><div class=\"g-step-t\">" + esc(s.t) + "</div>" +
-          '<div class="g-step-d">' + esc(s.d) + "</div>" + code + "</li>";
+          '<div class="g-step-d">' + esc(s.d) + "</div>" + code + linksHtml(s.links) + "</li>";
       }).join("");
 
       var note = g.note
