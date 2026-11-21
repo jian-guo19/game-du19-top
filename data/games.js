@@ -273,6 +273,7 @@ window.GAMES_DATA = [
     publisher: "个人整理打包",
     releaseDate: "2026-11",
     platform: "Windows / Android",
+    type: "software",
     rating: 0,
     status: "游玩中",
     summary: "给 SillyTavern（个人酒馆）用的一套角色卡合集：1286 张 PNG，按 22 个分类分好目录，包体约 1.0 GB。每张卡的图片本身就是封面，真正的角色设定写在文件元数据里，导入酒馆后会自动带出名字、开场白和人物描述，不需要另外配设定文件。根目录另附 CSV 版和 HTML 版索引，不用解压也能先按分类、标签翻一遍，挑好再导。",
