@@ -14,6 +14,9 @@ const PUBLIC = [
   // 新手区公开页：不登录也能看解压教程（它只依赖 data/guides.js）
   /^\/guide(\.html)?\/?$/,
   /^\/data\/guides\.js$/,
+  // 其他软件公开页：工具下载清单（只依赖 data/tools.js）
+  /^\/tools(\.html)?\/?$/,
+  /^\/data\/tools\.js$/,
   // 登录页要读的前端配置（含 Turnstile site key）
   /^\/data\/site-config\.js$/,
   /^\/assets\//,      // 样式、脚本、图片等静态资源

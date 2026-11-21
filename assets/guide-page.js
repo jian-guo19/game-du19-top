@@ -125,6 +125,8 @@
     '<div class="guide-toc">' +
     toc +
     "</div>" +
+    '<p class="guide-lead" style="margin-top:18px;">工具不全？<a href="/tools" class="tw-xlink">其他软件</a> ' +
+    "里放了 7-Zip、Motrix 和网盘客户端的官方安装包，还有打包好的工具包。</p>" +
     "</header>" +
     body +
     tableHtml +
