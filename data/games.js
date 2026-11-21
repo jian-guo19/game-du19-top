@@ -129,8 +129,8 @@ window.GAMES_DATA = [
     ],
   },
   {
-    id: "dokidoki-erotic-massage",
-    name: "DokiDoki! Erotic Massage",
+    id: "ドキドキ!性感マッサージ",
+    name: "心跳加速!性感按摩",
     developer: "ツインテール教（Twin-Tailism）",
     publisher: "ツインテール教",
     releaseDate: "2025-09-19",
