@@ -229,7 +229,10 @@
       var tags = (g.genres || []).slice(0, 3).map(function (t) {
         return '<span class="tag">' + esc(t) + "</span>";
       }).join("");
-      var status = g.status ? '<span class="tag status">' + esc(g.status) + "</span>" : "";
+      // 未填的状态（"待补"）不渲染成标签，免得每张卡片都挂一个没有信息量的角标
+      var status = g.status && g.status !== "待补"
+        ? '<span class="tag status">' + esc(g.status) + "</span>"
+        : "";
       return '<article class="card" data-id="' + esc(g.id) + '">' +
         '<div class="card-cover">' + cover + "</div>" +
         '<div class="card-body">' +
