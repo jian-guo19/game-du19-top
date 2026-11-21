@@ -26,6 +26,17 @@
       esc(label) + "</a>";
   }
 
+  function stepsHtml(steps) {
+    if (!steps || !steps.length) return "";
+    var li = steps.map(function (s) {
+      return '<li class="tw-step">' +
+        '<div class="tw-step-t">' + esc(s.t || "") + "</div>" +
+        '<div class="tw-step-d">' + esc(s.d || "") + "</div>" +
+        "</li>";
+    }).join("");
+    return '<ol class="tw-steps">' + li + "</ol>";
+  }
+
   var items = (data.items || []).map(function (it) {
     return '<li class="tw-item">' +
       '<div class="tw-head">' +
@@ -35,6 +46,7 @@
       "</div>" +
       '<div class="tw-what">' + esc(it.what) + "</div>" +
       (it.why ? '<div class="tw-why">' + esc(it.why) + "</div>" : "") +
+      stepsHtml(it.steps) +
       '<div class="tw-dl">' + link(it.url, "官方下载", "btn btn-sm") + "</div>" +
       "</li>";
   }).join("");
