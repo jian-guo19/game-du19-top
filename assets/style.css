@@ -484,12 +484,13 @@ body.is-detail .hero-title { font-size: 30px; margin: 0; }
 body.is-detail .hero-logo { margin-bottom: 0; }
 body.is-detail .notice { display: none; }
 body.is-detail .launch { display: none; }
+body.is-detail .tavern-tip { display: none; }
 
 /* ---------- 公告区 ---------- */
 .notice {
   position: relative;
-  z-index: 3;
-  margin: -32px 0 38px;
+  z-index: 2;
+  margin: 0 0 38px;
   padding: 18px 24px 6px;
   background: var(--card);
   border: 1px solid var(--border);
@@ -1418,7 +1419,8 @@ body.is-detail .launch { display: none; }
 /* ---------- 上线纪念卡（置顶） ---------- */
 .launch {
   position: relative;
-  margin: 0 0 20px;
+  z-index: 3;
+  margin: -32px 0 20px;
   padding: 1px;
   border-radius: 18px;
   background: linear-gradient(135deg, hsl(240 90% 78%), hsl(272 88% 80%) 38%, hsl(198 88% 76%) 68%, hsl(334 88% 82%));

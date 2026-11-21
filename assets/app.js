@@ -263,6 +263,13 @@
       '<div class="intro-text">' + body + "</div>" + from + "</section>";
   }
 
+  // 通用正文段落：空内容或占位符直接不渲染，避免页面上出现「待补」样式的假段落
+  function textSection(title, text) {
+    var t = String(text == null ? "" : text).trim();
+    if (!t || t.indexOf("这里写你自己的") >= 0) return "";
+    return '<section class="section"><h2>' + esc(title) + "</h2><p>" + esc(t) + "</p></section>";
+  }
+
   function renderDetail(g) {
     var facts = [
       ["开发商", g.developer], ["发行商", g.publisher],
@@ -313,10 +320,10 @@
       (g.cnName ? '<p class="detail-cn">' + esc(g.cnName) + "</p>" : "") +
       '<div class="detail-tags">' + tags + "</div>" + tutorialBtn + "</div>" +
       '<div class="facts">' + facts + "</div>" +
-      '<section class="section"><h2>简介</h2><p>' + esc(g.summary) + "</p></section>" +
+      textSection("简介", g.summary) +
       '<section class="section"><h2>截图</h2>' + shots + "</section>" +
       introSection(g) +
-      '<section class="section"><h2>过关体验与攻略</h2><p>' + esc(g.experience) + "</p></section>" +
+      textSection("过关体验与攻略", g.experience) +
       '<section class="section"><h2>下载与购买</h2>' + links + "</section>" +
       '<section class="section" id="commentsSec"><h2>评论</h2>' +
       '<div id="commentBox" class="comment-box">加载中…</div></section>' +
