@@ -16,6 +16,10 @@ git pull --rebase origin master     # 先同步，避免分叉
 git status                          # 确认工作区干净
 ```
 
+> **本机 git 的 SSL 设置**：Windows 自带的 `schannel` 会报 `SEC_E_NO_CREDENTIALS` 导致 fetch/pull 挂住。
+> 已在本地执行 `git config http.sslBackend openssl` 修复。换机器或新建克隆后，先补这一条。
+> 实在不通时用备用通道：`python gameshot\pull_remote.py`（走 GitHub REST API）。
+
 ## 3. 每次改动后立刻提交并推送
 
 - **不要攒着一堆未提交的改动跨轮次、跨天。**
@@ -27,7 +31,8 @@ git status                          # 确认工作区干净
 - ❌ 不要用「按目录整体覆盖」的方式同步文件（会删掉别人新增的文件）
 - ❌ 不要在没有 `git pull` 的情况下直接 `git push --force`
 - ❌ 不要把调试产物（截图对比图、临时 html、临时脚本）提交进仓库
-- ❌ 不要创建第二个长生命周期的克隆来并行开发
+- ❌ 不要创建第三个长生命周期的克隆来并行开发
+      （`C:\Users\杜建国\WorkBuddy\2026-11-17-01-40-10\game.du-19.top` 已降级为**只读备份**，只在需要查历史或对比时读它）
 
 ## 5. 数据文件注意
 
