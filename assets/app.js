@@ -269,7 +269,10 @@
   // 通用正文段落：空内容或占位符直接不渲染，避免页面上出现「待补」样式的假段落
   function textSection(title, text) {
     var t = String(text == null ? "" : text).trim();
-    if (!t || t.indexOf("这里写你自己的") >= 0) return "";
+    if (!t) return "";
+    // 作者留给自己的占位提醒，两种写法都不该出现在页面上
+    if (t.indexOf("这里写你自己的") >= 0) return "";
+    if (t.charAt(0) === "（" && t.indexOf("待补") >= 0) return "";
     return '<section class="section"><h2>' + esc(title) + "</h2><p>" + esc(t) + "</p></section>";
   }
 
