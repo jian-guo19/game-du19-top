@@ -36,6 +36,13 @@ jobs:
         id: d1
         run: python3 scripts/ensure_d1.py
 
+      # 长期自用账号提权：注册逻辑只把「第一个注册的账号」设为 admin，
+      # 站长的专有账号是后来注册的，这里幂等地把它提升为 admin（可删他人评论）。
+      - name: Promote admin account
+        env:
+          ADMIN_USERNAMES: dsh_selftest
+        run: python3 scripts/promote_admin.py
+
       # 数据文件语法校验：字符串里混入真实换行会让整站 JS 崩掉且页面空白
       - name: Validate data files
         run: |
