@@ -483,6 +483,7 @@ body.is-detail .hero-stats { display: none; }
 body.is-detail .hero-title { font-size: 30px; margin: 0; }
 body.is-detail .hero-logo { margin-bottom: 0; }
 body.is-detail .notice { display: none; }
+body.is-detail .launch { display: none; }
 
 /* ---------- 公告区 ---------- */
 .notice {

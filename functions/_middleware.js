@@ -30,6 +30,9 @@ const BLOCKED = [
   /^\/wrangler\.toml$/,
   /^\/package(-lock)?\.json$/,
   /^\/README(\.md)?$/i,
+  /^\/AGENTS(\.md)?$/i,
+  /^\/docs\//,
+  /^\/\.gitignore$/,
 ];
 
 const SECURITY_HEADERS = {
