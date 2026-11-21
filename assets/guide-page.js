@@ -24,31 +24,6 @@
       .replace(/'/g, "&#39;");
   }
 
-  // 只放行 http(s)，其余（javascript:、data: 等）一律丢掉
-  function safeUrl(u) {
-    var s = String(u == null ? "" : u).trim();
-    if (!s) return "";
-    var m = /^([a-z][a-z0-9+.-]*):/i.exec(s);
-    if (!m) return "";
-    var scheme = m[1].toLowerCase();
-    return (scheme === "http" || scheme === "https") ? s : "";
-  }
-
-  // 步骤里可挂的下载链接：{ t: 按钮文字, url: 链接, note: 旁边的补充说明 }
-  function linksHtml(links) {
-    if (!links || !links.length) return "";
-    var items = links.map(function (l) {
-      var url = safeUrl(l.url);
-      if (!url) return "";
-      var note = l.note ? '<span class="g-link-note">' + esc(l.note) + "</span>" : "";
-      return '<span class="g-link-item">' +
-        '<a class="btn btn-sm" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(l.t || "下载") + "</a>" +
-        note + "</span>";
-    }).join("");
-    if (!items) return "";
-    return '<div class="g-links">' + items + "</div>";
-  }
-
   var toc = guides
     .map(function (g) {
       return (
@@ -76,7 +51,6 @@
             esc(s.d) +
             "</div>" +
             code +
-            linksHtml(s.links) +
             "</li>"
           );
         })

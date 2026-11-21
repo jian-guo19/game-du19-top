@@ -55,21 +55,6 @@
     return (scheme === "http" || scheme === "https") ? s : "";
   }
 
-  // 教程步骤里挂的下载链接：{ t: 按钮文字, url: 链接, note: 旁边的补充说明 }
-  function linksHtml(links) {
-    if (!links || !links.length) return "";
-    var items = links.map(function (l) {
-      var url = safeUrl(l.url);
-      if (!url) return "";
-      var note = l.note ? '<span class="g-link-note">' + esc(l.note) + "</span>" : "";
-      return '<span class="g-link-item">' +
-        '<a class="btn btn-sm" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(l.t || "下载") + "</a>" +
-        note + "</span>";
-    }).join("");
-    if (!items) return "";
-    return '<div class="g-links">' + items + "</div>";
-  }
-
   // 没有封面时用标题卡占位，配色由 id 决定，同一款游戏每次看到的颜色一致
   function hueOf(s) {
     var h = 0;
@@ -315,28 +300,6 @@
   // 当前打开的游戏 id，攻略收录按钮要用
   var currentGameId = "";
 
-  // ---------- 评论区里的工具包下载位 ----------
-  // 读者在评论区问「下载器在哪」时，答案就在这栏里，不用去问人。
-  function toolpackBox() {
-    var t = meta.toolpack;
-    if (!t || !t.url) return "";
-    var url = safeUrl(t.url);
-    if (!url) return "";
-    return '<div class="tp-box">' +
-      '<div class="tp-head"><span class="tp-tag">工具包</span>' +
-      '<span class="tp-name">' + esc(t.name || "") + "</span>" +
-      (t.size ? '<span class="tp-size">' + esc(t.size) + "</span>" : "") + "</div>" +
-      (t.note ? '<p class="tp-note">' + esc(t.note) + "</p>" : "") +
-      '<div class="tp-actions">' +
-      '<a class="btn btn-primary btn-sm" href="' + esc(url) + '" target="_blank" rel="noopener">下载工具包</a>' +
-      '<a class="btn btn-sm" href="' + esc(t.toolsPage || "/tools") + '">单个安装包</a>' +
-      "</div>" +
-      '<div class="tp-fields">' +
-      '<div class="tp-field"><span class="tp-k">提取码</span><span class="tp-v tp-mono">' + esc(t.passcode || "") + "</span></div>" +
-      '<div class="tp-field"><span class="tp-k">解压密码</span><span class="tp-v tp-mono">' + esc(t.pwd || "") + "</span></div>" +
-      "</div></div>";
-  }
-
   function renderDetail(g) {
     currentGameId = g.id;
     var facts = [
@@ -394,7 +357,6 @@
       experienceSection(g) +
       '<section class="section"><h2>下载与购买</h2>' + links + "</section>" +
       '<section class="section" id="commentsSec"><h2>评论</h2>' +
-      toolpackBox() +
       '<div id="commentBox" class="comment-box">加载中…</div></section>' +
       (g.source ? '<p class="card-meta">资料来源：' + esc(g.source) + "</p>" : "") +
       "</div>";
@@ -473,7 +435,7 @@
       var steps = (g.steps || []).map(function (s) {
         var code = s.code ? '<pre class="g-code">' + esc(s.code) + "</pre>" : "";
         return "<li><div class=\"g-step-t\">" + esc(s.t) + "</div>" +
-          '<div class="g-step-d">' + esc(s.d) + "</div>" + code + linksHtml(s.links) + "</li>";
+          '<div class="g-step-d">' + esc(s.d) + "</div>" + code + "</li>";
       }).join("");
 
       var note = g.note

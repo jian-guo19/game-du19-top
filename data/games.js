@@ -792,20 +792,5 @@ window.GAMES_DATA = [
 window.SITE_META = {
   intro: "一些我装过、也上手过的作品。介绍整理自公开渠道。",
   updated: "2026-11-17",
-  notices: [
-    {
-      tag: "工具",
-      text: "工具包（7-Zip、Motrix、夸克网盘、阿里云盘客户端）已打成压缩包，放在每个作品页的评论区里，提取码 u8fH，解压密码 234000；也可以直接去「其他软件」页下载单个官方安装包。",
-      date: "2026-11-21"
-    }
-  ],
-  toolpack: {
-    name: "工具包_v1.0_Win.tif.001",
-    size: "396 MB",
-    url: "https://pan.quark.cn/s/ad0670fa886a",
-    passcode: "u8fH",
-    pwd: "234000",
-    note: "里面有 7-Zip、Motrix、夸克网盘、阿里云盘四个官方安装包和一份使用说明。",
-    toolsPage: "/tools"
-  }
+  notices: [],
 };

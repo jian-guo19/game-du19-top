@@ -901,26 +901,6 @@ body.is-detail .tavern-tip { display: none; }
 }
 .g-note.warn { background: #fdf4f3; border-left-color: #d9534f; color: #8b4a45; }
 
-/* 教程步骤里挂的下载链接 */
-.g-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 14px;
-  margin: 12px 0 4px;
-}
-.g-link-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  max-width: 100%;
-}
-.g-link-item .btn-sm { flex: none; }
-.g-link-note {
-  font-size: 13px;
-  color: var(--text-2);
-  line-height: 1.5;
-}
-
 .g-table-sec { margin-top: 28px; padding-top: 34px; border-top: 1px solid var(--border); }
 .g-table-sec h2 { margin: 0 0 8px; font-size: 21px; letter-spacing: -0.3px; }
 .g-table-scroll {
@@ -1292,31 +1272,6 @@ body.is-detail .tavern-tip { display: none; }
 .c-del:hover { color: #e0556e; }
 .c-body { font-size: 14.5px; line-height: 1.7; color: var(--text-2); white-space: pre-wrap; word-break: break-word; }
 .c-empty { font-size: 14px; color: var(--text-3); padding: 10px 0; }
-
-/* 评论区里的工具包下载位 */
-.tp-box {
-  margin: 0 0 16px; padding: 14px 16px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--primary);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-.tp-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.tp-tag {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
-  color: var(--primary); border: 1px solid currentColor;
-  border-radius: 999px; padding: 1px 8px;
-}
-.tp-name { font-size: 15px; font-weight: 600; color: var(--text); }
-.tp-size { font-size: 12.5px; color: var(--text-3); margin-left: auto; }
-.tp-note { margin: 8px 0 0; font-size: 13.5px; line-height: 1.7; color: var(--text-2); }
-.tp-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
-.tp-fields { display: grid; gap: 4px; margin-top: 12px; }
-.tp-field { display: flex; align-items: baseline; gap: 10px; font-size: 13px; }
-.tp-k { flex: 0 0 auto; min-width: 74px; font-size: 12px; color: var(--text-3); }
-.tp-v { color: var(--text); font-weight: 600; }
-.tp-mono { font-family: ui-monospace, Consolas, monospace; letter-spacing: 0.5px; }
 
 /* 管理员：把评论收录进攻略栏 */
 .c-pick {
