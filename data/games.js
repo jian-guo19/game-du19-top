@@ -801,7 +801,10 @@ window.GAMES_DATA = [
     summary: "本站所有分卷包都要靠它打开。免费开源的解压缩工具，7z 格式就是它做的，7z 分卷与 AES 加密都能稳定处理，右键菜单集成也做得干净。官方原版安装包，1.6 MB，装完就能用。",
     intro: "本站发的东西统一打成三层嵌套的 7z 分卷包，外层还带 AES 加密，打开它们的唯一工具就是 7-Zip。它是免费开源软件，7z 格式本身也出自它手，所以处理自家的分卷和加密包最稳。\n这里给的是官方原版安装包（26.06 版，1.6 MB），没有捆绑、没有二次修改的数字签名。要注意的是安装路径保持默认，装在 C:\\Program Files\\7-Zip，右键菜单里才会出现「7-Zip」这一项；如果装到别处，解压就会麻烦一些。\n用法很简单：右键你要解的 .tif.001 或 .7z.001 → 7-Zip → 提取到 xxx\\。提示输入密码时填本站统一的解压密码 234000。",
     experience: "本站所有包都是三层嵌套：最外层是加密的 .tif.001（.tif 只是伪装成图片，避免被网盘当成可疑文件），解开后是「第2层-解压这个.7z」，再解开才是「第3层-双击运行.exe」。密码 234000 只在第一层输一次就行，后面两层是明文包。\n如果右键菜单里找不到 7-Zip，说明装到了非默认路径：重新运行安装包，卸载后用默认路径重装；或者直接用开始菜单里的 7-Zip File Manager，把 .tif.001 拖进去再点「提取」。",
-    source: "官方原版安装包，来源 https://www.7-zip.org/a/7z2606-x64.exe",
+    cover: "sevenzip-2606-main-8b5c6f2e.png",
+    coverPos: "left top",
+    source: "安装包来自 7-Zip 官网。主界面为 Wikimedia Commons 用户 AnsyahF 的 26.06 截图（LGPL），另附自解压窗口示例。",
+    shots: ["sevenzip-2606-main-8b5c6f2e.png", "sevenzip-sfx-dialog-42ad1f90.png"],
     genres: ["工具", "解压缩"],
     links: [
       { label: "夸克网盘（提取码 j716）", url: "https://pan.quark.cn/s/0d72f88c07be" },
