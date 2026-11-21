@@ -832,10 +832,34 @@
   window.addEventListener("scroll", updateHeader, { passive: true });
   window.addEventListener("resize", updateHeader);
 
+  // ---------- 上线纪念卡：能算的数字跟着数据走，别写死 ----------
+  function paintLaunchCard() {
+    var set = function (id, text) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = text;
+    };
+    var shots = 0;
+    games.forEach(function (g) { shots += (g.shots || []).length; });
+    var withDrive = games.filter(function (g) {
+      return (g.links || []).some(function (l) {
+        return /pan\.(baidu|quark)\.cn/.test(l.url || "");
+      });
+    }).length;
+    set("lsEntries", games.length);
+    set("lsShots", shots);
+    set("lsDrives", withDrive);
+    var launch = Date.parse("2026-11-17T18:29:00+08:00");
+    if (!isNaN(launch)) {
+      var days = Math.floor((Date.now() - launch) / 86400000);
+      if (days >= 0) set("lsDays", days);
+    }
+  }
+
   // ---------- 启动 ----------
   renderChrome();
   buildCatNav();
   renderUserBar();
+  paintLaunchCard();
   route();
   updateHeader();
 })();
