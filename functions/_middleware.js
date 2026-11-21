@@ -20,6 +20,13 @@ const PUBLIC = [
   /^\/favicon\.ico$/,
 ];
 
+// 已下线的旧路径：直接 404，避免 Cloudflare 把未知路径回落到 index.html
+// （工具已并入「实用软件」分类，见 data/games.js 里 type: "software" 的条目）
+const RETIRED = [
+  /^\/tools(\.html)?\/?$/,
+  /^\/data\/tools\.js$/,
+];
+
 // 源码与迁移脚本不允许被当成静态文件下载
 const BLOCKED = [
   /^\/functions\//,
@@ -97,6 +104,10 @@ export async function onRequest(context) {
   const { request, env, next } = context;
   const url = new URL(request.url);
   const path = url.pathname;
+
+  if (RETIRED.some((re) => re.test(path))) {
+    return harden(new Response('Not Found', { status: 404 }));
+  }
 
   if (BLOCKED.some((re) => re.test(path))) {
     return harden(new Response('Not Found', { status: 404 }));
