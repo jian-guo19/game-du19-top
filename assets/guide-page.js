@@ -126,7 +126,7 @@
     toc +
     "</div>" +
     '<p class="guide-lead" style="margin-top:18px;">工具不全？首页「实用软件」分类里 ' +
-    "有 7-Zip、Motrix、夸克网盘和阿里云盘四个工具的官方安装包和下载链接。</p>" +
+    "有 7-Zip 和 Motrix 两个工具的官方安装包和下载链接。</p>" +
     "</header>" +
     body +
     tableHtml +
