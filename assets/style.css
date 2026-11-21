@@ -1272,6 +1272,28 @@ body.is-detail .tavern-tip { display: none; }
 .c-body { font-size: 14.5px; line-height: 1.7; color: var(--text-2); white-space: pre-wrap; word-break: break-word; }
 .c-empty { font-size: 14px; color: var(--text-3); padding: 10px 0; }
 
+/* 管理员：把评论收录进攻略栏 */
+.c-pick {
+  border: 0; background: transparent; cursor: pointer;
+  font-size: 12px; color: var(--primary); font-family: inherit;
+  padding: 0; margin-left: 10px;
+}
+.c-pick:hover { text-decoration: underline; }
+.c-pick:disabled { color: var(--text-3); cursor: default; text-decoration: none; }
+
+/* ---------- 过关体验与攻略栏 ---------- */
+.exp-text { font-size: 14.5px; line-height: 1.8; color: var(--text-2); white-space: pre-wrap; word-break: break-word; }
+.exp-picks { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+.exp-pick {
+  background: var(--card); border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius); padding: 12px 15px;
+}
+.exp-pick-body { font-size: 14.5px; line-height: 1.75; color: var(--text); white-space: pre-wrap; word-break: break-word; }
+.exp-pick-meta { display: flex; align-items: center; gap: 10px; margin-top: 7px; }
+.exp-pick-from { font-size: 12.5px; color: var(--text-3); }
+.exp-pick-del { margin-left: auto; }
+
 /* 评论字数提示 */
 .c-count { font-size: 12px; color: var(--text-3); margin-left: 8px; }
 .c-count.near { color: #d98324; }

@@ -276,7 +276,32 @@
     return '<section class="section"><h2>' + esc(title) + "</h2><p>" + esc(t) + "</p></section>";
   }
 
+  // 攻略栏：即使站长自己没写正文也要留着这个栏目，
+  // 因为管理员可以把评论区里特别用心的评论收录进来。
+  // isPlaceholder 判断的两种写法与 textSection 保持一致。
+  function isPlaceholder(t) {
+    if (!t) return true;
+    if (t.indexOf("这里写你自己的") >= 0) return true;
+    if (t.charAt(0) === "（" && t.indexOf("待补") >= 0) return true;
+    return false;
+  }
+
+  function experienceSection(g) {
+    var t = String(g.experience == null ? "" : g.experience).trim();
+    var manual = isPlaceholder(t)
+      ? ""
+      : '<p class="exp-text">' + esc(t) + "</p>";
+    return '<section class="section" id="expSec"><h2>过关体验与攻略</h2>' +
+      manual +
+      '<div id="expPicks" class="exp-picks"><div class="c-empty">攻略加载中…</div></div>' +
+      "</section>";
+  }
+
+  // 当前打开的游戏 id，攻略收录按钮要用
+  var currentGameId = "";
+
   function renderDetail(g) {
+    currentGameId = g.id;
     var facts = [
       ["开发商", g.developer], ["发行商", g.publisher],
       ["发行日期", g.releaseDate], ["平台", g.platform]
@@ -329,7 +354,7 @@
       textSection("简介", g.summary) +
       '<section class="section"><h2>截图</h2>' + shots + "</section>" +
       introSection(g) +
-      textSection("过关体验与攻略", g.experience) +
+      experienceSection(g) +
       '<section class="section"><h2>下载与购买</h2>' + links + "</section>" +
       '<section class="section" id="commentsSec"><h2>评论</h2>' +
       '<div id="commentBox" class="comment-box">加载中…</div></section>' +
@@ -341,6 +366,52 @@
     });
 
     initComments(g.id);
+    initPicks(g.id);
+  }
+
+  // ---------- 攻略收录 ----------
+  function initPicks(gameId) {
+    var box = document.getElementById("expPicks");
+    if (!box) return;
+    function load() {
+      api("/api/picks?game=" + encodeURIComponent(gameId)).then(function (d) {
+        paintPicks(box, d.picks || []);
+      }).catch(function () {
+        box.innerHTML = "";
+      });
+    }
+    // 等 /api/me 回来再画，否则管理员的「取消收录」按钮出不来
+    if (userReady) userReady.then(load, load);
+    else load();
+  }
+
+  function paintPicks(box, list) {
+    if (!list.length) {
+      box.innerHTML = '<div class="c-empty">暂无收录的攻略。评论区里写得好的评论，' +
+        "管理员可以收录到这里。</div>";
+      return;
+    }
+    var isAdmin = !!(currentUser && currentUser.role === "admin");
+    box.innerHTML = list.map(function (p) {
+      return '<div class="exp-pick">' +
+        '<div class="exp-pick-body">' + esc(p.body) + "</div>" +
+        '<div class="exp-pick-meta"><span class="exp-pick-from">— ' + esc(p.author) + "</span>" +
+        '<time class="c-time">' + esc(fmtTime(p.created_at)) + "</time>" +
+        (isAdmin ? '<button type="button" class="c-del exp-pick-del" data-pick="' +
+          Number(p.id) + '">取消收录</button>' : "") +
+        "</div></div>";
+    }).join("");
+
+    Array.prototype.forEach.call(box.querySelectorAll(".exp-pick-del"), function (btn) {
+      btn.addEventListener("click", function () {
+        if (!confirm("取消收录这条攻略？")) return;
+        api("/api/picks/" + btn.getAttribute("data-pick"), { method: "DELETE" })
+          .then(function () { initPicks(currentGameId); })
+          .catch(function (e) {
+            if (String(e.message) !== "unauth") alert("取消收录失败：" + e.message);
+          });
+      });
+    });
   }
 
   function openLightbox(src) {
@@ -660,6 +731,7 @@
           '<button type="button" class="btn btn-primary" id="cSend">发表</button></div></div>'
       : '<div class="c-form c-guest">登录后才能评论 · <a href="' + loginUrl() + '">去登录</a></div>';
 
+    var isAdmin = !!(currentUser && currentUser.role === "admin");
     var items = list.length
       ? list.map(function (c) {
           var canDel = currentUser &&
@@ -668,6 +740,9 @@
             '<div class="c-head"><span class="c-user">' + esc(c.username) + "</span>" +
             '<time class="c-time">' + esc(fmtTime(c.created_at)) + "</time>" +
             (canDel ? '<button type="button" class="c-del" data-id="' + Number(c.id) + '">删除</button>' : "") +
+            (isAdmin ? '<button type="button" class="c-pick" data-pick-c="' + Number(c.id) +
+              '" data-pick-body="' + esc(c.body) +
+              '" data-pick-author="' + esc(c.username) + '">收录到攻略</button>' : "") +
             "</div>" +
             '<div class="c-body">' + esc(c.body) + "</div></div>";
         }).join("")
@@ -699,6 +774,30 @@
           });
       });
     }
+
+    Array.prototype.forEach.call(box.querySelectorAll(".c-pick"), function (btn) {
+      btn.addEventListener("click", function () {
+        var body = btn.getAttribute("data-pick-body") || "";
+        if (!body) return;
+        if (!confirm("把这条评论收录进「过关体验与攻略」栏？\n\n" + body)) return;
+        btn.disabled = true;
+        api("/api/picks", {
+          method: "POST",
+          body: {
+            gameId: gameId,
+            body: body,
+            author: btn.getAttribute("data-pick-author") || "",
+            commentId: Number(btn.getAttribute("data-pick-c")) || null
+          }
+        }).then(function () {
+          initPicks(currentGameId || gameId);
+          btn.remove();
+        }).catch(function (e) {
+          btn.disabled = false;
+          if (String(e.message) !== "unauth") alert("收录失败：" + e.message);
+        });
+      });
+    });
 
     Array.prototype.forEach.call(box.querySelectorAll(".c-del"), function (btn) {
       btn.addEventListener("click", function () {

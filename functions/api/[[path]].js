@@ -8,6 +8,9 @@
  *   GET  /api/comments?game=<gameId>
  *   POST /api/comments  { gameId, body }
  *   DELETE /api/comments/<id>        （本人或 admin）
+ *   GET  /api/picks?game=<gameId>   （该游戏被收录进「过关体验与攻略」的优质评论）
+ *   POST /api/picks  { gameId, body, author?, commentId? }   （仅 admin）
+ *   DELETE /api/picks/<id>                                  （仅 admin）
  *
  * 密码：PBKDF2-SHA256，不存明文。会话：随机 sid 存 D1，Cookie 里只放 sid。
  *
@@ -338,6 +341,62 @@ export async function onRequest(context) {
         ).bind(String(gameId), user.id, text, now).run();
         return json({ ok: true, id: res.meta.last_row_id });
       }
+    }
+
+    // ---- 攻略收录（优质评论进「过关体验与攻略」栏）----
+    if (route === 'picks') {
+      const user = await currentUser(request, env);
+
+      // 读取：公开，页面本身要登录态才可见
+      if (method === 'GET') {
+        const game = new URL(request.url).searchParams.get('game') || '';
+        if (!game) return json({ error: '缺少 game 参数' }, 400);
+        const rows = await env.DB.prepare(
+          `SELECT id, comment_id, body, author, created_at
+             FROM comment_picks WHERE game_id = ? ORDER BY created_at DESC`,
+        ).bind(game).all();
+        return json({ picks: rows.results || [] });
+      }
+
+      // 收录：仅管理员
+      if (method === 'POST') {
+        if (!user) return json({ error: '请先登录' }, 401);
+        if (user.role !== 'admin') return json({ error: '只有管理员可以收录攻略' }, 403);
+        const { gameId, body, author, commentId } = await request.json().catch(() => ({}));
+        const gid = String(gameId || '').trim();
+        const text = String(body || '').trim();
+        const who = String(author || user.username).trim().slice(0, 24);
+        if (!gid) return json({ error: '缺少 gameId' }, 400);
+        if (!text) return json({ error: '内容不能为空' }, 400);
+        if (text.length > 500) return json({ error: '收录内容最长 500 字' }, 400);
+        const cid = Number(commentId) || null;
+        const now = nowSec();
+        if (cid) {
+          const dup = await env.DB.prepare(
+            'SELECT id FROM comment_picks WHERE game_id = ? AND comment_id = ?',
+          ).bind(gid, cid).first();
+          if (dup) return json({ error: '这条评论已经收录过了' }, 409);
+          await env.DB.prepare(
+            `INSERT INTO comment_picks (game_id, comment_id, body, author, created_at)
+             VALUES (?, ?, ?, ?, ?)`,
+          ).bind(gid, cid, text, who, now).run();
+        } else {
+          await env.DB.prepare(
+            `INSERT INTO comment_picks (game_id, comment_id, body, author, created_at)
+             VALUES (?, NULL, ?, ?, ?)`,
+          ).bind(gid, text, who, now).run();
+        }
+        return json({ ok: true });
+      }
+    }
+
+    // ---- 取消收录 ----
+    if (route === 'picks' && seg[1] && method === 'DELETE') {
+      const user = await currentUser(request, env);
+      if (!user) return json({ error: '请先登录' }, 401);
+      if (user.role !== 'admin') return json({ error: '只有管理员可以取消收录' }, 403);
+      await env.DB.prepare('DELETE FROM comment_picks WHERE id = ?').bind(Number(seg[1])).run();
+      return json({ ok: true });
     }
 
     // ---- 删除评论 ----
