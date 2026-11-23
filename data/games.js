@@ -18,7 +18,7 @@ window.GAMES_DATA = [
     shots: ["mirais-midnight-stream-1.jpg", "mirais-midnight-stream-2.jpg", "mirais-midnight-stream-3.jpg"],
     links: [
       { label: "百度网盘（提取码 amfr）", url: "https://pan.baidu.com/s/17oclE6NbrAq2bsiiL2Rk_w" },
-      { label: "夸克网盘（提取码 PKGp）", url: "https://pan.quark.cn/s/3be06c012dd7" },
+      { label: "夸克网盘（提取码 WQDM）", url: "https://pan.quark.cn/s/2e8d4b70a49b" },
     ],
   },
   {
@@ -40,7 +40,7 @@ window.GAMES_DATA = [
     shots: ["wings-of-seduction-1.jpg", "wings-of-seduction-2.jpg", "wings-of-seduction-3.jpg"],
     links: [
       { label: "百度网盘（提取码 a22z）", url: "https://pan.baidu.com/s/1bU4hACxoV4vRbrE6aWiJKw" },
-      { label: "夸克网盘（提取码 Vkwa）", url: "https://pan.quark.cn/s/7f7572162274" },
+      { label: "夸克网盘（提取码 sSbd）", url: "https://pan.quark.cn/s/5fc7c0db9041" },
     ],
   },
   {
@@ -62,7 +62,7 @@ window.GAMES_DATA = [
     shots: ["boundaries-1.jpg", "boundaries-2.jpg"],
     links: [
       { label: "百度网盘（提取码 5x0b）", url: "https://pan.baidu.com/s/1LsP7uS0wpK2-2Cfag8Pt5g" },
-      { label: "夸克网盘（提取码 bqkU）", url: "https://pan.quark.cn/s/0f5a8670be63" },
+      { label: "夸克网盘（提取码 3RuT）", url: "https://pan.quark.cn/s/ad7fbc504296" },
     ],
   },
   {
@@ -83,7 +83,7 @@ window.GAMES_DATA = [
     shots: ["room-404-erotic-massage-1.jpg", "room-404-erotic-massage-2.jpg", "room-404-erotic-massage-3.jpg", "room-404-erotic-massage-4.jpg"],
     links: [
       { label: "百度网盘（提取码 rf4w）", url: "https://pan.baidu.com/s/14tcnDcVL8mljlwDb5XTuBw" },
-      { label: "夸克网盘（提取码 jdM9）", url: "https://pan.quark.cn/s/a26ce233f132" },
+      { label: "夸克网盘（提取码 FCsY）", url: "https://pan.quark.cn/s/754b40cd0233" },
     ],
   },
   {
@@ -104,7 +104,7 @@ window.GAMES_DATA = [
     shots: [],
     links: [
       { label: "百度网盘（提取码 zuxf）", url: "https://pan.baidu.com/s/1iEjveNemQtxmjOdnUwRkxA" },
-      { label: "夸克网盘（提取码 kD8Y）", url: "https://pan.quark.cn/s/67774cee2b0b" },
+      { label: "夸克网盘（提取码 ADa8）", url: "https://pan.quark.cn/s/94bb723f485c" },
     ],
   },
   {
@@ -125,7 +125,7 @@ window.GAMES_DATA = [
     shots: ["yume-5-1.jpg", "yume-5-2.jpg", "yume-5-3.jpg", "yume-5-4.jpg"],
     links: [
       { label: "百度网盘（提取码 kmw6）", url: "https://pan.baidu.com/s/1DT17WIfOACxV-BYleQW3Nw" },
-      { label: "夸克网盘（提取码 AVxp）", url: "https://pan.quark.cn/s/ffe1b57b716e" },
+      { label: "夸克网盘（提取码 DDrc）", url: "https://pan.quark.cn/s/d2fbf4361485" },
     ],
   },
   {
@@ -146,7 +146,7 @@ window.GAMES_DATA = [
     shots: ["dokidoki-erotic-massage-1.jpg", "dokidoki-erotic-massage-2.jpg", "dokidoki-erotic-massage-3.jpg", "dokidoki-erotic-massage-4.jpg"],
     links: [
       { label: "百度网盘（提取码 u6j9）", url: "https://pan.baidu.com/s/1LNWZxT8P7mtiK16pnFpoeg" },
-      { label: "夸克网盘（提取码 LcAN）", url: "https://pan.quark.cn/s/c5e737d679d9" },
+      { label: "夸克网盘（提取码 GaqL）", url: "https://pan.quark.cn/s/c6036f1c33c0" },
     ],
   },
   {
@@ -167,7 +167,7 @@ window.GAMES_DATA = [
     shots: ["angelic-pe-clinic-1.jpg", "angelic-pe-clinic-2.jpg", "angelic-pe-clinic-3.jpg", "angelic-pe-clinic-4.jpg"],
     links: [
       { label: "百度网盘（提取码 t419）", url: "https://pan.baidu.com/s/1ELZuoKV39oVWfirA_dicNg" },
-      { label: "夸克网盘（提取码 YX7g）", url: "https://pan.quark.cn/s/162ea44ec786" },
+      { label: "夸克网盘（提取码 xAhb）", url: "https://pan.quark.cn/s/0397dc51a439" },
     ],
   },
   {
@@ -189,7 +189,7 @@ window.GAMES_DATA = [
     shots: ["succubus-nightmare-1.jpg", "succubus-nightmare-2.jpg", "succubus-nightmare-3.jpg", "succubus-nightmare-4.jpg"],
     links: [
       { label: "百度网盘（提取码 piuu）", url: "https://pan.baidu.com/s/1fpcqkePzybiXvArhjhBkqA" },
-      { label: "夸克网盘（提取码 7UW3）", url: "https://pan.quark.cn/s/e822b9573fb1" },
+      { label: "夸克网盘（提取码 sGf3）", url: "https://pan.quark.cn/s/48266379a573" },
     ],
   },
   {
@@ -210,7 +210,7 @@ window.GAMES_DATA = [
     shots: ["hime-enyoku-imperium-1.jpg", "hime-enyoku-imperium-2.jpg"],
     links: [
       { label: "百度网盘（提取码 ef3e）", url: "https://pan.baidu.com/s/1uoPGXhyx7RWHbDfejPtoZw" },
-      { label: "夸克网盘（提取码 mS7V）", url: "https://pan.quark.cn/s/6181da11490b" },
+      { label: "夸克网盘（提取码 jZ9g）", url: "https://pan.quark.cn/s/603a999058f6" },
     ],
   },
   {
@@ -231,7 +231,7 @@ window.GAMES_DATA = [
     shots: ["quarta-alumines-tangerine-eg-1.jpg", "quarta-alumines-tangerine-eg-2.jpg", "quarta-alumines-tangerine-eg-3.jpg", "quarta-alumines-tangerine-eg-4.jpg"],
     links: [
       { label: "百度网盘（提取码 6wql）", url: "https://pan.baidu.com/s/16SZgukvNByhRz-07_bG99g" },
-      { label: "夸克网盘（提取码 h5Kr）", url: "https://pan.quark.cn/s/2dd600a7efba" },
+      { label: "夸克网盘（提取码 Qj8S）", url: "https://pan.quark.cn/s/89a5288ad488" },
     ],
   },
   {
@@ -252,7 +252,7 @@ window.GAMES_DATA = [
     shots: ["dusk-city-1.jpg", "dusk-city-2.jpg", "dusk-city-3.jpg", "dusk-city-4.jpg"],
     links: [
       { label: "百度网盘（提取码 ht8g）", url: "https://pan.baidu.com/s/15vQDjBjYDJ7TuREChMzkgQ" },
-      { label: "夸克网盘（提取码 QufX）", url: "https://pan.quark.cn/s/62ca74ec7b5d" },
+      { label: "夸克网盘（提取码 rzEA）", url: "https://pan.quark.cn/s/7996f44f2ce9" },
     ],
   },
   {
@@ -295,7 +295,7 @@ window.GAMES_DATA = [
     shots: ["re-mrm-1-1.jpg"],
     links: [
       { label: "百度网盘（提取码 k81t）", url: "https://pan.baidu.com/s/1KNqygdlBWGzKiG8WfoeuuA" },
-      { label: "夸克网盘（提取码 LYyk）", url: "https://pan.quark.cn/s/edabc7227762" },
+      { label: "夸克网盘（提取码 AsMG）", url: "https://pan.quark.cn/s/7b4875880f84" },
     ],
   },
   {
@@ -316,7 +316,7 @@ window.GAMES_DATA = [
     shots: ["tokumu-sousakan-rena-1.jpg", "tokumu-sousakan-rena-2.jpg", "tokumu-sousakan-rena-3.jpg", "tokumu-sousakan-rena-4.jpg"],
     links: [
       { label: "百度网盘（提取码 4rso）", url: "https://pan.baidu.com/s/1ZnkKRuFbxK1on2lfchZKkQ" },
-      { label: "夸克网盘（提取码 JTkL）", url: "https://pan.quark.cn/s/633f07ff6d3d" },
+      { label: "夸克网盘（提取码 AZEC）", url: "https://pan.quark.cn/s/2627c6089450" },
     ],
   },
   {
@@ -336,7 +336,7 @@ window.GAMES_DATA = [
     shots: ["kanzen-chikan-2-1.jpg", "kanzen-chikan-2-2.jpg", "kanzen-chikan-2-3.jpg", "kanzen-chikan-2-4.jpg"],
     links: [
       { label: "百度网盘（提取码 ukp7）", url: "https://pan.baidu.com/s/1OWckRbOLTQo0nR_vGupboQ" },
-      { label: "夸克网盘（提取码 kg3f）", url: "https://pan.quark.cn/s/4c9890cfb2da" },
+      { label: "夸克网盘（提取码 t1Pm）", url: "https://pan.quark.cn/s/b601d701db2c" },
     ],
   },
   {
@@ -358,7 +358,7 @@ window.GAMES_DATA = [
     shots: ["ripples-1.jpg", "ripples-2.jpg", "ripples-3.jpg", "ripples-4.jpg"],
     links: [
       { label: "百度网盘（提取码 5zc9）", url: "https://pan.baidu.com/s/11oCoTNkoQPGxh3OWGpRUKw" },
-      { label: "夸克网盘（提取码 9XXp）", url: "https://pan.quark.cn/s/e77bd3dc6c74" },
+      { label: "夸克网盘（提取码 w2nh）", url: "https://pan.quark.cn/s/ed177363de66" },
     ],
   },
   {
@@ -379,7 +379,7 @@ window.GAMES_DATA = [
     shots: ["round-and-round-train-1.jpg", "round-and-round-train-2.jpg"],
     links: [
       { label: "百度网盘（提取码 fjix）", url: "https://pan.baidu.com/s/1ZGR4FFUy31Iry_tA5m_ePw" },
-      { label: "夸克网盘（提取码 xbtt）", url: "https://pan.quark.cn/s/fb206c730448" },
+      { label: "夸克网盘（提取码 cVha）", url: "https://pan.quark.cn/s/fa5cb5dfc0b4" },
     ],
   },
   {
@@ -399,7 +399,7 @@ window.GAMES_DATA = [
     shots: ["hypno-app-2-1.jpg", "hypno-app-2-2.jpg"],
     links: [
       { label: "百度网盘（提取码 mzys）", url: "https://pan.baidu.com/s/1ctLt0RD0442XfchaFjg87w" },
-      { label: "夸克网盘（提取码 qLQB）", url: "https://pan.quark.cn/s/3d9824af5f64" },
+      { label: "夸克网盘（提取码 tEnB）", url: "https://pan.quark.cn/s/31f7a9cd9548" },
     ],
   },
   {
@@ -420,7 +420,7 @@ window.GAMES_DATA = [
     shots: ["youmuin-1.jpg", "youmuin-2.jpg", "youmuin-3.jpg", "youmuin-4.jpg"],
     links: [
       { label: "百度网盘（提取码 gaw8）", url: "https://pan.baidu.com/s/1Ko430VSST3Agp8VvRmQZqw" },
-      { label: "夸克网盘（提取码 ERLi）", url: "https://pan.quark.cn/s/04fa98c01b3c" },
+      { label: "夸克网盘（提取码 r3zV）", url: "https://pan.quark.cn/s/4e36cc118211" },
     ],
   },
   {
@@ -439,7 +439,7 @@ window.GAMES_DATA = [
     shots: ["fina-1-403a0720.jpg", "fina-2-eb51c4db.jpg", "fina-3-81a33b44.jpg", "fina-4-15ad1f1b.jpg"],
     links: [
       { label: "百度网盘（提取码 hc2v）", url: "https://pan.baidu.com/s/1CIHDKu4br8l3jY49Vppkqg" },
-      { label: "夸克网盘（提取码 QMEC）", url: "https://pan.quark.cn/s/35dad83bb2aa" },
+      { label: "夸克网盘（提取码 xDFd）", url: "https://pan.quark.cn/s/3732fbb9a032" },
     ],
   },
   {
@@ -457,7 +457,7 @@ window.GAMES_DATA = [
     shots: ["amaama-yuwaku-1-869c522b.jpg", "amaama-yuwaku-2-35f73f7c.jpg"],
     links: [
       { label: "百度网盘（提取码 t1d6）", url: "https://pan.baidu.com/s/1VK8cIXU1ReMdAoQIh2Dizw" },
-      { label: "夸克网盘（提取码 8eJh）", url: "https://pan.quark.cn/s/7ebb2ef5bac5" },
+      { label: "夸克网盘（提取码 efPf）", url: "https://pan.quark.cn/s/7ff4cc2ff2ea" },
     ],
   },
   {
@@ -475,7 +475,7 @@ window.GAMES_DATA = [
     shots: ["jerez-arena-2-1-8331b104.jpg", "jerez-arena-2-2-c7ed047b.jpg", "jerez-arena-2-3-b0df3136.jpg"],
     links: [
       { label: "百度网盘（提取码 83xc）", url: "https://pan.baidu.com/s/1i3JqmNmu7bP_z1eVkNFFpA" },
-      { label: "夸克网盘（提取码 FD1M）", url: "https://pan.quark.cn/s/c5a317381488" },
+      { label: "夸克网盘（提取码 wr5h）", url: "https://pan.quark.cn/s/e78821782eec" },
     ],
   },
   {
@@ -493,7 +493,7 @@ window.GAMES_DATA = [
     shots: ["silvy-rebirth-1-df47a9e7.jpg", "silvy-rebirth-2-cc431db4.jpg"],
     links: [
       { label: "百度网盘（提取码 tcoe）", url: "https://pan.baidu.com/s/1U_ENWTkZFp5YxEiYLGl9BQ" },
-      { label: "夸克网盘（提取码 PjDB）", url: "https://pan.quark.cn/s/61d55ccc8d73" },
+      { label: "夸克网盘（提取码 h8Je）", url: "https://pan.quark.cn/s/fb0e29cdf7ed" },
     ],
   },
   {
@@ -513,7 +513,7 @@ window.GAMES_DATA = [
     shots: ["danchi-idol-1-af71cf28.jpg", "danchi-idol-2-c73c3cee.jpg"],
     links: [
       { label: "百度网盘（提取码 hio3）", url: "https://pan.baidu.com/s/1KEdI2XPDJgXGq5QKoUOLZg" },
-      { label: "夸克网盘（提取码 Qy33）", url: "https://pan.quark.cn/s/04ec7cb9a77d" },
+      { label: "夸克网盘（提取码 Vsms）", url: "https://pan.quark.cn/s/90a8d9b5b238" },
     ],
   },
   {
@@ -531,7 +531,7 @@ window.GAMES_DATA = [
     shots: ["shion-1-2d17e28c.jpg", "shion-2-d3b21b82.jpg", "shion-3-05e5895d.jpg"],
     links: [
       { label: "百度网盘（提取码 jcpc）", url: "https://pan.baidu.com/s/1UIiYvyaXId7bZ1X_yCSc1A" },
-      { label: "夸克网盘（提取码 R1kn）", url: "https://pan.quark.cn/s/56a6b6c5581d" },
+      { label: "夸克网盘（提取码 7gL1）", url: "https://pan.quark.cn/s/fe3c61c2764b" },
     ],
   },
   {
@@ -550,7 +550,7 @@ window.GAMES_DATA = [
     shots: ["eris-dysnomia-2-4a6300b3.jpg", "eris-dysnomia-3-42708a72.jpg", "eris-dysnomia-4-c9ba6b1a.jpg"],
     links: [
       { label: "百度网盘（提取码 ckpm）", url: "https://pan.baidu.com/s/10Sttlck73uPqMmRQmk4rNw" },
-      { label: "夸克网盘（提取码 TiLK）", url: "https://pan.quark.cn/s/ac9f50bf6541" },
+      { label: "夸克网盘（提取码 NeyV）", url: "https://pan.quark.cn/s/16ab31163582" },
     ],
   },
   {
@@ -569,7 +569,7 @@ window.GAMES_DATA = [
     shots: ["foresia-1-85a60bf8.jpg", "foresia-2-400ff123.jpg", "foresia-3-2b1159c8.jpg", "foresia-4-cb4faf52.jpg"],
     links: [
       { label: "百度网盘（提取码 vax7）", url: "https://pan.baidu.com/s/1MAmZuvMmPYd1KgQgolI65A" },
-      { label: "夸克网盘（提取码 YYan）", url: "https://pan.quark.cn/s/74967e946bf8" },
+      { label: "夸克网盘（提取码 kS3r）", url: "https://pan.quark.cn/s/1dc32127a35e" },
     ],
   },
   {
@@ -587,7 +587,7 @@ window.GAMES_DATA = [
     shots: ["monster-black-market-1-61f2e580.jpg", "monster-black-market-2-1d7b1b31.jpg", "monster-black-market-3-b41daa2d.jpg"],
     links: [
       { label: "百度网盘（提取码 xx07）", url: "https://pan.baidu.com/s/1MpozdByXwjaEUp6_O0iOxg" },
-      { label: "夸克网盘（提取码 KX6r）", url: "https://pan.quark.cn/s/9df4571fe1e9" },
+      { label: "夸克网盘（提取码 QQpx）", url: "https://pan.quark.cn/s/8790b7d221f4" },
     ],
   },
   {
@@ -605,7 +605,7 @@ window.GAMES_DATA = [
     shots: ["inyoku-no-mato-1-16ddd384.jpg", "inyoku-no-mato-2-adac4410.jpg", "inyoku-no-mato-3-a2c7ed0e.jpg", "inyoku-no-mato-4-39de1d17.jpg"],
     links: [
       { label: "百度网盘（提取码 ye07）", url: "https://pan.baidu.com/s/1Gz6FwL4-lz7acCn9wj1X0Q" },
-      { label: "夸克网盘（提取码 4hsB）", url: "https://pan.quark.cn/s/a87d6455d65d" },
+      { label: "夸克网盘（提取码 xgbA）", url: "https://pan.quark.cn/s/46a0fc7af507" },
     ],
   },
   {
@@ -624,7 +624,7 @@ window.GAMES_DATA = [
     shots: ["aideal-rays-1-32fd60d0.jpg", "aideal-rays-2-97542537.jpg", "aideal-rays-3-9ff5952d.jpg", "aideal-rays-4-b2e7c38f.jpg"],
     links: [
       { label: "百度网盘（提取码 sdah）", url: "https://pan.baidu.com/s/1ArREh7Fg8VKeXFJf6MazzQ" },
-      { label: "夸克网盘（提取码 8Ttq）", url: "https://pan.quark.cn/s/f9cb646d208c" },
+      { label: "夸克网盘（提取码 camQ）", url: "https://pan.quark.cn/s/aad08a4d15c4" },
     ],
   },
   {
@@ -643,7 +643,7 @@ window.GAMES_DATA = [
     shots: ["elf-girl-lyfia-1-ea234f6c.jpg", "elf-girl-lyfia-2-32bba2c7.jpg", "elf-girl-lyfia-3-8170b6e5.jpg"],
     links: [
       { label: "百度网盘（提取码 vt8o）", url: "https://pan.baidu.com/s/1Fc1-lgjXY3fuPAA7ZA7Nww" },
-      { label: "夸克网盘（提取码 zBBM）", url: "https://pan.quark.cn/s/ca61aaccb817" },
+      { label: "夸克网盘（提取码 CuyP）", url: "https://pan.quark.cn/s/02b0ab8a1bf9" },
     ],
   },
   {
@@ -662,7 +662,7 @@ window.GAMES_DATA = [
     shots: ["cyan-record-1-493a8aaa.jpg", "cyan-record-3-d2c3972e.jpg", "cyan-record-4-1f19d995.jpg"],
     links: [
       { label: "百度网盘（提取码 o5qr）", url: "https://pan.baidu.com/s/1_oUdYXV56ypOl5U4dC6mAw" },
-      { label: "夸克网盘（提取码 2he3）", url: "https://pan.quark.cn/s/67f0317d76ce" },
+      { label: "夸克网盘（提取码 FUxs）", url: "https://pan.quark.cn/s/18bfdaf5cd45" },
     ],
   },
   {
@@ -683,7 +683,7 @@ window.GAMES_DATA = [
     shots: ["dave-the-diver-1-e45d738d.jpg", "dave-the-diver-2-2745d71d.jpg", "dave-the-diver-3-896d0115.jpg"],
     links: [
       { label: "百度网盘（提取码 w7yh）", url: "https://pan.baidu.com/s/11y2ZiLLRP7Gp1dELovUTGQ" },
-      { label: "夸克网盘（提取码 TeuD）", url: "https://pan.quark.cn/s/f6e07d4b52da" },
+      { label: "夸克网盘（提取码 v4be）", url: "https://pan.quark.cn/s/28af29fcd90d" },
     ],
   },
   {
@@ -704,7 +704,7 @@ window.GAMES_DATA = [
     shots: ["meikyuu-monogatari-1-234156f4.jpg", "meikyuu-monogatari-2-ccde5953.jpg", "meikyuu-monogatari-3-c8d31256.jpg"],
     links: [
       { label: "百度网盘（提取码 9v5c）", url: "https://pan.baidu.com/s/1rJXZeSCwpa4U2SWSzLAbQA" },
-      { label: "夸克网盘（提取码 ajWZ）", url: "https://pan.quark.cn/s/54526204707b" },
+      { label: "夸克网盘（提取码 FQZS）", url: "https://pan.quark.cn/s/9581911525c5" },
     ],
   },
   {
@@ -725,7 +725,7 @@ window.GAMES_DATA = [
     shots: ["vampire-crawlers-1-e7c00978.jpg", "vampire-crawlers-2-afaa10a1.jpg", "vampire-crawlers-3-2097bee9.jpg"],
     links: [
       { label: "百度网盘（提取码 b73r）", url: "https://pan.baidu.com/s/1LEsokk-pt2n8bHZGaFuwMA" },
-      { label: "夸克网盘（提取码 XGLM）", url: "https://pan.quark.cn/s/fcc0387a4db2" },
+      { label: "夸克网盘（提取码 CJHn）", url: "https://pan.quark.cn/s/fa99774b7763" },
     ],
   },
   {
@@ -746,7 +746,7 @@ window.GAMES_DATA = [
     shots: ["sea-of-stars-1-90b21f95.jpg", "sea-of-stars-2-fe9748a2.jpg", "sea-of-stars-3-e95f0227.jpg"],
     links: [
       { label: "百度网盘（提取码 rifj）", url: "https://pan.baidu.com/s/1HDK-5BXAUW0gZP7PpiBqYg?pwd=rifj" },
-      { label: "夸克网盘（提取码 J34r）", url: "https://pan.quark.cn/s/3a2cdc166f58" },
+      { label: "夸克网盘（提取码 iGHb）", url: "https://pan.quark.cn/s/01670603f2ba" },
     ],
   },
   {
@@ -765,7 +765,7 @@ window.GAMES_DATA = [
     shots: ["fuukan-no-grasesta-1-5d227c7c.jpg", "fuukan-no-grasesta-2-d837e2e8.jpg", "fuukan-no-grasesta-3-20fd4c9e.jpg"],
     links: [
       { label: "百度网盘（提取码 1h8p）", url: "https://pan.baidu.com/s/1M2paGiCrGx9Tf_IEWeEbHw" },
-      { label: "夸克网盘（提取码 qKgN）", url: "https://pan.quark.cn/s/484027247b01" },
+      { label: "夸克网盘（提取码 S5j9）", url: "https://pan.quark.cn/s/4815d6ed93e8" },
     ],
   },
   {
@@ -784,7 +784,7 @@ window.GAMES_DATA = [
     shots: ["eiyuu-senki-1-2798c722.jpg", "eiyuu-senki-2-f07de7ae.jpg", "eiyuu-senki-3-156e5581.jpg"],
     links: [
       { label: "百度网盘（提取码 nnym）", url: "https://pan.baidu.com/s/1KdjVwtFUyB20Sns_bXq6ag" },
-      { label: "夸克网盘（提取码 vJmV）", url: "https://pan.quark.cn/s/368ead3bf0c6" },
+      { label: "夸克网盘（提取码 4W1A）", url: "https://pan.quark.cn/s/28fb252c8954" },
     ],
   },
   {
@@ -807,7 +807,7 @@ window.GAMES_DATA = [
     shots: ["sevenzip-2606-main-8b5c6f2e.png", "sevenzip-sfx-dialog-42ad1f90.png"],
     genres: ["工具", "解压缩"],
     links: [
-      { label: "夸克网盘（提取码 j716）", url: "https://pan.quark.cn/s/0d72f88c07be" },
+      { label: "夸克网盘（提取码 THRi）", url: "https://pan.quark.cn/s/a2d94d4750ea" },
       { label: "官网直连下载", url: "https://www.7-zip.org/a/7z2606-x64.exe" },
     ],
   },
