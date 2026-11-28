@@ -661,6 +661,19 @@ body.is-detail .tavern-tip { display: none; }
 }
 .tag.status { background: #eef7f0; color: #2f8a4e; }
 .card-meta { color: var(--text-3); font-size: 12px; }
+.card-stats, .detail-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  color: var(--text-3);
+  font-size: 12px;
+}
+.card-stats {
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.detail-stats { margin-top: 11px; font-size: 13px; }
 
 /* ---------- 详情页 ---------- */
 .detail { padding: 32px 0 70px; }
@@ -1215,6 +1228,69 @@ body.is-detail .tavern-tip { display: none; }
   padding: 5px 10px; border: 0; border-radius: 999px; background: none; color: var(--hdr-ink-2);
 }
 .ub-out:hover { color: #e0556e; background: rgba(224, 85, 110, 0.08); }
+.ub-notify-btn {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--hdr-ink-2);
+  padding: 5px 10px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.ub-notify-btn:hover { border-color: var(--primary); color: var(--primary); }
+.ub-notify-count {
+  display: inline-block;
+  min-width: 17px;
+  padding: 1px 4px;
+  border-radius: 999px;
+  background: #c9445a;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+.ub-notify-count[hidden], .ub-notify-panel[hidden], .ub-notify-desktop[hidden] { display: none; }
+.ub-notify-panel {
+  position: fixed;
+  top: 66px;
+  right: max(12px, calc((100vw - 1200px) / 2));
+  z-index: 100;
+  width: min(360px, calc(100vw - 24px));
+  max-height: min(70vh, 520px);
+  overflow: auto;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: 0 16px 40px rgba(35, 35, 70, .18);
+  color: var(--text);
+}
+.ub-notify-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.ub-notify-head button, .ub-notify-desktop {
+  border: 0;
+  background: none;
+  color: var(--primary);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.ub-notify-head button:disabled { color: var(--text-3); cursor: default; }
+.ub-notify-list { margin-top: 9px; }
+.ub-notify-item {
+  display: grid;
+  gap: 3px;
+  padding: 10px 2px;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+}
+.ub-notify-item:hover strong { color: var(--primary); }
+.ub-notify-item strong { font-size: 13px; font-weight: 600; }
+.ub-notify-item span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+.ub-notify-item time, .ub-notify-empty { color: var(--text-3); font-size: 11px; }
+.ub-notify-empty { margin: 14px 0; }
+.ub-notify-desktop { border-top: 1px solid var(--border); width: 100%; padding: 10px 0 0; text-align: left; }
 
 /* 手机屏（≤480）：顶栏放不下用户名，隐藏它；退出与回主界面图标保留可用 */
 @media (max-width: 480px) {

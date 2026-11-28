@@ -8,6 +8,10 @@
  *   GET  /api/comments?game=<gameId>
  *   POST /api/comments  { gameId, body }
  *   DELETE /api/comments/<id>        （本人或 admin）
+ *   GET  /api/stats                  （每款游戏浏览量与评论数）
+ *   POST /api/views                  { gameId }（普通账号每天每款计一次）
+ *   GET  /api/notifications          （仅 admin，未读新评论）
+ *   POST /api/notifications/read     { throughId }（仅 admin）
  *   GET  /api/picks?game=<gameId>   （该游戏被收录进「过关体验与攻略」的优质评论）
  *   POST /api/picks  { gameId, body, author?, commentId? }   （仅 admin）
  *   DELETE /api/picks/<id>                                  （仅 admin）
@@ -184,6 +188,12 @@ function cookieHeader(sid, env, maxAge = SESSION_DAYS * 86400) {
   return bits.join('; ');
 }
 
+function validGameId(value) {
+  const id = String(value || '').trim();
+  // 现有游戏 ID 含日文和感叹号，不能只允许英文 slug。
+  return id && id.length <= 128 && !/[\u0000-\u001f\u007f/\\?#]/.test(id) ? id : null;
+}
+
 async function currentUser(request, env) {
   const sid = readCookie(request, 'sid');
   if (!sid) return null;
@@ -311,6 +321,97 @@ export async function onRequest(context) {
     if (route === 'me' && method === 'GET') {
       const user = await currentUser(request, env);
       return json({ user: user ? { id: user.id, username: user.username, role: user.role } : null });
+    }
+
+    // ---- 卡片统计：评论只算未删除的记录 ----
+    if (route === 'stats' && method === 'GET') {
+      const rows = await env.DB.prepare(
+        `SELECT game_id, SUM(views) AS views, SUM(comments) AS comments FROM (
+           SELECT game_id, views, 0 AS comments FROM game_views
+           UNION ALL
+           SELECT game_id, 0 AS views, COUNT(*) AS comments
+             FROM comments WHERE deleted = 0 GROUP BY game_id
+         ) GROUP BY game_id`,
+      ).all();
+      return json({ stats: rows.results || [] });
+    }
+
+    // ---- 浏览量：按北京时间的自然日去重，站长自己的查看不计入 ----
+    if (route === 'views' && method === 'POST') {
+      const user = await currentUser(request, env);
+      if (!user) return json({ error: '请先登录' }, 401);
+      const body = await request.json().catch(() => ({}));
+      const gameId = validGameId(body.gameId);
+      if (!gameId) return json({ error: '无效的游戏 ID' }, 400);
+      if (user.role !== 'admin') {
+        const day = Math.floor((Date.now() + 8 * 3600000) / 86400000);
+        await env.DB.batch([
+          env.DB.prepare(
+            'INSERT OR IGNORE INTO game_view_visits (game_id, user_id, day) VALUES (?, ?, ?)',
+          ).bind(gameId, user.id, day),
+          env.DB.prepare(
+            `INSERT INTO game_views (game_id, views)
+             SELECT ?, 1 WHERE changes() = 1
+             ON CONFLICT(game_id) DO UPDATE SET views = views + 1`,
+          ).bind(gameId),
+        ]);
+        if (Math.random() < 0.02) {
+          context.waitUntil(env.DB.prepare('DELETE FROM game_view_visits WHERE day < ?')
+            .bind(day - 2).run());
+        }
+      }
+      const row = await env.DB.prepare('SELECT views FROM game_views WHERE game_id = ?')
+        .bind(gameId).first();
+      return json({ views: (row && row.views) || 0 });
+    }
+
+    // ---- 管理员站内提醒：新评论由评论 ID 推导，不影响发表流程 ----
+    if (route === 'notifications') {
+      const user = await currentUser(request, env);
+      if (!user) return json({ error: '请先登录' }, 401);
+      if (user.role !== 'admin') return json({ error: '仅管理员可查看提醒' }, 403);
+
+      let state = await env.DB.prepare(
+        'SELECT last_seen_id FROM admin_comment_reads WHERE user_id = ?',
+      ).bind(user.id).first();
+      if (!state) {
+        const latest = await env.DB.prepare('SELECT COALESCE(MAX(id), 0) AS id FROM comments').first();
+        await env.DB.prepare(
+          'INSERT OR IGNORE INTO admin_comment_reads (user_id, last_seen_id) VALUES (?, ?)',
+        ).bind(user.id, latest.id).run();
+        state = await env.DB.prepare(
+          'SELECT last_seen_id FROM admin_comment_reads WHERE user_id = ?',
+        ).bind(user.id).first();
+      }
+
+      if (method === 'GET' && !seg[1]) {
+        const lastSeen = state.last_seen_id;
+        const summary = await env.DB.prepare(
+          `SELECT COUNT(*) AS unread, COALESCE(MAX(id), 0) AS latest_id
+             FROM comments WHERE id > ? AND user_id != ? AND deleted = 0`,
+        ).bind(lastSeen, user.id).first();
+        const rows = await env.DB.prepare(
+          `SELECT c.id, c.game_id, c.body, c.created_at, u.username
+             FROM comments c JOIN users u ON u.id = c.user_id
+            WHERE c.id > ? AND c.user_id != ? AND c.deleted = 0
+            ORDER BY c.id DESC LIMIT 20`,
+        ).bind(lastSeen, user.id).all();
+        return json({ unread: summary.unread, latestId: summary.latest_id,
+          comments: rows.results || [] });
+      }
+
+      if (method === 'POST' && seg[1] === 'read') {
+        const body = await request.json().catch(() => ({}));
+        const throughId = Number(body.throughId);
+        if (!Number.isSafeInteger(throughId) || throughId < 0) {
+          return json({ error: '无效的评论 ID' }, 400);
+        }
+        const latest = await env.DB.prepare('SELECT COALESCE(MAX(id), 0) AS id FROM comments').first();
+        await env.DB.prepare(
+          'UPDATE admin_comment_reads SET last_seen_id = MAX(last_seen_id, ?) WHERE user_id = ?',
+        ).bind(Math.min(throughId, latest.id), user.id).run();
+        return json({ ok: true });
+      }
     }
 
     // ---- 评论 ----

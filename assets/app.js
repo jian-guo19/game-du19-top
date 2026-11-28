@@ -9,6 +9,9 @@
   // 当前筛选状态
   var state = { cat: "全部", tag: "全部", q: "" };
   var filtersExpanded = false;
+  var statsByGame = Object.create(null);
+  var statsLoaded = false;
+  var statsRequestSeq = 0;
 
   var listView = document.getElementById("listView");
   var detailView = document.getElementById("detailView");
@@ -91,6 +94,28 @@
 
   function hasFilter() {
     return state.cat !== "全部" || state.tag !== "全部" || state.q.trim() !== "";
+  }
+
+  function statsFor(gameId) {
+    return statsByGame[gameId] || { views: 0, comments: 0 };
+  }
+
+  function statNumber(value) {
+    return statsLoaded ? Number(value || 0).toLocaleString("zh-CN") : "—";
+  }
+
+  function syncStats() {
+    Array.prototype.forEach.call(grid.querySelectorAll(".card[data-id]"), function (card) {
+      var stat = statsFor(card.getAttribute("data-id"));
+      card.querySelector(".card-views").textContent = statNumber(stat.views);
+      card.querySelector(".card-comments").textContent = statNumber(stat.comments);
+    });
+    var detailStats = detailView.querySelector(".detail-stats");
+    if (detailStats) {
+      var detailStat = statsFor(currentGameId);
+      detailStats.querySelector(".detail-views").textContent = statNumber(detailStat.views);
+      detailStats.querySelector(".detail-comments").textContent = statNumber(detailStat.comments);
+    }
   }
 
   // ---------- hero 文案 / 统计 / 公告 ----------
@@ -241,6 +266,9 @@
         '<div class="card-tags">' + status + tags + "</div>" +
         '<div class="card-meta">' + esc(g.developer || "") +
         (g.releaseDate ? " · " + esc(g.releaseDate) : "") + "</div>" +
+        '<div class="card-stats" title="浏览量：普通账号每天查看同一游戏计一次，站长访问不计入">' +
+        '<span>浏览 <span class="card-views">' + statNumber(statsFor(g.id).views) + '</span></span>' +
+        '<span>评论 <span class="card-comments">' + statNumber(statsFor(g.id).comments) + '</span></span></div>' +
         "</div></article>";
     }).join("");
 
@@ -349,7 +377,10 @@
       '<div class="detail-head">' +
       "<h1>" + esc(g.name) + "</h1>" +
       (g.cnName ? '<p class="detail-cn">' + esc(g.cnName) + "</p>" : "") +
-      '<div class="detail-tags">' + tags + "</div>" + tutorialBtn + "</div>" +
+      '<div class="detail-tags">' + tags + "</div>" +
+      '<div class="detail-stats"><span><span class="detail-views">' + statNumber(statsFor(g.id).views) +
+      '</span> 浏览</span><span><span class="detail-comments">' + statNumber(statsFor(g.id).comments) +
+      '</span> 评论</span></div>' + tutorialBtn + "</div>" +
       '<div class="facts">' + facts + "</div>" +
       textSection("简介", g.summary) +
       '<section class="section"><h2>截图</h2>' + shots + "</section>" +
@@ -642,6 +673,11 @@
   // ---------- 账号与评论 ----------
   var currentUser = null;
   var userReady = null;   // 用户信息加载完成的 Promise，评论区要等它
+  var unreadCount = 0;
+  var notificationLatestId = 0;
+  var notificationPollStarted = false;
+  var notificationLoaded = false;
+  var notificationRequestSeq = 0;
 
   function loginUrl() {
     return "/login.html?next=" + encodeURIComponent(location.pathname + location.hash);
@@ -666,6 +702,36 @@
     });
   }
 
+  function refreshStats() {
+    var seq = ++statsRequestSeq;
+    return api("/api/stats").then(function (d) {
+      if (seq !== statsRequestSeq) return;
+      var next = Object.create(null);
+      (d.stats || []).forEach(function (s) {
+        var old = statsByGame[s.game_id];
+        next[s.game_id] = {
+          views: Math.max(Number(s.views) || 0, old ? old.views : 0),
+          comments: Number(s.comments) || 0
+        };
+      });
+      statsByGame = next;
+      statsLoaded = true;
+      syncStats();
+    }).catch(function () {
+      // 请求失败时保留「—」，不把未知统计误标成 0。
+    });
+  }
+
+  function recordView(gameId) {
+    api("/api/views", { method: "POST", body: { gameId: gameId } }).then(function (d) {
+      var stat = statsFor(gameId);
+      statsByGame[gameId] = { views: Number(d.views) || 0, comments: stat.comments };
+      syncStats();
+    }).catch(function () {
+      // 统计失败不影响游戏详情阅读。
+    });
+  }
+
   function fmtTime(sec) {
     try {
       var d = new Date(sec * 1000);
@@ -683,13 +749,20 @@
         if (currentUser) {
           bar.innerHTML = '<span class="ub-name">' + esc(currentUser.username) +
             (currentUser.role === "admin" ? '<span class="ub-badge">管理员</span>' : "") +
-            '</span><button type="button" class="ub-out" id="ubOut">退出</button>';
+            '</span>' + (currentUser.role === "admin" ?
+              '<div class="ub-notify"><button type="button" class="ub-notify-btn" id="ubNotifyBtn" aria-expanded="false">新评论 <span id="ubNotifyCount" class="ub-notify-count" hidden></span></button>' +
+              '<section class="ub-notify-panel" id="ubNotifyPanel" aria-label="新评论提醒" hidden>' +
+              '<div class="ub-notify-head"><b>新评论</b><button type="button" id="ubNotifyRead">全部标为已读</button></div>' +
+              '<div class="ub-notify-list" id="ubNotifyList">加载中…</div>' +
+              '<button type="button" class="ub-notify-desktop" id="ubNotifyDesktop">开启桌面提醒</button></section></div>' : "") +
+            '<button type="button" class="ub-out" id="ubOut">退出</button>';
           var out = document.getElementById("ubOut");
           if (out) out.addEventListener("click", function () {
             api("/api/logout", { method: "POST" }).then(function () {
               location.href = "/login.html";
             }).catch(function () { location.href = "/login.html"; });
           });
+          if (currentUser.role === "admin") initNotifications();
         } else {
           bar.innerHTML = '<a class="ub-in" href="' + loginUrl() + '">登录 / 注册</a>';
         }
@@ -697,6 +770,96 @@
       return currentUser;
     }).catch(function () { return null; });
     return userReady;
+  }
+
+  function refreshNotifications() {
+    var seq = ++notificationRequestSeq;
+    return api("/api/notifications").then(function (d) {
+      if (seq !== notificationRequestSeq) return;
+      var previousLatest = notificationLatestId;
+      var newest = Number(d.latestId) || 0;
+      unreadCount = Number(d.unread) || 0;
+      notificationLatestId = newest;
+      var badge = document.getElementById("ubNotifyCount");
+      if (badge) {
+        badge.hidden = unreadCount === 0;
+        badge.textContent = unreadCount > 99 ? "99+" : String(unreadCount);
+      }
+      var notifyBtn = document.getElementById("ubNotifyBtn");
+      if (notifyBtn) notifyBtn.setAttribute("aria-label", unreadCount
+        ? unreadCount + " 条未读评论" : "新评论提醒，暂无未读");
+      var read = document.getElementById("ubNotifyRead");
+      if (read) read.disabled = unreadCount === 0;
+      var list = document.getElementById("ubNotifyList");
+      if (list) {
+        list.innerHTML = (d.comments || []).length ? d.comments.map(function (c) {
+          var game = games.filter(function (g) { return g.id === c.game_id; })[0];
+          return '<a class="ub-notify-item" href="#/game/' + encodeURIComponent(c.game_id) + '">' +
+            '<strong>' + esc(c.username) + ' 评论了「' + esc(game ? game.name : c.game_id) + '」</strong>' +
+            '<span>' + esc(c.body) + '</span><time>' + esc(fmtTime(c.created_at)) + '</time></a>';
+        }).join("") : '<p class="ub-notify-empty">暂无未读评论</p>';
+      }
+      var desktop = document.getElementById("ubNotifyDesktop");
+      if (desktop) {
+        desktop.hidden = !("Notification" in window) || Notification.permission === "denied";
+        desktop.textContent = "Notification" in window && Notification.permission === "granted"
+          ? "桌面提醒已开启（网站打开时）" : "开启桌面提醒（网站打开时）";
+      }
+      if (notificationLoaded && newest > previousLatest && "Notification" in window &&
+          Notification.permission === "granted") {
+        try {
+          new Notification("游戏站收到新评论", {
+            body: unreadCount + " 条未读评论，打开网站查看。"
+          });
+        } catch (_) { /* 某些移动浏览器不支持直接构造系统通知 */ }
+      }
+      notificationLoaded = true;
+      document.title = (unreadCount ? "(" + unreadCount + ") " : "") + (pageTitle || TITLE_HOME);
+    }).catch(function () {
+      if (seq !== notificationRequestSeq) return;
+      var list = document.getElementById("ubNotifyList");
+      if (list) list.textContent = "提醒加载失败，请稍后重试。";
+    });
+  }
+
+  function initNotifications() {
+    var btn = document.getElementById("ubNotifyBtn");
+    var panel = document.getElementById("ubNotifyPanel");
+    btn.addEventListener("click", function () {
+      panel.hidden = !panel.hidden;
+      btn.setAttribute("aria-expanded", String(!panel.hidden));
+      if (!panel.hidden) refreshNotifications();
+    });
+    panel.querySelector("#ubNotifyList").addEventListener("click", function (e) {
+      if (e.target.closest("a")) {
+        panel.hidden = true;
+        btn.setAttribute("aria-expanded", "false");
+      }
+    });
+    document.getElementById("ubNotifyRead").addEventListener("click", function () {
+      api("/api/notifications/read", {
+        method: "POST", body: { throughId: notificationLatestId }
+      }).then(refreshNotifications).catch(function () {
+        document.getElementById("ubNotifyList").textContent = "标记失败，请稍后重试。";
+      });
+    });
+    document.getElementById("ubNotifyDesktop").addEventListener("click", function () {
+      if ("Notification" in window) Notification.requestPermission().then(refreshNotifications);
+    });
+    document.addEventListener("click", function (e) {
+      if (!panel.hidden && !e.target.closest(".ub-notify")) {
+        panel.hidden = true;
+        btn.setAttribute("aria-expanded", "false");
+      }
+    });
+    if (!notificationPollStarted) {
+      notificationPollStarted = true;
+      refreshNotifications();
+      setInterval(function () { if (!document.hidden) refreshNotifications(); }, 60000);
+      document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) refreshNotifications();
+      });
+    }
   }
 
   function initComments(gameId) {
@@ -767,7 +930,7 @@
         if (!text) { ta && ta.focus(); return; }
         send.disabled = true;
         api("/api/comments", { method: "POST", body: { gameId: gameId, body: text } })
-          .then(function () { refresh(); })
+          .then(function () { refresh(); refreshStats(); })
           .catch(function (e) {
             send.disabled = false;
             if (String(e.message) !== "unauth") alert("发表失败：" + e.message);
@@ -803,7 +966,7 @@
       btn.addEventListener("click", function () {
         if (!confirm("删除这条评论？")) return;
         api("/api/comments/" + btn.getAttribute("data-id"), { method: "DELETE" })
-          .then(function () { refresh(); })
+          .then(function () { refresh(); refreshStats(); if (isAdmin) refreshNotifications(); })
           .catch(function (e) { if (String(e.message) !== "unauth") alert("删除失败：" + e.message); });
       });
     });
@@ -811,6 +974,7 @@
 
   // ---------- 顶栏状态：当前所在页高亮 + 浏览器标签标题跟着换 ----------
   var TITLE_HOME = "玩过的游戏 · game.du-19.top";
+  var pageTitle = TITLE_HOME;
   function setChrome(navKey, title) {
     var links = document.querySelectorAll(".site-nav .nav-link");
     for (var i = 0; i < links.length; i++) {
@@ -819,7 +983,8 @@
       if (on) links[i].setAttribute("aria-current", "page");
       else links[i].removeAttribute("aria-current");
     }
-    document.title = title || TITLE_HOME;
+    pageTitle = title || TITLE_HOME;
+    document.title = (unreadCount ? "(" + unreadCount + ") " : "") + pageTitle;
   }
 
   // ---------- hash 路由 ----------
@@ -835,6 +1000,7 @@
         if (cardsView) cardsView.hidden = true;
         detailView.hidden = false;
         renderDetail(g);
+        recordView(g.id);
         setChrome(null, g.name + " · game.du-19.top");
         window.scrollTo(0, 0);
         return;
@@ -973,5 +1139,6 @@
   renderUserBar();
   paintLaunchCard();
   route();
+  refreshStats();
   updateHeader();
 })();
